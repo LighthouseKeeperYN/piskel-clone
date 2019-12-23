@@ -18,7 +18,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "build:deploy": "npm run clear -s && webpack --progress && surge dist fancy-weather-lhk.surge.sh",
+    "build:deploy": "npm run clear -s && webpack --progress && surge build simple-piskel-clone-lhk.surge.sh",
     "lint": "eslint ./**/*.js",
     "lint:fix": "eslint --fix ./**/*.js"
   },

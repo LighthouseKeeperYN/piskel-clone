@@ -1,4 +1,4 @@
 node_modules
 webpack.config.js
 postcss.config.js
-dist
+build
