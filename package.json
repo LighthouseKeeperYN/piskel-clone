@@ -1,24 +1,26 @@
 {
-  "name": "",
+  "name": "simple-piskel-clone",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.0",
+    "eslint-config-airbnb-base": "^14.0.0",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject",
-    "test": "react-scripts test"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "test": "react-scripts test",
+    "build:deploy": "npm run clear -s && webpack --progress && surge dist fancy-weather-lhk.surge.sh",
+    "lint": "eslint ./**/*.js",
+    "lint:fix": "eslint --fix ./**/*.js"
   },
   "browserslist": {
     "production": [

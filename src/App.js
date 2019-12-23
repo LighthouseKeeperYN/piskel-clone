@@ -1,14 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.scss';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import *component* from '*component path*';
-
-class App extends Component {
-  render() {
-    return (
-      <*component* />
-    );
-  }
-}
+const App = () => {
+  // return (
+  // );
+};
 
 export default App;
+gi
