@@ -6,14 +6,23 @@ import './App.scss';
 import './base.scss';
 
 import Navbar from './components/layout/navbar/Navbar';
+import Canvas from './components/canvas/Canvas';
 
 const App = () => {
   return (
     <Fragment>
       <Navbar />
-      <p>hello world</p>
+      <main>
+        <div></div>
+        <div></div>
+        <div className="workbench">
+          <Canvas />
+        </div>
+        <div></div>
+        <div></div>
+      </main>
     </Fragment>
-  )
+  );
 };
 
 export default App;

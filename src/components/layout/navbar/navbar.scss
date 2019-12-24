@@ -10,7 +10,7 @@
   padding: 0 2rem;
 
   &__logo {
-  font-family: 'Courier Prime', monospace;
+    font-family: 'Courier Prime', monospace;
   }
 
   &__project-name {
@@ -27,11 +27,17 @@
 
   &__button {
     background-color: #ffd700;
-    border-radius: .2rem;
-    padding: .6rem 1rem;
-    margin: 0 .5rem;
+    border-radius: 0.2rem;
+    padding: 0.6rem 1rem;
+    margin: 0 0.5rem;
 
     font-size: 1.4rem;
     color: black;
+
+    transition: all 0.4s;
+
+    &:hover {
+      background-color: white;
+    }
   }
 }

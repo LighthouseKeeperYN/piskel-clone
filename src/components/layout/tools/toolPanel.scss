@@ -1,0 +1,24 @@
+.tool-panel {
+  width: 9rem;
+  padding: 0.2rem;
+
+  &__stroke-size {
+    display: flex;
+
+    padding: .1rem;
+    height: 2rem;
+  }
+
+  &__tools {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: .2rem;
+  }
+
+  &__colors {
+    position: relative;
+
+    width: 9rem;
+    height: 9rem;
+  }
+}
