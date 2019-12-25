@@ -1,0 +1,4 @@
+export const SET_STROKE_SIZE = 'SET_STROKE_SIZE';
+export const GET_STROKE_SIZE = 'GET_STROKE_SIZE';
+export const SET_PIXEL_SIZE = 'SET_PIXEL_SIZE';
+export const GET_PIXEL_SIZE = 'GET_PIXEL_SIZE';

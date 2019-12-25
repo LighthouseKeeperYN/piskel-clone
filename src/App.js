@@ -7,12 +7,18 @@ import './base.scss';
 
 import Navbar from './components/layout/navbar/Navbar';
 import Canvas from './components/canvas/Canvas';
+import ToolPanel from './components/layout/toolPanel/ToolPanel';
+
+import UIState from './context/ui/UIState';
 
 const App = () => (
+  <UIState>
     <Fragment>
       <Navbar />
       <main>
-        <div></div>
+        <div>
+          <ToolPanel />
+        </div>
         <div></div>
         <div className="workbench">
           <Canvas />
@@ -21,6 +27,7 @@ const App = () => (
         <div></div>
       </main>
     </Fragment>
+  </UIState>
 );
 
 export default App;

@@ -3,6 +3,8 @@ body {
 
   font-family: Arial, Helvetica, sans-serif;
   color: white;
+
+  --highlight-color: gold;
 }
 
 #root {
@@ -15,9 +17,10 @@ main {
   display: grid;
   grid-template-columns: 9rem 13rem auto 20rem 4.5rem;
   grid-template-rows: 100%;
-  height: 100%;
   gap: 0.8rem;
+  align-items: center;
 
+  height: 100%;
   padding: 0.8rem;
 }
 
