@@ -17,12 +17,12 @@ const Navbar = ({ title, projectName }) => (
 
 Navbar.defaultProps = {
   title: 'Piskel',
-  projectName: 'New Piskel'
+  projectName: 'New Piskel',
 };
 
 Navbar.propTypes = {
   title: PropTypes.string,
-  projectName: PropTypes.string
+  projectName: PropTypes.string,
 };
 
 export default Navbar;

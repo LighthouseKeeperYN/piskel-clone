@@ -15,6 +15,10 @@
     background-color: white;
   }
 
+  &:hover {
+    border-color: #888;
+  }
+
   &--1::before {
     width: 30%;
     height: 30%;
@@ -30,5 +34,16 @@
   &--4::before {
     width: 75%;
     height: 75%;
+  }
+
+  &--selected {
+    border-color: gold;
+
+    &::before {
+      background-color: gold;
+    }
+    &:hover {
+      border-color: gold;
+    }
   }
 }

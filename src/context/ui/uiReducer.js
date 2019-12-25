@@ -5,7 +5,7 @@ export default (state, action) => {
     case SET_STROKE_SIZE:
       return {
         ...state,
-        strokeSize: action.payload
+        strokeSize: action.payload,
       };
     default:
       return state;

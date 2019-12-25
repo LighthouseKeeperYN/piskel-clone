@@ -1,4 +1,4 @@
-import React, { useRef, useState} from 'react';
+import React, { useRef, useState } from 'react';
 
 import './canvas.scss';
 
@@ -12,8 +12,23 @@ function Canvas() {
   function getMousePositionOnCanvas(canvasPosition, event) {
     return {
       x: event.clientX - canvasPosition.left,
-      y: event.clientY - canvasPosition.top
+      y: event.clientY - canvasPosition.top,
     };
+  }
+
+
+  function scaleDown(coordinate, ratio) {
+    return Math.floor(coordinate / ratio);
+  }
+
+  function pencil(ctx, currPosition, prevPosition) {
+    drawLine(
+      ctx,
+      scaleDown(prevPosition.x, pixelSize),
+      scaleDown(prevPosition.y, pixelSize),
+      scaleDown(currPosition.x, pixelSize),
+      scaleDown(currPosition.y, pixelSize),
+    );
   }
 
   function handleDrawingOnCanvas(e) {
@@ -28,9 +43,6 @@ function Canvas() {
     pencil(ctx, currMousePosition, prevMousePosition || currMousePosition);
   }
 
-  function scaleDown(coordinate, ratio) {
-    return Math.floor(coordinate / ratio);
-  }
 
   function drawLine(ctx, x0, y0, x1, y1) {
     const dx = Math.abs(x1 - x0);
@@ -55,16 +67,6 @@ function Canvas() {
         y0 += sy;
       }
     }
-  }
-
-  function pencil(ctx, currPosition, prevPosition) {
-    drawLine(
-      ctx,
-      scaleDown(prevPosition.x, pixelSize),
-      scaleDown(prevPosition.y, pixelSize),
-      scaleDown(currPosition.x, pixelSize),
-      scaleDown(currPosition.y, pixelSize)
-    );
   }
 
   return (

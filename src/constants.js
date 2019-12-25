@@ -1,8 +1,8 @@
 const STROKE_SCALE = {
-  XS: 1,
-  S: 2,
-  M: 3,
-  L: 4
+  x1: 1,
+  x2: 2,
+  x3: 3,
+  x4: 4,
 };
 
 export default STROKE_SCALE;

@@ -2,7 +2,6 @@ import React from 'react';
 
 import './toolPanel.scss';
 
-import './strokeSizeUI/StrokeSizeUI';
 import StrokeSizeUI from './strokeSizeUI/StrokeSizeUI';
 
 function ToolPanel() {
