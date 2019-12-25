@@ -2,7 +2,7 @@ import React, { Fragment, useContext } from 'react';
 
 import './strokeSizeUI.scss';
 
-import STROKE_SCALE from '../../../../constants';
+import { STROKE_SCALE } from '../../../../constants';
 import UIContext from '../../../../context/ui/uiContext';
 
 function StrokeSizeUI() {

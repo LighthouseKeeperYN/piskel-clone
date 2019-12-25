@@ -1,0 +1,38 @@
+.tool-button {
+  width: 4rem;
+  height: 4rem;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: #888;
+  }
+
+  &--pen {
+    background: #444 url('./icons/pen-icon.png') center no-repeat;
+  }
+
+  &--stroke {
+    background: #444 url('./icons/stroke-icon.png') center no-repeat;
+  }
+
+  &--bucket {
+    background: #444 url('./icons/bucket-icon.png') center no-repeat;
+  }
+
+  &--bucket-all {
+    background: #444 url('./icons/bucket-all-icon.png') center no-repeat;
+  }
+
+  &--eraser {
+    background: #444 url('./icons/eraser-icon.png') center no-repeat;
+  }
+
+  &--color-picker {
+    background: #444 url('./icons/color-picker-icon.png') center no-repeat;
+  }
+
+  &--selected {
+    border: .4rem solid gold;
+  }
+}

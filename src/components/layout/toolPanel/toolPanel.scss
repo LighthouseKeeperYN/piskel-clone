@@ -12,8 +12,13 @@
 
   &__tools {
     display: grid;
-    grid-template-columns: 50% 50%;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 4rem 4rem;
+    grid-template-rows: 4rem 4rem;
     gap: .2rem;
+
+    margin-top: .8rem;
   }
 
   &__colors {

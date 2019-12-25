@@ -1,13 +1,13 @@
 import React, { useReducer } from 'react';
 
-import STROKE_SCALE from '../../constants';
+import { STROKE_SCALE, TOOL_TYPE } from '../../constants';
+import { SET_STROKE_SIZE, SET_TOOL_TYPE } from '../types';
 
 import UIContext from './uiContext';
 import UIReducer from './uiReducer';
-import { SET_STROKE_SIZE } from '../types';
 
 const UIState = (props) => {
-  const initialState = { strokeSize: STROKE_SCALE.x1 };
+  const initialState = { strokeSize: STROKE_SCALE.x1, toolType: TOOL_TYPE.pen };
 
   const [state, dispatch] = useReducer(UIReducer, initialState);
 
@@ -18,11 +18,20 @@ const UIState = (props) => {
     });
   };
 
+  const setToolType = (type) => {
+    dispatch({
+      type: SET_TOOL_TYPE,
+      payload: type
+    });
+  };
+
   return (
     <UIContext.Provider
       value={{
         strokeSize: state.strokeSize,
-        setStrokeSize
+        toolType: state.toolType,
+        setStrokeSize,
+        setToolType
       }}
     >
       {props.children}
