@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import './toolButton.scss';
 
-import UIContext from '../../../../context/ui/uiContext';
+import UIContext from '../../../context/ui/uiContext';
 
 function ToolButton({ type }) {
   const uiContext = useContext(UIContext);
