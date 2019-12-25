@@ -8,8 +8,7 @@ import './base.scss';
 import Navbar from './components/layout/navbar/Navbar';
 import Canvas from './components/canvas/Canvas';
 
-const App = () => {
-  return (
+const App = () => (
     <Fragment>
       <Navbar />
       <main>
@@ -22,7 +21,6 @@ const App = () => {
         <div></div>
       </main>
     </Fragment>
-  );
-};
+);
 
 export default App;
