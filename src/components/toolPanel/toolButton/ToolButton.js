@@ -2,16 +2,15 @@ import React, { useContext } from 'react';
 
 import './toolButton.scss';
 
-import UIContext from '../../../context/ui/uiContext';
+import ToolPanelContext from '../../../context/toolPanel/toolPanelContext';
 
 function ToolButton({ type }) {
-  const uiContext = useContext(UIContext);
+  const { toolType, setToolType } = useContext(ToolPanelContext);
 
   return (
     <div
-      onClick={() => uiContext.setToolType(type)}
-      className={`tool-button tool-button--${type} ${uiContext.toolType === type &&
-        'tool-button--selected'}`}
+      onClick={() => setToolType(type)}
+      className={`tool-button tool-button--${type} ${toolType === type && 'tool-button--selected'}`}
     ></div>
   );
 }

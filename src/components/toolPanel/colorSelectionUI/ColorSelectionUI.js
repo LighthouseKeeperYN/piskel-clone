@@ -5,7 +5,7 @@ import useOnClickOutside from 'use-onclickoutside';
 import './colorSelectionUI.scss';
 import { ReactComponent as ColorArrow } from './color-arrow-icon.svg';
 
-import UIContext from '../../../context/ui/uiContext';
+import ToolPanelContext from '../../../context/toolPanel/toolPanelContext';
 
 function ColorSelectorUI() {
   const {
@@ -19,7 +19,7 @@ function ColorSelectorUI() {
     colorSecondary,
     colorSelectorPrimary,
     colorSelectorSecondary
-  } = useContext(UIContext);
+  } = useContext(ToolPanelContext);
 
   const ref = useRef(null);
   useOnClickOutside(ref, removeColorSelectors);
@@ -32,6 +32,7 @@ function ColorSelectorUI() {
           onClick={() => showColorSelectorPrimary()}
           style={{ backgroundColor: colorPrimary }}
         ></div>
+
         {colorSelectorPrimary && (
           <div className="color-selector" ref={ref}>
             <ChromePicker
@@ -49,6 +50,7 @@ function ColorSelectorUI() {
           onClick={() => showColorSelectorSecondary()}
           style={{ backgroundColor: colorSecondary }}
         ></div>
+
         {colorSelectorSecondary && (
           <div className="color-selector color-selector--secondary" ref={ref}>
             <ChromePicker

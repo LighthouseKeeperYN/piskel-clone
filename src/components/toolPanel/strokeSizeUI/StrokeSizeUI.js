@@ -3,19 +3,19 @@ import React, { Fragment, useContext } from 'react';
 import './strokeSizeUI.scss';
 
 import { STROKE_SCALE } from '../../../constants';
-import UIContext from '../../../context/ui/uiContext';
+import ToolPanelContext from '../../../context/toolPanel/toolPanelContext';
 
 function StrokeSizeUI() {
-  const uiContext = useContext(UIContext);
+  const {strokeSize, setStrokeSize} = useContext(ToolPanelContext);
 
   return (
     <Fragment>
       {Object.values(STROKE_SCALE).map((scale) => (
         <div
           key={`stroke-size-${scale}`}
-          className={`stroke-size stroke-size--${scale} ${uiContext.strokeSize === scale &&
+          className={`stroke-size stroke-size--${scale} ${strokeSize === scale &&
             'stroke-size--selected'}`}
-          onClick={() => uiContext.setStrokeSize(scale)}
+          onClick={() => setStrokeSize(scale)}
         ></div>
       ))}
     </Fragment>

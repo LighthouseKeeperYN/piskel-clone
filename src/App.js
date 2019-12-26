@@ -9,10 +9,10 @@ import Navbar from './components/layout/navbar/Navbar';
 import Canvas from './components/canvas/Canvas';
 import ToolPanel from './components/toolPanel/ToolPanel';
 
-import UIState from './context/ui/UIState';
+import ToolPanelState from './context/toolPanel/ToolPanelState';
 
 const App = () => (
-  <UIState>
+  <ToolPanelState>
     <Fragment>
       <Navbar />
       <main>
@@ -27,7 +27,7 @@ const App = () => (
         <div></div>
       </main>
     </Fragment>
-  </UIState>
+  </ToolPanelState>
 );
 
 export default App;
