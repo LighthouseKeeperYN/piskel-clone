@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 
-import { STROKE_SCALE, TOOL_TYPE, DEFAULT_COLORS } from '../../constants';
+import { STROKE_SCALE, TOOL_TYPE, DEFAULT_COLORS } from '../../shared/constants';
 import {
   SET_STROKE_SIZE,
   SET_TOOL_TYPE,

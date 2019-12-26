@@ -2,7 +2,7 @@ import React from 'react';
 
 import './animationAndSettingsPanel.scss';
 
-import { PIXEL_SIZES } from '../../constants';
+import { PIXEL_SIZES } from '../../shared/constants';
 
 import AnimationPreview from './animationPreview/AnimationPreview';
 import FrameRateUI from './frameRateUI/FrameRateUI';
@@ -16,7 +16,7 @@ function AnimationAndSettingsPanel() {
       {Object.values(PIXEL_SIZES)
         .reverse()
         .map((pxSize) => (
-          <CanvasResolutionButton pxSize={pxSize} />
+          <CanvasResolutionButton key={`pxSize-${pxSize}`} pxSize={pxSize} />
         ))}
     </div>
   );

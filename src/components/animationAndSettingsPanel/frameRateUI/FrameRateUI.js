@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import './frameRateUI.scss';
-import { DEFAULT_FRAME_RATE } from '../../../constants';
+import { DEFAULT_FRAME_RATE } from '../../../shared/constants';
 
 import AnimationAndSettingsPanelContext from '../../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
 

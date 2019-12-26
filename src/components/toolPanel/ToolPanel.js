@@ -2,7 +2,7 @@ import React from 'react';
 
 import './toolPanel.scss';
 
-import { TOOL_TYPE } from '../../constants';
+import { TOOL_TYPE } from '../../shared/constants';
 
 import StrokeSizeUI from './strokeSizeUI/StrokeSizeUI';
 import ToolButton from './toolButton/ToolButton';
