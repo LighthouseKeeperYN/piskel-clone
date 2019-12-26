@@ -2,7 +2,7 @@ import React, { useRef, useState, useContext } from 'react';
 
 import './canvas.scss';
 
-import { getMousePositionOnCanvas} from '../../shared/utilities';
+import { getMousePositionOnCanvas } from '../../shared/utilities';
 import applyToolToCanvas from './functionality/applyToolToCanvas';
 
 import ToolPanelContext from '../../context/toolPanel/toolPanelContext';
@@ -18,16 +18,17 @@ function Canvas() {
   const canvasRef = useRef(null);
 
   function handleDrawingOnCanvas(e) {
+    const colorToApply = e.buttons === 1 ? colorPrimary : colorSecondary;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     ctx.imageSmoothingEnabled = false;
-    ctx.fillStyle = e.buttons === 1 ? colorPrimary : colorSecondary;
+    ctx.fillStyle = colorToApply;
 
     const currMousePosition = getMousePositionOnCanvas(canvas.getBoundingClientRect(), e);
 
     setPrevMousePosition(currMousePosition);
 
-    applyToolToCanvas(toolType, ctx, pixelSize, currMousePosition, prevMousePosition);
+    applyToolToCanvas(toolType, ctx, pixelSize, currMousePosition, prevMousePosition, colorToApply);
   }
 
   return (

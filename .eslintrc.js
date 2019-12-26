@@ -21,6 +21,6 @@ module.exports = {
     'no-plusplus': [2, { 'allowForLoopAfterthoughts': true }],
     'no-param-reassign': [2, { 'props': false }],
     'react/prop-types': [2, { ignore: ['children'] }],
-    'object-curly-newline': ['error', { 'ObjectPattern': { 'multiline': true } }]
+    'object-curly-newline': ['error', { 'ObjectPattern': { 'multiline': true } }],
   }
 };
