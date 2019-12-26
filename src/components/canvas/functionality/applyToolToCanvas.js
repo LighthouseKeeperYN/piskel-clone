@@ -13,12 +13,29 @@ const applyToolToCanvas = (tool, ctx, pixelSize, currMousePosition, prevMousePos
         scaleDown(currMousePosition.x, pixelSize),
         scaleDown(currMousePosition.y, pixelSize),
         scaleDown(prevMousePosition?.x || currMousePosition.x, pixelSize),
-        scaleDown(prevMousePosition?.y || currMousePosition.y, pixelSize),
+        scaleDown(prevMousePosition?.y || currMousePosition.y, pixelSize)
       );
       break;
     case TOOL_TYPE.bucket:
-      applyBucket(ctx, DEFAULT_CANVAS_SIZE, hexToRGB(color), currMousePosition.x, currMousePosition.y);
-
+      applyBucket(
+        ctx,
+        DEFAULT_CANVAS_SIZE,
+        hexToRGB(color),
+        currMousePosition.x,
+        currMousePosition.y
+      );
+      break;
+    case TOOL_TYPE.eraser:
+      drawLine(
+        ctx,
+        pixelSize,
+        scaleDown(currMousePosition.x, pixelSize),
+        scaleDown(currMousePosition.y, pixelSize),
+        scaleDown(prevMousePosition?.x || currMousePosition.x, pixelSize),
+        scaleDown(prevMousePosition?.y || currMousePosition.y, pixelSize),
+        true
+      );
+      break;
     default:
       break;
   }

@@ -1,4 +1,4 @@
-export default function drawLine(ctx, pixelSize, x0, y0, x1, y1) {
+export default function drawLine(ctx, pixelSize, x0, y0, x1, y1, isErasing) {
   const dx = Math.abs(x1 - x0);
   const sx = x0 < x1 ? 1 : -1;
 
@@ -10,7 +10,11 @@ export default function drawLine(ctx, pixelSize, x0, y0, x1, y1) {
   let y0copy = y0;
 
   for (;;) {
-    ctx.fillRect(x0copy * pixelSize, y0copy * pixelSize, pixelSize, pixelSize);
+    if (isErasing) {
+      ctx.clearRect(x0copy * pixelSize, y0copy * pixelSize, pixelSize, pixelSize);
+    } else {
+      ctx.fillRect(x0copy * pixelSize, y0copy * pixelSize, pixelSize, pixelSize);
+    }
 
     if (x0copy === x1 && y0copy === y1) break;
 
