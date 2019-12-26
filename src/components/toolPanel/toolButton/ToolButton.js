@@ -1,18 +1,23 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 
 import './toolButton.scss';
 
 import ToolPanelContext from '../../../context/toolPanel/toolPanelContext';
 
-function ToolButton({ type }) {
+function ToolButton({ tool }) {
   const { toolType, setToolType } = useContext(ToolPanelContext);
 
   return (
     <div
-      onClick={() => setToolType(type)}
-      className={`tool-button tool-button--${type} ${toolType === type && 'tool-button--selected'}`}
+      onClick={() => setToolType(tool)}
+      className={`tool-button tool-button--${tool} ${toolType === tool && 'tool-button--selected'}`}
     ></div>
   );
 }
 
 export default ToolButton;
+
+ToolButton.propTypes = {
+  tool: PropTypes.string.isRequired,
+};

@@ -1,0 +1,9 @@
+.frame-rate-ui-wrapper {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  align-items: center;
+  justify-content: center;
+
+  color: #aaa;
+  font-size: 1.2rem;
+}

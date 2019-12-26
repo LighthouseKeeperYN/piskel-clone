@@ -6,15 +6,15 @@ import { STROKE_SCALE } from '../../../constants';
 import ToolPanelContext from '../../../context/toolPanel/toolPanelContext';
 
 function StrokeSizeUI() {
-  const {strokeSize, setStrokeSize} = useContext(ToolPanelContext);
+  const { strokeSize, setStrokeSize } = useContext(ToolPanelContext);
 
   return (
     <Fragment>
       {Object.values(STROKE_SCALE).map((scale) => (
         <div
           key={`stroke-size-${scale}`}
-          className={`stroke-size stroke-size--${scale} ${strokeSize === scale &&
-            'stroke-size--selected'}`}
+          className={`stroke-size stroke-size--${scale} ${strokeSize === scale
+            && 'stroke-size--selected'}`}
           onClick={() => setStrokeSize(scale)}
         ></div>
       ))}

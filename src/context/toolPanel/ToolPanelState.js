@@ -9,7 +9,7 @@ import {
   SWAP_SELECTED_COLORS,
   SHOW_COLOR_SELECTOR_PRIMARY,
   SHOW_COLOR_SELECTOR_SECONDARY,
-  REMOVE_COLOR_SELECTORS
+  REMOVE_COLOR_SELECTORS,
 } from '../types';
 
 import ToolPanelContext from './toolPanelContext';
@@ -22,7 +22,7 @@ const ToolPanelState = (props) => {
     colorPrimary: DEFAULT_COLORS.primary,
     colorSecondary: DEFAULT_COLORS.secondary,
     colorSelectorPrimary: false,
-    colorSelectorSecondary: false
+    colorSelectorSecondary: false,
   };
 
   const [state, dispatch] = useReducer(ToolPanelReducer, initialState);
@@ -30,28 +30,28 @@ const ToolPanelState = (props) => {
   const setStrokeSize = (size) => {
     dispatch({
       type: SET_STROKE_SIZE,
-      payload: size
+      payload: size,
     });
   };
 
   const setToolType = (type) => {
     dispatch({
       type: SET_TOOL_TYPE,
-      payload: type
+      payload: type,
     });
   };
 
   const setColorPrimary = (color) => {
     dispatch({
       type: SET_COLOR_PRIMARY,
-      payload: color
+      payload: color,
     });
   };
 
   const setColorSecondary = (color) => {
     dispatch({
       type: SET_COLOR_SECONDARY,
-      payload: color
+      payload: color,
     });
   };
 
@@ -79,7 +79,7 @@ const ToolPanelState = (props) => {
         swapSelectedColors,
         showColorSelectorPrimary,
         showColorSelectorSecondary,
-        removeColorSelectors
+        removeColorSelectors,
       }}
     >
       {props.children}

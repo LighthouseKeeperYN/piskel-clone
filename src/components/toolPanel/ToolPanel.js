@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import './toolPanel.scss';
 
@@ -15,8 +15,8 @@ function ToolPanel() {
         <StrokeSizeUI />
       </div>
       <div className="tool-panel__tools">
-        {Object.values(TOOL_TYPE).map((type) => (
-          <ToolButton key={`tool-${type}`} type={type} />
+        {Object.values(TOOL_TYPE).map((tool) => (
+          <ToolButton key={`tool-${tool}`} tool={tool} />
         ))}
       </div>
       <div className="tool-panel__colors">

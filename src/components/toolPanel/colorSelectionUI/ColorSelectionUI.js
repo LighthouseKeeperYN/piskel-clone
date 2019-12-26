@@ -18,7 +18,7 @@ function ColorSelectorUI() {
     colorPrimary,
     colorSecondary,
     colorSelectorPrimary,
-    colorSelectorSecondary
+    colorSelectorSecondary,
   } = useContext(ToolPanelContext);
 
   const ref = useRef(null);
