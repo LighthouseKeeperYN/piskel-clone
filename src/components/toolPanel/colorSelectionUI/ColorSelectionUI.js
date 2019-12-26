@@ -1,17 +1,59 @@
-import React from 'react';
-import { ReactComponent as ColorArrow } from './color-arrow-icon.svg';
+import React, { useContext, useRef } from 'react';
 import { ChromePicker } from 'react-color';
+import useOnClickOutside from 'use-onclickoutside';
 
 import './colorSelectionUI.scss';
+import { ReactComponent as ColorArrow } from './color-arrow-icon.svg';
 
-// return <ChromePicker disableAlpha={true} />
+import UIContext from '../../../context/ui/uiContext';
 
 function ColorSelectorUI() {
+  const {
+    setColorPrimary,
+    setColorSecondary,
+    swapSelectedColors,
+    showColorSelectorPrimary,
+    showColorSelectorSecondary,
+    removeColorSelectors,
+    colorPrimary,
+    colorSecondary,
+    colorSelectorPrimary,
+    colorSelectorSecondary
+  } = useContext(UIContext);
+
+  const ref = useRef(null);
+
+  useOnClickOutside(ref, removeColorSelectors);
+
   return (
     <div className="color-selection-wrapper">
-      <div className="color-selection color-selection__primary"></div>
-      <div className="color-selection color-selection__secondary"></div>
-      <ColorArrow className="color-selection-arrow" />
+      <div>
+        <div
+          className="color-selection color-selection__primary"
+          onClick={() => showColorSelectorPrimary()}
+          style={{ backgroundColor: colorPrimary }}
+        ></div>
+        {colorSelectorPrimary && (
+          <div className="color-selector" ref={ref}>
+            <ChromePicker disableAlpha={true} on />
+          </div>
+        )}
+      </div>
+
+      <div>
+        <div
+          className="color-selection color-selection__secondary"
+          onClick={() => showColorSelectorSecondary()}
+          style={{ backgroundColor: colorSecondary }}
+        ></div>
+        {colorSelectorSecondary && (
+          <div className="color-selector color-selector--secondary" ref={ref}>
+            <ChromePicker disableAlpha={true} on />
+          </div>
+        )}
+      </div>
+
+      <ColorArrow className="color-selection-arrow" onClick={() => swapSelectedColors()} />
     </div>
   );
 }

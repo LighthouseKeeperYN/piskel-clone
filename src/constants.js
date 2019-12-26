@@ -13,3 +13,8 @@ export const TOOL_TYPE = {
   eraser: 'eraser',
   colorPicker: 'color-picker'
 };
+
+export const DEFAULT_COLORS = {
+  primary: '#ffffff',
+  secondary: '#000000'
+};

@@ -2,6 +2,11 @@
   position: relative;
   width: 7.5rem;
   height: 7.5rem;
+
+  &__inner {
+    width: 0;
+    height: 0;
+  }
 }
 
 .color-selection {
@@ -18,15 +23,12 @@
   &__primary {
     position: relative;
     z-index: 10;
-
-    background-color: black;
   }
 
   &__secondary {
     position: absolute;
     top: 2.3rem;
     left: 2.3rem;
-    background-color: white;
   }
 }
 
@@ -40,5 +42,15 @@
 
   &:hover {
     fill: #d2d2d2;
+  }
+}
+
+.color-selector {
+  position: absolute;
+  z-index: 20;
+
+  &--secondary {
+    top: 6.8rem;
+    left: 2.3rem
   }
 }
