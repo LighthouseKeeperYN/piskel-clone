@@ -5,7 +5,7 @@ import './canvas.scss';
 function Canvas() {
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [prevMousePosition, setPrevMousePosition] = useState(null);
-  const [pixelSize, setPixelSize] = useState(8);
+  const [pixelSize] = useState(8);
 
   const canvasRef = useRef(null);
 
