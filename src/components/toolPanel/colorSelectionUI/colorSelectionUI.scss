@@ -1,0 +1,44 @@
+.color-selection-wrapper {
+  position: relative;
+  width: 7.5rem;
+  height: 7.5rem;
+}
+
+.color-selection {
+  cursor: pointer;
+
+  width: 4.6rem;
+  height: 4.6rem;
+  border: .4rem solid #444;
+
+  &:hover {
+    border-color: #888;
+  }
+
+  &__primary {
+    position: relative;
+    z-index: 10;
+
+    background-color: black;
+  }
+
+  &__secondary {
+    position: absolute;
+    top: 2.3rem;
+    left: 2.3rem;
+    background-color: white;
+  }
+}
+
+.color-selection-arrow {
+  margin-top: .3rem;
+  width: 2rem;
+  height: 2rem;
+  fill: #666;
+
+  cursor: pointer;
+
+  &:hover {
+    fill: #d2d2d2;
+  }
+}

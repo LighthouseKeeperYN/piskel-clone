@@ -7,7 +7,7 @@ import './base.scss';
 
 import Navbar from './components/layout/navbar/Navbar';
 import Canvas from './components/canvas/Canvas';
-import ToolPanel from './components/layout/toolPanel/ToolPanel';
+import ToolPanel from './components/toolPanel/ToolPanel';
 
 import UIState from './context/ui/UIState';
 

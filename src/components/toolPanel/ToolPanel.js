@@ -7,6 +7,7 @@ import { TOOL_TYPE } from '../../constants';
 
 import StrokeSizeUI from './strokeSizeUI/StrokeSizeUI';
 import ToolButton from './toolButton/ToolButton';
+import ColorSelectionUI from './colorSelectionUI/ColorSelectionUI';
 
 function ToolPanel() {
   // const uiContext = useContext(UIContext);
@@ -21,7 +22,9 @@ function ToolPanel() {
           <ToolButton key={`tool-${type}`} type={type} />
         ))}
       </div>
-      <div className="tool-panel__colors"></div>
+      <div className="tool-panel__colors">
+        <ColorSelectionUI />
+      </div>
     </div>
   );
 }

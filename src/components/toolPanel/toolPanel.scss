@@ -22,8 +22,11 @@
   }
 
   &__colors {
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    margin-top: .5rem;
     width: 9rem;
     height: 9rem;
   }
