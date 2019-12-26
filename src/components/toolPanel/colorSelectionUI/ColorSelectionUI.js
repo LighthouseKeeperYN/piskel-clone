@@ -22,7 +22,6 @@ function ColorSelectorUI() {
   } = useContext(UIContext);
 
   const ref = useRef(null);
-
   useOnClickOutside(ref, removeColorSelectors);
 
   return (
@@ -35,7 +34,11 @@ function ColorSelectorUI() {
         ></div>
         {colorSelectorPrimary && (
           <div className="color-selector" ref={ref}>
-            <ChromePicker disableAlpha={true} on />
+            <ChromePicker
+              disableAlpha={true}
+              color={colorPrimary}
+              onChangeComplete={(color) => setColorPrimary(color.hex)}
+            />
           </div>
         )}
       </div>
@@ -48,7 +51,11 @@ function ColorSelectorUI() {
         ></div>
         {colorSelectorSecondary && (
           <div className="color-selector color-selector--secondary" ref={ref}>
-            <ChromePicker disableAlpha={true} on />
+            <ChromePicker
+              disableAlpha={true}
+              color={colorSecondary}
+              onChangeComplete={(color) => setColorSecondary(color.hex)}
+            />
           </div>
         )}
       </div>
