@@ -5,18 +5,18 @@ import applyBucket from './applyBucket';
 import applyColorPicker from './applyColorPicker';
 import { scaleDown, hexToRGB } from '../../../shared/utilities';
 
-const applyToolToCanvas = (
-  tool,
+const applyToolToCanvas = ({
+  toolType,
   ctx,
   pixelSize,
   currMousePosition,
   prevMousePosition,
-  color,
+  colorToApply,
   e,
   setColorPrimary,
   setColorSecondary
-) => {
-  switch (tool) {
+}) => {
+  switch (toolType) {
     case TOOL_TYPE.pen:
       drawLine(
         ctx,
@@ -31,7 +31,7 @@ const applyToolToCanvas = (
       applyBucket(
         ctx,
         DEFAULT_CANVAS_SIZE,
-        hexToRGB(color),
+        hexToRGB(colorToApply),
         currMousePosition.x,
         currMousePosition.y
       );
