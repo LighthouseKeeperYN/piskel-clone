@@ -9,7 +9,14 @@ import ToolPanelContext from '../../context/toolPanel/toolPanelContext';
 import AnimationAndSettingsPanelContext from '../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
 
 function Canvas() {
-  const { strokeSize, toolType, colorPrimary, colorSecondary } = useContext(ToolPanelContext);
+  const {
+    strokeSize,
+    toolType,
+    colorPrimary,
+    colorSecondary,
+    setColorPrimary,
+    setColorSecondary
+  } = useContext(ToolPanelContext);
   const { pixelSize } = useContext(AnimationAndSettingsPanelContext);
 
   const [isMouseDown, setIsMouseDown] = useState(false);
@@ -28,7 +35,17 @@ function Canvas() {
 
     setPrevMousePosition(currMousePosition);
 
-    applyToolToCanvas(toolType, ctx, pixelSize, currMousePosition, prevMousePosition, colorToApply);
+    applyToolToCanvas(
+      toolType,
+      ctx,
+      pixelSize,
+      currMousePosition,
+      prevMousePosition,
+      colorToApply,
+      e,
+      setColorPrimary,
+      setColorSecondary
+    );
   }
 
   return (

@@ -17,3 +17,7 @@ export function hexToRGB(hex) {
     parseInt(m[3], 16),
   ];
 }
+
+export function rgbToHex(rgb) {
+  return `#${((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1)}`;
+}
