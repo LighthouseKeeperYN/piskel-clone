@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 
 import './frameWindows.scss';
 
 import { DEFAULT_CANVAS_SIZE } from '../../../shared/constants';
 
 function FrameWindow({ number, imgData }) {
-
   const ref = useRef(null);
 
   if (imgData) {
@@ -26,5 +26,10 @@ function FrameWindow({ number, imgData }) {
     </div>
   );
 }
+
+FrameWindow.propTypes = {
+  number: PropTypes.number.isRequired,
+  imgData: PropTypes.any
+};
 
 export default FrameWindow;

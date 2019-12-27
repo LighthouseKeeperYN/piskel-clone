@@ -15,14 +15,14 @@ export default function drawLine(ctx, pixelSize, x0, y0, x1, y1, strokeSize, isE
         x0copy * pixelSize,
         y0copy * pixelSize,
         pixelSize * strokeSize,
-        pixelSize * strokeSize
+        pixelSize * strokeSize,
       );
     } else {
       ctx.fillRect(
         x0copy * pixelSize,
         y0copy * pixelSize,
         pixelSize * strokeSize,
-        pixelSize * strokeSize
+        pixelSize * strokeSize,
       );
     }
 

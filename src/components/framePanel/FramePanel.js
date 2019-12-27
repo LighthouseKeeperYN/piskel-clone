@@ -12,9 +12,7 @@ function FramePanel() {
 
   return (
     <div className="frame-panel">
-      {frameCollection.map((frame, index) => {
-        return <FrameWindow key={`frame-${index}`} number={index + 1} imgData={frame} />;
-      })}
+      {frameCollection.map((frame, index) => <FrameWindow key={`frame-${index}`} number={index + 1} imgData={frame} />)}
 
       <AddFrameUI />
     </div>

@@ -9,7 +9,7 @@ import FramePanelReducer from './framePanelReducer';
 const FramePanelState = (props) => {
   const initialState = {
     frameCollection: [null],
-    currentFrame: 0
+    currentFrame: 0,
   };
 
   const [state, dispatch] = useReducer(FramePanelReducer, initialState);
@@ -17,14 +17,14 @@ const FramePanelState = (props) => {
   const addFrame = (frame) => {
     dispatch({
       type: ADD_FRAME,
-      payload: frame
+      payload: frame,
     });
   };
 
   const updateFrame = (canvas) => {
     dispatch({
       type: UPDATE_FRAME,
-      payload: canvas
+      payload: canvas,
     });
   };
 
@@ -34,7 +34,7 @@ const FramePanelState = (props) => {
         frameCollection: state.frameCollection,
         currentFrame: state.currentFrame,
         addFrame,
-        updateFrame
+        updateFrame,
       }}
     >
       {props.children}

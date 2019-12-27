@@ -15,7 +15,7 @@ const applyToolToCanvas = ({
   colorToApply,
   e,
   setColorPrimary,
-  setColorSecondary
+  setColorSecondary,
 }) => {
   switch (toolType) {
     case TOOL_TYPE.pen:
@@ -26,7 +26,7 @@ const applyToolToCanvas = ({
         scaleDown(currMousePosition.y, pixelSize),
         scaleDown(prevMousePosition?.x || currMousePosition.x, pixelSize),
         scaleDown(prevMousePosition?.y || currMousePosition.y, pixelSize),
-        strokeSize
+        strokeSize,
       );
       break;
     case TOOL_TYPE.bucket:
@@ -35,7 +35,7 @@ const applyToolToCanvas = ({
         DEFAULT_CANVAS_SIZE,
         hexToRGB(colorToApply),
         currMousePosition.x,
-        currMousePosition.y
+        currMousePosition.y,
       );
       break;
     case TOOL_TYPE.eraser:
@@ -47,7 +47,7 @@ const applyToolToCanvas = ({
         scaleDown(prevMousePosition?.x || currMousePosition.x, pixelSize),
         scaleDown(prevMousePosition?.y || currMousePosition.y, pixelSize),
         strokeSize,
-        true
+        true,
       );
       break;
     case TOOL_TYPE.colorPicker:
@@ -57,7 +57,7 @@ const applyToolToCanvas = ({
         currMousePosition.x,
         currMousePosition.y,
         setColorPrimary,
-        setColorSecondary
+        setColorSecondary,
       );
       break;
     default:

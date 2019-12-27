@@ -9,7 +9,7 @@ import CanvasReducer from './canvasReducer';
 const CanvasState = (props) => {
   const initialState = {
     isDrawing: false,
-    canvasCtx: null
+    canvasCtx: null,
   };
 
   const [state, dispatch] = useReducer(CanvasReducer, initialState);
@@ -17,14 +17,14 @@ const CanvasState = (props) => {
   const setCanvasCtx = (ref) => {
     dispatch({
       type: SET_CANVAS_CTX,
-      payload: ref
+      payload: ref,
     });
   };
 
   const setDrawing = (bool) => {
     dispatch({
       type: SET_DRAWING,
-      payload: bool
+      payload: bool,
     });
   };
 
@@ -34,7 +34,7 @@ const CanvasState = (props) => {
         isDrawing: state.isDrawing,
         canvasCtx: state.canvasCtx,
         setCanvasCtx,
-        setDrawing
+        setDrawing,
       }}
     >
       {props.children}

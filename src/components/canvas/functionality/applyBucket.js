@@ -12,7 +12,7 @@ function paintPixel(imgData, pixelPos, color) {
     imgData.data[pixelPos],
     imgData.data[pixelPos + 1],
     imgData.data[pixelPos + 2],
-    imgData.data[pixelPos + 3]
+    imgData.data[pixelPos + 3],
   ] = [color[0], color[1], color[2], 255];
 }
 

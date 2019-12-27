@@ -22,5 +22,6 @@ module.exports = {
     'no-param-reassign': [2, { 'props': false }],
     'react/prop-types': [2, { ignore: ['children'] }],
     'object-curly-newline': ['error', { 'ObjectPattern': { 'multiline': true } }],
+    'no-bitwise': ["error", { "allow": ["<<"] }]
   }
 };

@@ -3,6 +3,7 @@ import EventListener from 'react-event-listener';
 
 import './canvas.scss';
 
+import { DEFAULT_CANVAS_SIZE } from '../../shared/constants';
 // import { getMousePositionOnCanvas } from '../../shared/utilities';
 import applyToolToCanvas from './functionality/applyToolToCanvas';
 
@@ -42,7 +43,6 @@ function Canvas() {
     const currMousePosition = { x: e.nativeEvent.layerX, y: e.nativeEvent.layerY };
 
     setPrevMousePosition(currMousePosition);
-    updateFrame(ctx.getImageData(0, 0, 512, 512));
 
     applyToolToCanvas({
       toolType,
@@ -56,13 +56,15 @@ function Canvas() {
       setColorPrimary,
       setColorSecondary
     });
+
+    updateFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
   }
 
   return (
     <canvas
       className="canvas"
-      height={512}
-      width={512}
+      height={DEFAULT_CANVAS_SIZE}
+      width={DEFAULT_CANVAS_SIZE}
       ref={canvasRef}
       onMouseDown={(e) => {
         setDrawing(true);
