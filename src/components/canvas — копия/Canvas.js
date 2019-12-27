@@ -2,7 +2,7 @@ import React, { useRef, useState, useContext } from 'react';
 
 import './canvas.scss';
 
-// import { getMousePositionOnCanvas } from '../../shared/utilities';
+import { getMousePositionOnCanvas } from '../../shared/utilities';
 import applyToolToCanvas from './functionality/applyToolToCanvas';
 
 import ToolPanelContext from '../../context/toolPanel/toolPanelContext';
@@ -19,7 +19,6 @@ function Canvas() {
   } = useContext(ToolPanelContext);
   const { pixelSize } = useContext(AnimationAndSettingsPanelContext);
 
-  const [isMouseDown, setIsMouseDown] = useState(false);
   const [prevMousePosition, setPrevMousePosition] = useState(null);
 
   const canvasRef = useRef(null);
@@ -31,11 +30,11 @@ function Canvas() {
     ctx.imageSmoothingEnabled = false;
     ctx.fillStyle = colorToApply;
 
-    const currMousePosition = { x: e.nativeEvent.layerX, y: e.nativeEvent.layerY };
-    
+    const currMousePosition = getMousePositionOnCanvas(canvas.getBoundingClientRect(), e);
+
     setPrevMousePosition(currMousePosition);
 
-    applyToolToCanvas(
+    applyToolToCanvas({
       toolType,
       ctx,
       pixelSize,
@@ -45,7 +44,7 @@ function Canvas() {
       e,
       setColorPrimary,
       setColorSecondary
-    );
+    });
   }
 
   return (
@@ -55,15 +54,11 @@ function Canvas() {
       width={512}
       ref={canvasRef}
       onMouseDown={(e) => {
-        setIsMouseDown(true);
         handleDrawingOnCanvas(e);
       }}
       onMouseMove={(e) => {
-        if (isMouseDown) handleDrawingOnCanvas(e);
-      }}
-      onMouseUp={() => {
-        setIsMouseDown(false);
-        setPrevMousePosition(null);
+        if (e.buttons) handleDrawingOnCanvas(e);
+        else setPrevMousePosition(null);
       }}
       onContextMenu={(e) => e.preventDefault()}
     ></canvas>

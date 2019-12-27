@@ -9,6 +9,7 @@ import Navbar from './components/layout/navbar/Navbar';
 import Canvas from './components/canvas/Canvas';
 import ToolPanel from './components/toolPanel/ToolPanel';
 import AnimationAndSettingsPanel from './components/animationAndSettingsPanel/AnimationAndSettingsPanel';
+import FramePanel from './components/framePanel/FramePanel';
 
 import ToolPanelState from './context/toolPanel/ToolPanelState';
 import AnimationAndSettingsPanelState from './context/animationAndSettingsPanel/AnimationAndSettingsPanelState';
@@ -20,7 +21,7 @@ const App = () => (
         <Navbar />
         <main>
           <ToolPanel />
-          <div></div>
+          <FramePanel />
           <div className="workbench">
             <Canvas />
           </div>

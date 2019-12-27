@@ -1,9 +1,15 @@
-export function getMousePositionOnCanvas(canvasPosition, event) {
-  return {
-    x: event.clientX - canvasPosition.left,
-    y: event.clientY - canvasPosition.top,
-  };
-}
+// export function getMousePositionOnCanvas(canvasPosition, event) {
+//   event.persist()
+//   console.log(event);
+//   console.log(canvasPosition);
+//   console.log(event.clientX);
+//   console.log(event.clientY);
+
+//   return {
+//     x: event.clientX - canvasPosition.left,
+//     y: event.clientY - canvasPosition.top,
+//   };
+// }
 
 export function scaleDown(coordinate, ratio) {
   return Math.floor(coordinate / ratio);

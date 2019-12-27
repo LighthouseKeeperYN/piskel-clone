@@ -1,10 +1,9 @@
-function matchStartColor(imgData, pixelPos, startR, startG, startB, startA) {
+function matchStartColor(imgData, pixelPos, startR, startG, startB) {
   const r = imgData.data[pixelPos];
   const g = imgData.data[pixelPos + 1];
   const b = imgData.data[pixelPos + 2];
-  const a = imgData.data[pixelPos + 3];
 
-  return r === startR && g === startG && b === startB && a === startA;
+  return r === startR && g === startG && b === startB;
 }
 
 function paintPixel(imgData, pixelPos, color) {
@@ -12,7 +11,7 @@ function paintPixel(imgData, pixelPos, color) {
     imgData.data[pixelPos],
     imgData.data[pixelPos + 1],
     imgData.data[pixelPos + 2],
-    imgData.data[pixelPos + 3]
+    imgData.data[pixelPos + 3],
   ] = [color[0], color[1], color[2], 255];
 }
 
@@ -22,10 +21,9 @@ export default function applyBucket(ctx, canvasFieldSize, color, startX, startY)
   const startR = startColor[0];
   const startG = startColor[1];
   const startB = startColor[2];
-  const startA = startColor[3];
   const pixelStack = [[startX, startY]];
 
-  if (startR === color[0] && startG === color[1] && startB === color[2] && startA === 255) {
+  if (startColor[0] === color[0] && startColor[1] === color[1] && startColor[2] === color[2]) {
     return;
   }
 
@@ -37,22 +35,18 @@ export default function applyBucket(ctx, canvasFieldSize, color, startX, startY)
     let rightMarked = false;
     let pixelPos = (y * canvasFieldSize + x) * 4;
 
-    for (; y >= 0 && matchStartColor(imgData, pixelPos, startR, startG, startB, startA); y--) {
+    for (; y >= 0 && matchStartColor(imgData, pixelPos, startR, startG, startB); y--) {
       pixelPos -= canvasFieldSize * 4;
     }
 
     pixelPos += canvasFieldSize * 4;
     y += 1;
 
-    for (
-      ;
-      y <= canvasFieldSize && matchStartColor(imgData, pixelPos, startR, startG, startB, startA);
-      y++
-    ) {
+    for (;y <= canvasFieldSize && matchStartColor(imgData, pixelPos, startR, startG, startB); y++) {
       paintPixel(imgData, pixelPos, color);
 
       if (x > 0) {
-        if (matchStartColor(imgData, pixelPos - 4, startR, startG, startB, startA)) {
+        if (matchStartColor(imgData, pixelPos - 4, startR, startG, startB)) {
           if (!leftMarked) {
             pixelStack.push([x - 1, y]);
             leftMarked = true;
@@ -63,7 +57,7 @@ export default function applyBucket(ctx, canvasFieldSize, color, startX, startY)
       }
 
       if (x <= canvasFieldSize) {
-        if (matchStartColor(imgData, pixelPos + 4, startR, startG, startB, startA)) {
+        if (matchStartColor(imgData, pixelPos + 4, startR, startG, startB)) {
           if (!rightMarked) {
             pixelStack.push([x + 1, y]);
             rightMarked = true;
