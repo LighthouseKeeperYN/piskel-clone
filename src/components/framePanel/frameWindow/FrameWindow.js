@@ -4,13 +4,14 @@ import './frameWindows.scss';
 
 import { DEFAULT_CANVAS_SIZE } from '../../../shared/constants';
 
-function FrameWindow({ number, canvasRef }) {
-  const ref = useRef(canvasRef);
+function FrameWindow({ number, imgData }) {
 
-  if (canvasRef) {
+  const ref = useRef(null);
+
+  if (imgData) {
     const ctx = ref.current.getContext('2d');
     ctx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
-    ctx.drawImage(canvasRef.current, 0, 0);
+    ctx.putImageData(imgData, 0, 0);
   }
 
   return (

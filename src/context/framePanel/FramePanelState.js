@@ -8,7 +8,7 @@ import FramePanelReducer from './framePanelReducer';
 
 const FramePanelState = (props) => {
   const initialState = {
-    frameCollection: [],
+    frameCollection: [null],
     currentFrame: 0
   };
 
@@ -32,6 +32,7 @@ const FramePanelState = (props) => {
     <FramePanelContext.Provider
       value={{
         frameCollection: state.frameCollection,
+        currentFrame: state.currentFrame,
         addFrame,
         updateFrame
       }}

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from 'react';
+import React, { useRef, useState, useContext, useEffect } from 'react';
 import EventListener from 'react-event-listener';
 
 import './canvas.scss';
@@ -21,12 +21,16 @@ function Canvas() {
     setColorSecondary
   } = useContext(ToolPanelContext);
   const { pixelSize } = useContext(AnimationAndSettingsPanelContext);
-  const { isDrawing, setDrawing } = useContext(CanvasContext);
-  const { frameCollection, updateFrame } = useContext(FramePanelContext);
+  const { isDrawing, setCanvasCtx, setDrawing } = useContext(CanvasContext);
+  const { frameCollection, currentFrame, updateFrame } = useContext(FramePanelContext);
 
   const [prevMousePosition, setPrevMousePosition] = useState(null);
 
   const canvasRef = useRef(null);
+
+  useEffect(() => {
+    setCanvasCtx(canvasRef.current.getContext('2d'));
+  }, []);
 
   function handleDrawingOnCanvas(e) {
     const colorToApply = e.buttons === 1 ? colorPrimary : colorSecondary;
@@ -38,6 +42,7 @@ function Canvas() {
     const currMousePosition = { x: e.nativeEvent.layerX, y: e.nativeEvent.layerY };
 
     setPrevMousePosition(currMousePosition);
+    updateFrame(ctx.getImageData(0, 0, 512, 512));
 
     applyToolToCanvas({
       toolType,
@@ -72,9 +77,6 @@ function Canvas() {
       <EventListener
         target="window"
         onMouseUp={() => {
-          if (isDrawing) {
-            updateFrame(canvasRef);
-          }
           setDrawing(false);
         }}
       />

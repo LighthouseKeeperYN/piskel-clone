@@ -9,10 +9,13 @@ import FramePanelContext from '../../context/framePanel/framePanelContext';
 
 function FramePanel() {
   const { frameCollection } = useContext(FramePanelContext);
-  console.log('p',frameCollection[0]);
+
   return (
-    <div className="framePanel">
-      <FrameWindow number={1} canvasRef={frameCollection[0]} />
+    <div className="frame-panel">
+      {frameCollection.map((frame, index) => {
+        return <FrameWindow key={`frame-${index}`} number={index + 1} imgData={frame} />;
+      })}
+
       <AddFrameUI />
     </div>
   );
