@@ -10,8 +10,9 @@ function FrameRateUI() {
 
   return (
     <div className="frame-rate-ui-wrapper">
-      <span className="frame-rate-value">{frameRate}{' FPS'}</span>
+      <span>{frameRate}{' FPS'}</span>
       <input
+      className="frame-rate-ui-input"
         type="range"
         min={0}
         max={24}

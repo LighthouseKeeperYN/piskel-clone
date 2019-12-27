@@ -1,0 +1,26 @@
+.add-frame-ui {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  margin-top: 1rem;
+  width: 14rem;
+  height: 3rem;
+  border-radius: 0.4rem;
+  border: #888 solid 3px;
+  background-color: #222;
+
+  cursor: pointer;
+
+  &__icon {
+    font-size: 2.6rem;
+    color: #888;
+    font-weight: bold;
+  }
+
+  &__text {
+    font-size: 1.3rem;
+    color: #888;
+    font-weight: bold;
+  }
+}

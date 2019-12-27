@@ -9,6 +9,7 @@ const applyToolToCanvas = ({
   toolType,
   ctx,
   pixelSize,
+  strokeSize,
   currMousePosition,
   prevMousePosition,
   colorToApply,
@@ -24,7 +25,8 @@ const applyToolToCanvas = ({
         scaleDown(currMousePosition.x, pixelSize),
         scaleDown(currMousePosition.y, pixelSize),
         scaleDown(prevMousePosition?.x || currMousePosition.x, pixelSize),
-        scaleDown(prevMousePosition?.y || currMousePosition.y, pixelSize)
+        scaleDown(prevMousePosition?.y || currMousePosition.y, pixelSize),
+        strokeSize
       );
       break;
     case TOOL_TYPE.bucket:
@@ -44,6 +46,7 @@ const applyToolToCanvas = ({
         scaleDown(currMousePosition.y, pixelSize),
         scaleDown(prevMousePosition?.x || currMousePosition.x, pixelSize),
         scaleDown(prevMousePosition?.y || currMousePosition.y, pixelSize),
+        strokeSize,
         true
       );
       break;
