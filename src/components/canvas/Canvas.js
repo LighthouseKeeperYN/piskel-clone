@@ -1,4 +1,5 @@
 import React, { useRef, useState, useContext } from 'react';
+import EventListener from 'react-event-listener';
 
 import './canvas.scss';
 
@@ -7,6 +8,8 @@ import applyToolToCanvas from './functionality/applyToolToCanvas';
 
 import ToolPanelContext from '../../context/toolPanel/toolPanelContext';
 import AnimationAndSettingsPanelContext from '../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
+import CanvasContext from '../../context/canvas/canvasContext';
+import FramePanelContext from '../../context/framePanel/framePanelContext';
 
 function Canvas() {
   const {
@@ -17,8 +20,9 @@ function Canvas() {
     setColorPrimary,
     setColorSecondary
   } = useContext(ToolPanelContext);
-
   const { pixelSize } = useContext(AnimationAndSettingsPanelContext);
+  const { isDrawing, setDrawing } = useContext(CanvasContext);
+  const { frameCollection, updateFrame } = useContext(FramePanelContext);
 
   const [prevMousePosition, setPrevMousePosition] = useState(null);
 
@@ -56,6 +60,7 @@ function Canvas() {
       width={512}
       ref={canvasRef}
       onMouseDown={(e) => {
+        setDrawing(true);
         handleDrawingOnCanvas(e);
       }}
       onMouseMove={(e) => {
@@ -63,7 +68,17 @@ function Canvas() {
         else setPrevMousePosition(null);
       }}
       onContextMenu={(e) => e.preventDefault()}
-    ></canvas>
+    >
+      <EventListener
+        target="window"
+        onMouseUp={() => {
+          if (isDrawing) {
+            updateFrame(canvasRef);
+          }
+          setDrawing(false);
+        }}
+      />
+    </canvas>
   );
 }
 

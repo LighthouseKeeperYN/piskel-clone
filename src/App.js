@@ -13,21 +13,27 @@ import FramePanel from './components/framePanel/FramePanel';
 
 import ToolPanelState from './context/toolPanel/ToolPanelState';
 import AnimationAndSettingsPanelState from './context/animationAndSettingsPanel/AnimationAndSettingsPanelState';
+import CanvasState from './context/canvas/CanvasState';
+import FramePanelState from './context/framePanel/FramePanelState';
 
 const App = () => (
   <ToolPanelState>
     <AnimationAndSettingsPanelState>
-      <Fragment>
-        <Navbar />
-        <main>
-          <ToolPanel />
-          <FramePanel />
-          <div className="workbench">
-            <Canvas />
-          </div>
-          <AnimationAndSettingsPanel />
-        </main>
-      </Fragment>
+      <CanvasState>
+        <FramePanelState>
+          <Fragment>
+            <Navbar />
+            <main className="main">
+              <ToolPanel />
+              <FramePanel />
+              <div className="workbench" onContextMenu={(e) => e.preventDefault()}>
+                <Canvas />
+              </div>
+              <AnimationAndSettingsPanel />
+            </main>
+          </Fragment>
+        </FramePanelState>
+      </CanvasState>
     </AnimationAndSettingsPanelState>
   </ToolPanelState>
 );

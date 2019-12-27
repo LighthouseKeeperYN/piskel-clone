@@ -1,45 +1,35 @@
 import React, { useReducer } from 'react';
 
-import { DEFAULT_PIXEL_SIZE, DEFAULT_FRAME_RATE } from '../../shared/constants';
-import { SET_PIXEL_SIZE, SET_FRAME_RATE } from '../types';
+// import { DEFAULT_PIXEL_SIZE, DEFAULT_FRAME_RATE } from '../../shared/constants';
+import { SET_DRAWING } from '../types';
 
-import AnimationAndSettingsPanelContext from './animationAndSettingsPanelContext';
-import AnimationAndSettingsPanelReducer from './animationAndSettingsPanelReducer';
+import CanvasContext from './canvasContext';
+import CanvasReducer from './canvasReducer';
 
-const AnimationAndSettingsPanelState = (props) => {
+const CanvasState = (props) => {
   const initialState = {
-    pixelSize: DEFAULT_PIXEL_SIZE,
-    frameRate: DEFAULT_FRAME_RATE,
+    isDrawing: false
   };
 
-  const [state, dispatch] = useReducer(AnimationAndSettingsPanelReducer, initialState);
+  const [state, dispatch] = useReducer(CanvasReducer, initialState);
 
-  const setPixelSize = (size) => {
+  const setDrawing = (bool) => {
     dispatch({
-      type: SET_PIXEL_SIZE,
-      payload: size,
-    });
-  };
-
-  const setFrameRate = (rate) => {
-    dispatch({
-      type: SET_FRAME_RATE,
-      payload: rate,
+      type: SET_DRAWING,
+      payload: bool
     });
   };
 
   return (
-    <AnimationAndSettingsPanelContext.Provider
+    <CanvasContext.Provider
       value={{
-        pixelSize: state.pixelSize,
-        frameRate: state.frameRate,
-        setPixelSize,
-        setFrameRate,
+        isDrawing: state.isDrawing,
+        setDrawing
       }}
     >
       {props.children}
-    </AnimationAndSettingsPanelContext.Provider>
+    </CanvasContext.Provider>
   );
 };
 
-export default AnimationAndSettingsPanelState;
+export default CanvasState;
