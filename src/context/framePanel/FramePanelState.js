@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 
 // import { DEFAULT_PIXEL_SIZE, DEFAULT_FRAME_RATE } from '../../shared/constants';
-import { ADD_FRAME, UPDATE_FRAME } from '../types';
+import { ADD_FRAME, UPDATE_FRAME, CHANGE_INDEX } from '../types';
 
 import FramePanelContext from './framePanelContext';
 import FramePanelReducer from './framePanelReducer';
@@ -28,6 +28,13 @@ const FramePanelState = (props) => {
     });
   };
 
+  const changeIndex = (index) => {
+    dispatch({
+      type: CHANGE_INDEX,
+      payload: index,
+    });
+  }
+
   return (
     <FramePanelContext.Provider
       value={{
@@ -35,6 +42,7 @@ const FramePanelState = (props) => {
         currentFrame: state.currentFrame,
         addFrame,
         updateFrame,
+        changeIndex
       }}
     >
       {props.children}

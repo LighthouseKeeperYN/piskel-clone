@@ -1,4 +1,4 @@
-import { ADD_FRAME, UPDATE_FRAME } from '../types';
+import { ADD_FRAME, UPDATE_FRAME, CHANGE_INDEX } from '../types';
 
 export default (state, action) => {
   let stateCopy;
@@ -12,6 +12,8 @@ export default (state, action) => {
       stateCopy = { ...state };
       stateCopy.frameCollection[stateCopy.currentFrame] = action.payload;
       return stateCopy;
+    case CHANGE_INDEX:
+      return { ...state, currentFrame: action.payload };
     default:
       return state;
   }

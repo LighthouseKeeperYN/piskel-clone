@@ -15,3 +15,4 @@ export const SET_FRAME_RATE = 'SET_FRAME_RATE';
 
 export const ADD_FRAME = 'ADD_FRAME';
 export const UPDATE_FRAME = 'UPDATE_FRAME';
+export const CHANGE_INDEX = 'CHANGE_INDEX';

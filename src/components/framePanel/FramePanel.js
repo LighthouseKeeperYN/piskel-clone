@@ -8,11 +8,19 @@ import AddFrameUI from './addFrameUI/AddFrameUI';
 import FramePanelContext from '../../context/framePanel/framePanelContext';
 
 function FramePanel() {
-  const { frameCollection } = useContext(FramePanelContext);
+  const { frameCollection, currentFrame } = useContext(FramePanelContext);
 
   return (
     <div className="frame-panel">
-      {frameCollection.map((frame, index) => <FrameWindow key={`frame-${index}`} number={index + 1} imgData={frame} />)}
+      {frameCollection.map((frame, index) => (
+        <FrameWindow
+          key={`frame-${index}`}
+          number={index + 1}
+          imgData={frame}
+          isSelected={currentFrame === index}
+          index={index}
+        />
+      ))}
 
       <AddFrameUI />
     </div>

@@ -14,8 +14,9 @@ function StrokeSizeUI() {
       {Object.values(STROKE_SCALE).map((scale) => (
         <div
           key={`stroke-size-${scale}`}
-          className={`stroke-size stroke-size--${scale} ${strokeSize === scale
-            && 'stroke-size--selected'}`}
+          className={`stroke-size stroke-size--${scale} ${
+            strokeSize === scale ? 'stroke-size--selected' : ''
+          }`}
           onClick={() => setStrokeSize(scale)}
         ></div>
       ))}

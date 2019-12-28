@@ -11,7 +11,9 @@ function ToolButton({ tool }) {
   return (
     <div
       onClick={() => setToolType(tool)}
-      className={`tool-button tool-button--${tool} ${toolType === tool && 'tool-button--selected'}`}
+      className={`tool-button tool-button--${tool} ${
+        toolType === tool ? 'tool-button--selected' : ''
+      }`}
     ></div>
   );
 }
@@ -19,5 +21,5 @@ function ToolButton({ tool }) {
 export default ToolButton;
 
 ToolButton.propTypes = {
-  tool: PropTypes.string.isRequired,
+  tool: PropTypes.string.isRequired
 };

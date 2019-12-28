@@ -7,9 +7,21 @@
   width: 14rem;
   height: 14rem;
   border-radius: 0.4rem;
-  background-color: gold;
   cursor: pointer;
   margin-bottom: 1rem;
+  background-color: #444;
+
+  &:hover {
+    background-color: #888;
+  }
+
+  &--selected {
+    background-color: gold;
+
+    &:hover {
+      background-color: gold;
+    }
+  }
 }
 
 .frame-number {
