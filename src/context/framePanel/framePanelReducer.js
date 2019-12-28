@@ -5,7 +5,7 @@ export default (state, action) => {
   switch (action.type) {
     case ADD_FRAME:
       stateCopy = { ...state };
-      stateCopy.frameCollection.push(null);
+      stateCopy.frameCollection.push(action.payload);
       stateCopy.currentFrame += 1;
       return stateCopy;
     case UPDATE_FRAME:

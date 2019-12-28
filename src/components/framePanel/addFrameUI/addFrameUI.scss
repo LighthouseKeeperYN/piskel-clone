@@ -12,6 +12,10 @@
 
   cursor: pointer;
 
+  &:hover {
+    border-color: gold;
+  }
+
   &__icon {
     font-size: 2.6rem;
     color: #888;

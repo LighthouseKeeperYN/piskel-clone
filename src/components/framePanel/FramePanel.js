@@ -9,7 +9,6 @@ import FramePanelContext from '../../context/framePanel/framePanelContext';
 
 function FramePanel() {
   const { frameCollection, currentFrame } = useContext(FramePanelContext);
-
   return (
     <div className="frame-panel">
       {frameCollection.map((frame, index) => (

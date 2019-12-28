@@ -8738,6 +8738,13 @@ react-event-listener@^0.6.6:
     prop-types "^15.6.0"
     warning "^4.0.1"
 
+react-interval@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-interval/-/react-interval-2.1.1.tgz#5de76277c62c1a6679e3f761690516ce82393350"
+  integrity sha512-ElqbAlARY9mkcCPxdwbn5deX1Dx6oKEbIWy4Voubbf6+8oVLPdXHxX5fEALkGerIom0T+WBYzdumjrSkgPlEzA==
+  dependencies:
+    prop-types "^15.6.0"
+
 react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"

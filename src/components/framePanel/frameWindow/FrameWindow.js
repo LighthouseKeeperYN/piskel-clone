@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from 'react';
+import React, { useRef, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import './frameWindows.scss';
@@ -9,26 +9,27 @@ import FramePanelContext from '../../../context/framePanel/framePanelContext';
 import CanvasContext from '../../../context/canvas/canvasContext';
 
 function FrameWindow({ number, imgData, isSelected, index }) {
-  const ref = useRef(null);
+  const frameRef = useRef(null);
 
   const { changeIndex } = useContext(FramePanelContext);
   const { canvasCtx } = useContext(CanvasContext);
 
-  if (imgData) {
-    const ctx = ref.current.getContext('2d');
+  useEffect(() => {
+    const ctx = frameRef.current.getContext('2d');
     ctx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
     ctx.putImageData(imgData, 0, 0);
-  }
+  });
 
   const handleFrameSelection = () => {
     canvasCtx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
-    canvasCtx.drawImage(ref.current, 0, 0);
+    canvasCtx.drawImage(frameRef.current, 0, 0);
     changeIndex(index);
   };
 
   return (
     <div
       className={`frame-window ${isSelected ? 'frame-window--selected' : ''}`}
+      draggable={true}
       onClick={handleFrameSelection}
     >
       <span className="frame-number">{number}</span>
@@ -36,7 +37,7 @@ function FrameWindow({ number, imgData, isSelected, index }) {
         className="frame-canvas"
         width={DEFAULT_CANVAS_SIZE}
         height={DEFAULT_CANVAS_SIZE}
-        ref={ref}
+        ref={frameRef}
       ></canvas>
     </div>
   );

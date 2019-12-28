@@ -23,7 +23,7 @@ function Canvas() {
   } = useContext(ToolPanelContext);
   const { pixelSize } = useContext(AnimationAndSettingsPanelContext);
   const { isDrawing, setCanvasCtx, setDrawing } = useContext(CanvasContext);
-  const { frameCollection, currentFrame, updateFrame } = useContext(FramePanelContext);
+  const { frameCollection, currentFrame, updateFrame, addFrame } = useContext(FramePanelContext);
 
   const [prevMousePosition, setPrevMousePosition] = useState(null);
 
@@ -31,13 +31,14 @@ function Canvas() {
 
   useEffect(() => {
     setCanvasCtx(canvasRef.current.getContext('2d'));
+    const ctx = canvasRef.current.getContext('2d');
+    addFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
   }, []);
 
   function handleDrawingOnCanvas(e) {
     const colorToApply = e.buttons === 1 ? colorPrimary : colorSecondary;
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    ctx.imageSmoothingEnabled = false;
+    const ctx = canvasRef.current.getContext('2d');
+    // ctx.imageSmoothingEnabled = false;
     ctx.fillStyle = colorToApply;
 
     const currMousePosition = { x: e.nativeEvent.layerX, y: e.nativeEvent.layerY };

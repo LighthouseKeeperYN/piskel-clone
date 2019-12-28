@@ -8,8 +8,8 @@ import FramePanelReducer from './framePanelReducer';
 
 const FramePanelState = (props) => {
   const initialState = {
-    frameCollection: [null],
-    currentFrame: 0,
+    frameCollection: [],
+    currentFrame: -1,
   };
 
   const [state, dispatch] = useReducer(FramePanelReducer, initialState);

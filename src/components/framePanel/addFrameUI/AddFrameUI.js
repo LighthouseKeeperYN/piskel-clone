@@ -16,7 +16,7 @@ function AddFrameUI() {
       className="add-frame-ui"
       onClick={() => {
         canvasCtx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
-        addFrame();
+        addFrame(canvasCtx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
       }}
     >
       <span className="add-frame-ui__icon">+</span>

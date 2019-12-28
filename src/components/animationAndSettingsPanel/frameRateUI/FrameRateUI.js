@@ -18,7 +18,7 @@ function FrameRateUI() {
         max={24}
         defaultValue={DEFAULT_FRAME_RATE}
         onChange={(e) => {
-          setFrameRate(e.target.value);
+          setFrameRate(+e.target.value);
         }}
       ></input>
     </div>
