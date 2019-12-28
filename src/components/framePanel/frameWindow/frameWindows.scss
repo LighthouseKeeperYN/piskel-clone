@@ -4,15 +4,21 @@
   align-items: center;
 
   position: relative;
+
   width: 14rem;
   height: 14rem;
   border-radius: 0.4rem;
-  cursor: pointer;
   margin-bottom: 1rem;
   background-color: #444;
+  cursor: pointer;
 
   &:hover {
     background-color: #888;
+
+    .frame-delete,
+    .frame-duplicate {
+      visibility: visible;
+    }
   }
 
   &--selected {
@@ -22,6 +28,33 @@
       background-color: gold;
     }
   }
+}
+
+.frame-delete,
+.frame-duplicate {
+  position: absolute;
+  right: 0.6rem;
+  z-index: 10;
+
+  visibility: hidden;
+  width: 4rem;
+  height: 4rem;
+
+  &:hover {
+    background-color: #444;
+  }
+}
+
+.frame-delete {
+  top: 0.6rem;
+  border-radius: 0 0 0 0.4rem;
+  background: url(./icons/delete-icon.png) center no-repeat;
+}
+
+.frame-duplicate {
+  bottom: 0.6rem;
+  border-radius: 0.4rem 0 0 0;
+  background: url(./icons/duplicate-icon.png) center no-repeat;
 }
 
 .frame-number {
@@ -36,7 +69,7 @@
 
   width: 4rem;
   height: 4rem;
-  border-radius: 0.4rem;
+  border-radius: 0 0.4rem 0.4rem;
   background-color: gold;
 
   color: black;
@@ -45,5 +78,5 @@
 
 .frame-canvas {
   transform: scale(0.25);
-  background: url(./frame-window-bg.png) repeat;
+  background: url(./icons/frame-window-bg.png) repeat;
 }

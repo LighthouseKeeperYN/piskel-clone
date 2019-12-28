@@ -21,5 +21,5 @@ function ToolButton({ tool }) {
 export default ToolButton;
 
 ToolButton.propTypes = {
-  tool: PropTypes.string.isRequired
+  tool: PropTypes.string.isRequired,
 };

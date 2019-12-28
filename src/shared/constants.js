@@ -21,7 +21,7 @@ export const DEFAULT_COLORS = {
 
 export const DEFAULT_PIXEL_SIZE = 16;
 
-export const DEFAULT_FRAME_RATE = 0;
+export const DEFAULT_FRAME_RATE = 1;
 
 export const DEFAULT_CANVAS_SIZE = 512;
 

@@ -19,7 +19,7 @@ function Canvas() {
     colorPrimary,
     colorSecondary,
     setColorPrimary,
-    setColorSecondary
+    setColorSecondary,
   } = useContext(ToolPanelContext);
   const { pixelSize } = useContext(AnimationAndSettingsPanelContext);
   const { isDrawing, setCanvasCtx, setDrawing } = useContext(CanvasContext);
@@ -38,7 +38,6 @@ function Canvas() {
   function handleDrawingOnCanvas(e) {
     const colorToApply = e.buttons === 1 ? colorPrimary : colorSecondary;
     const ctx = canvasRef.current.getContext('2d');
-    // ctx.imageSmoothingEnabled = false;
     ctx.fillStyle = colorToApply;
 
     const currMousePosition = { x: e.nativeEvent.layerX, y: e.nativeEvent.layerY };
@@ -55,7 +54,7 @@ function Canvas() {
       colorToApply,
       e,
       setColorPrimary,
-      setColorSecondary
+      setColorSecondary,
     });
 
     updateFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));

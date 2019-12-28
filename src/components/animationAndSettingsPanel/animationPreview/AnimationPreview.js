@@ -17,11 +17,14 @@ function AnimationPreview() {
 
   useEffect(() => {
     const ctx = animationPreviewRef.current.getContext('2d');
-    let counter = 0;
+    let counter = -1;
 
     const animate = () => {
+      // console.log(counter);
+      // console.log(frameCollection);
+      counter = counter >= frameCollection.length - 1 ? 0 : counter + 1;
       ctx.putImageData(frameCollection[counter], 0, 0);
-      counter === frameCollection.length - 1 ? (counter = 0) : (counter += 1);
+
     };
 
     clearInterval(animation);

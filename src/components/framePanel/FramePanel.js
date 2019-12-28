@@ -11,15 +11,15 @@ function FramePanel() {
   const { frameCollection, currentFrame } = useContext(FramePanelContext);
   return (
     <div className="frame-panel">
-      {frameCollection.map((frame, index) => (
-        <FrameWindow
-          key={`frame-${index}`}
-          number={index + 1}
-          imgData={frame}
-          isSelected={currentFrame === index}
-          index={index}
-        />
-      ))}
+      {frameCollection.map((frame, index) => {
+        return (
+          <FrameWindow
+            key={`frame-${index}`}
+            imgData={frame}
+            index={index}
+          />
+        );
+      })}
 
       <AddFrameUI />
     </div>
