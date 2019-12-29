@@ -17,3 +17,6 @@ export const ADD_FRAME = 'ADD_FRAME';
 export const UPDATE_FRAME = 'UPDATE_FRAME';
 export const CHANGE_INDEX = 'CHANGE_INDEX';
 export const DELETE_FRAME = 'DELETE_FRAME';
+export const DUPLICATE_FRAME = 'DUPLICATE_FRAME';
+export const MOVE_FRAME = 'MOVE_FRAME';
+export const SET_DRAGGING_FRAME = 'SET_DRAGGING_FRAME';

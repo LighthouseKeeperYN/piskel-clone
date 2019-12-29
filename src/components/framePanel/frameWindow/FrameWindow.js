@@ -11,7 +11,16 @@ import CanvasContext from '../../../context/canvas/canvasContext';
 function FrameWindow({ imgData, index }) {
   const frameRef = useRef(null);
 
-  const { frameCollection, currentFrame, changeIndex, deleteFrame } = useContext(FramePanelContext);
+  const {
+    frameCollection,
+    currentFrame,
+    draggingFrame,
+    changeIndex,
+    deleteFrame,
+    duplicateFrame,
+    moveFrame,
+    setDraggingFrame
+  } = useContext(FramePanelContext);
   const { canvasCtx } = useContext(CanvasContext);
 
   useEffect(() => {
@@ -21,8 +30,10 @@ function FrameWindow({ imgData, index }) {
   }, [imgData]);
 
   useEffect(() => {
-    console.log('fired');
-    if (currentFrame === index) canvasCtx.drawImage(frameRef.current, 0, 0);
+    if (currentFrame === index) {
+      canvasCtx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
+      canvasCtx.drawImage(frameRef.current, 0, 0);
+    }
   }, [frameCollection.length]);
 
   const handleFrameSelection = () => {
@@ -37,17 +48,26 @@ function FrameWindow({ imgData, index }) {
     deleteFrame(index);
   };
 
+  const handleFrameDuplication = (e) => {
+    e.stopPropagation();
+    canvasCtx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
+    duplicateFrame(index);
+  };
+
   return (
     <div
       className={`frame-window ${currentFrame === index ? 'frame-window--selected' : ''}`}
       draggable={true}
       onClick={handleFrameSelection}
+      onDragOver={(e) => e.preventDefault()}
+      onDragStart={() => setDraggingFrame(index)}
+      onDrop={() => moveFrame(draggingFrame, index)}
     >
       <span className="frame-number">{index + 1}</span>
       {frameCollection.length > 1 && (
         <div className="frame-delete" onClick={handleFrameDeletion}></div>
       )}
-      <div className="frame-duplicate"></div>
+      <div className="frame-duplicate" onClick={handleFrameDuplication}></div>
       <canvas
         className="frame-canvas"
         width={DEFAULT_CANVAS_SIZE}
@@ -59,7 +79,7 @@ function FrameWindow({ imgData, index }) {
 }
 
 FrameWindow.propTypes = {
-  imgData: PropTypes.any,
+  imgData: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired
 };
 

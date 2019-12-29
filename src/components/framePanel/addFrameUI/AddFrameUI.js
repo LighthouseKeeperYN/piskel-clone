@@ -11,14 +11,13 @@ function AddFrameUI() {
   const { addFrame } = useContext(FramePanelContext);
   const { canvasCtx } = useContext(CanvasContest);
 
+  const handleFrameAddition = () => {
+    canvasCtx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
+    addFrame(canvasCtx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
+  };
+
   return (
-    <div
-      className="add-frame-ui"
-      onClick={() => {
-        canvasCtx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
-        addFrame(canvasCtx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
-      }}
-    >
+    <div className="add-frame-ui" onClick={handleFrameAddition}>
       <span className="add-frame-ui__icon">+</span>
       <span className="add-frame-ui__text">Add new frame</span>
     </div>

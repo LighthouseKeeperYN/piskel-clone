@@ -20,11 +20,8 @@ function AnimationPreview() {
     let counter = -1;
 
     const animate = () => {
-      // console.log(counter);
-      // console.log(frameCollection);
       counter = counter >= frameCollection.length - 1 ? 0 : counter + 1;
       ctx.putImageData(frameCollection[counter], 0, 0);
-
     };
 
     clearInterval(animation);
