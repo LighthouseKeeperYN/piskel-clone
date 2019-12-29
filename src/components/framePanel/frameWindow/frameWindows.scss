@@ -8,7 +8,9 @@
   width: 14rem;
   height: 14rem;
   border-radius: 0.4rem;
-  margin-bottom: 1rem;
+  // margin-bottom: 1rem;
+  // margin-left: 1rem;
+  margin: 1rem;
   background-color: #444;
   cursor: pointer;
 
@@ -28,6 +30,11 @@
       background-color: gold;
     }
   }
+
+  &--dragged-over {
+    // box-shadow: 0px 8px 4px -4px gold;
+    outline: dashed .4rem gold;
+  }
 }
 
 .frame-delete,
@@ -39,6 +46,7 @@
   visibility: hidden;
   width: 4rem;
   height: 4rem;
+  pointer-events: visible;
 
   &:hover {
     background-color: #444;
@@ -74,9 +82,11 @@
 
   color: black;
   font-size: 2rem;
+  pointer-events: none;
 }
 
 .frame-canvas {
   transform: scale(0.25);
   background: url(./icons/frame-window-bg.png) repeat;
+  pointer-events: none;
 }

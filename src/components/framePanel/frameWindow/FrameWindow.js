@@ -60,8 +60,19 @@ function FrameWindow({ imgData, index }) {
       draggable={true}
       onClick={handleFrameSelection}
       onDragOver={(e) => e.preventDefault()}
+      onDragEnter={(e) => {
+        e.stopPropagation();
+        e.currentTarget.classList.add('frame-window--dragged-over');
+      }}
+      onDragLeave={(e) => {
+        e.stopPropagation();
+        e.currentTarget.classList.remove('frame-window--dragged-over');
+      }}
       onDragStart={() => setDraggingFrame(index)}
-      onDrop={() => moveFrame(draggingFrame, index)}
+      onDrop={(e) => {
+        e.currentTarget.classList.remove('frame-window--dragged-over');
+        moveFrame(draggingFrame, index);
+      }}
     >
       <span className="frame-number">{index + 1}</span>
       {frameCollection.length > 1 && (
