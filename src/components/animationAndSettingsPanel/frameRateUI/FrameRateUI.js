@@ -14,7 +14,7 @@ function FrameRateUI() {
       <input
       className="frame-rate-ui-input"
         type="range"
-        min={0}
+        min={1}
         max={24}
         defaultValue={DEFAULT_FRAME_RATE}
         onChange={(e) => {

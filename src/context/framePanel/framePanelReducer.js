@@ -9,16 +9,17 @@ import {
 } from '../types';
 
 export default (state, action) => {
-  let stateCopy;
+  const stateCopy = { ...state };
+  const { from, to } = action.payload;
+  const frameToMove = stateCopy.frameCollection[from];
+
   switch (action.type) {
     case ADD_FRAME:
-      stateCopy = { ...state };
       stateCopy.frameCollection.push(action.payload);
       stateCopy.currentFrame = stateCopy.frameCollection.length - 1;
       return stateCopy;
 
     case UPDATE_FRAME:
-      stateCopy = { ...state };
       stateCopy.frameCollection[stateCopy.currentFrame] = action.payload;
       return stateCopy;
 
@@ -26,7 +27,6 @@ export default (state, action) => {
       return { ...state, currentFrame: action.payload };
 
     case DELETE_FRAME:
-      stateCopy = { ...state };
       stateCopy.frameCollection.splice(action.payload, 1);
       if (stateCopy.currentFrame === stateCopy.frameCollection.length) {
         stateCopy.currentFrame -= 1;
@@ -34,7 +34,6 @@ export default (state, action) => {
       return stateCopy;
 
     case DUPLICATE_FRAME:
-      stateCopy = { ...state };
       stateCopy.frameCollection.splice(
         action.payload,
         0,
@@ -47,10 +46,7 @@ export default (state, action) => {
       return { ...state, draggingFrame: action.payload };
 
     case MOVE_FRAME:
-      stateCopy = { ...state };
       stateCopy.draggingFrame = null;
-      const { from, to } = action.payload;
-      const frameToMove = stateCopy.frameCollection[from];
 
       stateCopy.frameCollection.splice(from, 1);
       stateCopy.frameCollection.splice(to, 0, frameToMove);

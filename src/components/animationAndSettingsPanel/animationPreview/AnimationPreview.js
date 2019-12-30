@@ -25,7 +25,7 @@ function AnimationPreview() {
     };
 
     clearInterval(animation);
-    if (frameRate) animation = setInterval(animate, 1000 / frameRate);
+    animation = setInterval(animate, 1000 / frameRate);
   }, [frameCollection, frameRate]);
 
   return (

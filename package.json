@@ -6,8 +6,9 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "axios": "^0.19.0",
     "eslint-config-airbnb-base": "^14.0.0",
+    "file-saver": "^2.0.2",
+    "gif-encoder": "^0.7.2",
     "node-sass": "^4.13.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
@@ -18,13 +19,15 @@
     "react-interval": "^2.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
+    "surge": "^0.21.3",
+    "upng-js": "^2.1.0",
     "use-onclickoutside": "^0.3.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "build:deploy": "npm run clear -s && webpack --progress && surge build simple-piskel-clone-lhk.surge.sh",
+    "build:deploy": "react-scripts build && surge build simple-piskel-clone-lhk.surge.sh",
     "lint": "eslint ./**/*.js",
     "lint:fix": "eslint --fix ./**/*.js"
   },

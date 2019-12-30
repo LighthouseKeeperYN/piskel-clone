@@ -19,7 +19,7 @@ function FrameWindow({ imgData, index }) {
     deleteFrame,
     duplicateFrame,
     moveFrame,
-    setDraggingFrame
+    setDraggingFrame,
   } = useContext(FramePanelContext);
 
   const { canvasCtx } = useContext(CanvasContext);
@@ -67,14 +67,14 @@ function FrameWindow({ imgData, index }) {
       onDragEnter={(e) => {
         e.stopPropagation();
         e.currentTarget.classList.add(
-          `frame-window--dragged-over-${draggingFrame > index ? 'top' : 'bottom'}`
+          `frame-window--dragged-over-${draggingFrame > index ? 'top' : 'bottom'}`,
         );
       }}
       onDragLeave={(e) => {
         e.stopPropagation();
         e.currentTarget.classList.remove(
           'frame-window--dragged-over-top',
-          'frame-window--dragged-over-bottom'
+          'frame-window--dragged-over-bottom',
         );
       }}
       onDragStart={(e) => {
@@ -84,7 +84,7 @@ function FrameWindow({ imgData, index }) {
       onDrop={(e) => {
         e.currentTarget.classList.remove(
           'frame-window--dragged-over-top',
-          'frame-window--dragged-over-bottom'
+          'frame-window--dragged-over-bottom',
         );
         moveFrame(draggingFrame, index);
       }}
@@ -107,7 +107,7 @@ function FrameWindow({ imgData, index }) {
 
 FrameWindow.propTypes = {
   imgData: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired
+  index: PropTypes.number.isRequired,
 };
 
 export default FrameWindow;

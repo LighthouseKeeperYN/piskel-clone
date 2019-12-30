@@ -8,7 +8,7 @@ import {
   DELETE_FRAME,
   DUPLICATE_FRAME,
   MOVE_FRAME,
-  SET_DRAGGING_FRAME
+  SET_DRAGGING_FRAME,
 } from '../types';
 
 import FramePanelContext from './framePanelContext';
@@ -18,7 +18,7 @@ const FramePanelState = (props) => {
   const initialState = {
     frameCollection: [],
     currentFrame: -1,
-    draggingFrame: null
+    draggingFrame: null,
   };
 
   const [state, dispatch] = useReducer(FramePanelReducer, initialState);
@@ -26,49 +26,49 @@ const FramePanelState = (props) => {
   const addFrame = (frame) => {
     dispatch({
       type: ADD_FRAME,
-      payload: frame
+      payload: frame,
     });
   };
 
   const updateFrame = (canvas) => {
     dispatch({
       type: UPDATE_FRAME,
-      payload: canvas
+      payload: canvas,
     });
   };
 
   const changeIndex = (index) => {
     dispatch({
       type: CHANGE_INDEX,
-      payload: index
+      payload: index,
     });
   };
 
   const deleteFrame = (index) => {
     dispatch({
       type: DELETE_FRAME,
-      payload: index
+      payload: index,
     });
   };
 
   const duplicateFrame = (index) => {
     dispatch({
       type: DUPLICATE_FRAME,
-      payload: index
+      payload: index,
     });
   };
 
   const moveFrame = (from, to) => {
     dispatch({
       type: MOVE_FRAME,
-      payload: { from, to }
+      payload: { from, to },
     });
   };
 
   const setDraggingFrame = (index) => {
     dispatch({
       type: SET_DRAGGING_FRAME,
-      payload: index
+      payload: index,
     });
   };
 
@@ -84,7 +84,7 @@ const FramePanelState = (props) => {
         deleteFrame,
         duplicateFrame,
         moveFrame,
-        setDraggingFrame
+        setDraggingFrame,
       }}
     >
       {props.children}

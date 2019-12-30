@@ -31,6 +31,6 @@ export const PIXEL_SIZES = {
   4: 4,
 };
 
-export const GLOBAL_COMPOSITION_TYPES = {
-  copy: 'copy',
-};
+// export const GLOBAL_COMPOSITION_TYPES = {
+//   copy: 'copy',
+// };

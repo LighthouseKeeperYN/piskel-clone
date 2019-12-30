@@ -4,7 +4,7 @@ import EventListener from 'react-event-listener';
 import './canvas.scss';
 
 import { DEFAULT_CANVAS_SIZE } from '../../shared/constants';
-// import { getMousePositionOnCanvas } from '../../shared/utilities';
+// import { scaleDown } from '../../shared/utilities';
 import applyToolToCanvas from './functionality/applyToolToCanvas';
 
 import ToolPanelContext from '../../context/toolPanel/toolPanelContext';
@@ -19,7 +19,7 @@ function Canvas() {
     colorPrimary,
     colorSecondary,
     setColorPrimary,
-    setColorSecondary,
+    setColorSecondary
   } = useContext(ToolPanelContext);
   const { pixelSize } = useContext(AnimationAndSettingsPanelContext);
   const { isDrawing, setCanvasCtx, setDrawing } = useContext(CanvasContext);
@@ -54,7 +54,7 @@ function Canvas() {
       colorToApply,
       e,
       setColorPrimary,
-      setColorSecondary,
+      setColorSecondary
     });
 
     updateFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
