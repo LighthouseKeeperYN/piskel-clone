@@ -65,13 +65,6 @@ const FramePanelState = (props) => {
     });
   };
 
-  // const moveFrame = (to) => {
-  //   dispatch({
-  //     type: MOVE_FRAME,
-  //     payload: to
-  //   });
-  // };
-
   const setDraggingFrame = (index) => {
     dispatch({
       type: SET_DRAGGING_FRAME,

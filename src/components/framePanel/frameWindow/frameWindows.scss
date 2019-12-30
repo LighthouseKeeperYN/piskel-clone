@@ -8,8 +8,6 @@
   width: 14rem;
   height: 14rem;
   border-radius: 0.4rem;
-  // margin-bottom: 1rem;
-  // margin-left: 1rem;
   margin: 1rem;
   background-color: #444;
   cursor: pointer;
@@ -31,9 +29,15 @@
     }
   }
 
-  &--dragged-over {
-    // box-shadow: 0px 8px 4px -4px gold;
-    outline: dashed .4rem gold;
+  &--being-dragged {
+    opacity: 0.001;
+  }
+
+  &--dragged-over-bottom {
+    box-shadow: 0 0.6rem 0.2rem -0.1rem gold;
+  }
+  &--dragged-over-top {
+    box-shadow: 0 -0.6rem 0.2rem -0.1rem gold;
   }
 }
 

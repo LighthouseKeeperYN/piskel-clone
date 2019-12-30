@@ -21,20 +21,24 @@ function FrameWindow({ imgData, index }) {
     moveFrame,
     setDraggingFrame
   } = useContext(FramePanelContext);
+
   const { canvasCtx } = useContext(CanvasContext);
 
-  useEffect(() => {
-    const ctx = frameRef.current.getContext('2d');
-    ctx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
-    ctx.putImageData(imgData, 0, 0);
-  }, [imgData]);
-
-  useEffect(() => {
+  const putFrameOnCanvas = () => {
     if (currentFrame === index) {
       canvasCtx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
       canvasCtx.drawImage(frameRef.current, 0, 0);
     }
-  }, [frameCollection.length]);
+  };
+
+  const putCanvasOnFrame = () => {
+    const ctx = frameRef.current.getContext('2d');
+    ctx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
+    ctx.putImageData(imgData, 0, 0);
+  };
+
+  useEffect(putCanvasOnFrame, [imgData]);
+  useEffect(putFrameOnCanvas, [frameCollection.length]);
 
   const handleFrameSelection = () => {
     canvasCtx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
@@ -62,17 +66,29 @@ function FrameWindow({ imgData, index }) {
       onDragOver={(e) => e.preventDefault()}
       onDragEnter={(e) => {
         e.stopPropagation();
-        e.currentTarget.classList.add('frame-window--dragged-over');
+        e.currentTarget.classList.add(
+          `frame-window--dragged-over-${draggingFrame > index ? 'top' : 'bottom'}`
+        );
       }}
       onDragLeave={(e) => {
         e.stopPropagation();
-        e.currentTarget.classList.remove('frame-window--dragged-over');
+        e.currentTarget.classList.remove(
+          'frame-window--dragged-over-top',
+          'frame-window--dragged-over-bottom'
+        );
       }}
-      onDragStart={() => setDraggingFrame(index)}
+      onDragStart={(e) => {
+        e.currentTarget.classList.add('frame-window--being-dragged');
+        setDraggingFrame(index);
+      }}
       onDrop={(e) => {
-        e.currentTarget.classList.remove('frame-window--dragged-over');
+        e.currentTarget.classList.remove(
+          'frame-window--dragged-over-top',
+          'frame-window--dragged-over-bottom'
+        );
         moveFrame(draggingFrame, index);
       }}
+      onDragEnd={(e) => e.currentTarget.classList.remove('frame-window--being-dragged')}
     >
       <span className="frame-number">{index + 1}</span>
       {frameCollection.length > 1 && (
