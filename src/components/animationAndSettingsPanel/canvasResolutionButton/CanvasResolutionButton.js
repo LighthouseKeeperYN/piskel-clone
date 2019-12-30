@@ -18,7 +18,7 @@ function CanvasResolutionButton({ pxSize }) {
       className={`canvasResolutionButton ${pxSize === pixelSize
         && 'canvasResolutionButton--selected'}`}
       onClick={() => setPixelSize(pxSize)}
-    >{`${resolution} x ${resolution}`}</button>
+    >{`not implemented ${resolution} x ${resolution}`}</button>
   );
 }
 

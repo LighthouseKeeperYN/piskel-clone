@@ -30,8 +30,8 @@ export function imageDataCollectionToGif({ frameCollection, size, frameRate, rep
   const gif = new GifEncoder(size, size);
 
   gif.setFrameRate(frameRate);
+  gif.setTransparent(0x00000000)
   gif.setRepeat(repeatTimes);
-  gif.writeHeader();
   frameCollection.forEach((frame) => gif.addFrame(frame.data));
   gif.finish();
 
