@@ -31,6 +31,10 @@ export const PIXEL_SIZES = {
   4: 4,
 };
 
+export const TRANSPARENCY_COLOR = '#000000'
+
+export const BLACK_COLOR_REPLACEMENT = '#000001'
+
 // export const GLOBAL_COMPOSITION_TYPES = {
 //   copy: 'copy',
 // };

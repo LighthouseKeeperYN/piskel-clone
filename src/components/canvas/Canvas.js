@@ -3,7 +3,11 @@ import EventListener from 'react-event-listener';
 
 import './canvas.scss';
 
-import { DEFAULT_CANVAS_SIZE } from '../../shared/constants';
+import {
+  DEFAULT_CANVAS_SIZE,
+  TRANSPARENCY_COLOR,
+  BLACK_COLOR_REPLACEMENT
+} from '../../shared/constants';
 // import { scaleDown } from '../../shared/utilities';
 import applyToolToCanvas from './functionality/applyToolToCanvas';
 
@@ -38,7 +42,7 @@ function Canvas() {
   function handleDrawingOnCanvas(e) {
     const colorToApply = e.buttons === 1 ? colorPrimary : colorSecondary;
     const ctx = canvasRef.current.getContext('2d');
-    ctx.fillStyle = colorToApply;
+    ctx.fillStyle = colorToApply === TRANSPARENCY_COLOR ? BLACK_COLOR_REPLACEMENT : colorToApply;
 
     const currMousePosition = { x: e.nativeEvent.layerX, y: e.nativeEvent.layerY };
 
