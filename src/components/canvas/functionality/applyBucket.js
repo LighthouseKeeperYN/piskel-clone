@@ -1,10 +1,17 @@
-function matchStartColor(imgData, pixelPos, startR, startG, startB, startA) {
+import { hexToRGB } from '../../../shared/utilities';
+import {
+  TRANSPARENCY_COLOR,
+  BLACK_COLOR_REPLACEMENT,
+  DEFAULT_CANVAS_SIZE
+} from '../../../shared/constants';
+
+function matchStartColor(imgData, pixelPos, startColor) {
   const r = imgData.data[pixelPos];
   const g = imgData.data[pixelPos + 1];
   const b = imgData.data[pixelPos + 2];
   const a = imgData.data[pixelPos + 3];
 
-  return r === startR && g === startG && b === startB && a === startA;
+  return r === startColor.r && g === startColor.g && b === startColor.b && a === startColor.a;
 }
 
 function paintPixel(imgData, pixelPos, color) {
@@ -12,16 +19,37 @@ function paintPixel(imgData, pixelPos, color) {
     imgData.data[pixelPos],
     imgData.data[pixelPos + 1],
     imgData.data[pixelPos + 2],
-    imgData.data[pixelPos + 3],
+    imgData.data[pixelPos + 3]
   ] = [color[0], color[1], color[2], 255];
 }
 
-export default function applyBucket(ctx, canvasFieldSize, color, startX, startY) {
-  const imgData = ctx.getImageData(0, 0, canvasFieldSize, canvasFieldSize);
-  const [startR, startG, startB, startA] = ctx.getImageData(startX, startY, 1, 1).data;
+export default function applyBucket({ ctx, colorToApply, currMousePosition }) {
+  const color =
+    colorToApply === TRANSPARENCY_COLOR
+      ? hexToRGB(BLACK_COLOR_REPLACEMENT)
+      : hexToRGB(colorToApply);
+
+  const startX = currMousePosition.x;
+  const startY = currMousePosition.y;
+
+  const imgData = ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
+
+  const startColor = {};
+  [startColor.r, startColor.g, startColor.b, startColor.a] = ctx.getImageData(
+    startX,
+    startY,
+    1,
+    1
+  ).data;
+
   const pixelStack = [[startX, startY]];
 
-  if (startR === color[0] && startG === color[1] && startB === color[2] && startA === 255) {
+  if (
+    startColor.r === color[0] &&
+    startColor.g === color[1] &&
+    startColor.b === color[2] &&
+    startColor.a === 255
+  ) {
     return;
   }
 
@@ -31,24 +59,20 @@ export default function applyBucket(ctx, canvasFieldSize, color, startX, startY)
     let y = newPos[1];
     let leftMarked = false;
     let rightMarked = false;
-    let pixelPos = (y * canvasFieldSize + x) * 4;
+    let pixelPos = (y * DEFAULT_CANVAS_SIZE + x) * 4;
 
-    for (; y >= 0 && matchStartColor(imgData, pixelPos, startR, startG, startB, startA); y--) {
-      pixelPos -= canvasFieldSize * 4;
+    for (; y >= 0 && matchStartColor(imgData, pixelPos, startColor); y--) {
+      pixelPos -= DEFAULT_CANVAS_SIZE * 4;
     }
 
-    pixelPos += canvasFieldSize * 4;
+    pixelPos += DEFAULT_CANVAS_SIZE * 4;
     y += 1;
 
-    for (
-      ;
-      y <= canvasFieldSize && matchStartColor(imgData, pixelPos, startR, startG, startB, startA);
-      y++
-    ) {
+    for (; y <= DEFAULT_CANVAS_SIZE && matchStartColor(imgData, pixelPos, startColor); y++) {
       paintPixel(imgData, pixelPos, color);
 
       if (x > 0) {
-        if (matchStartColor(imgData, pixelPos - 4, startR, startG, startB, startA)) {
+        if (matchStartColor(imgData, pixelPos - 4, startColor)) {
           if (!leftMarked) {
             pixelStack.push([x - 1, y]);
             leftMarked = true;
@@ -58,8 +82,8 @@ export default function applyBucket(ctx, canvasFieldSize, color, startX, startY)
         }
       }
 
-      if (x <= canvasFieldSize) {
-        if (matchStartColor(imgData, pixelPos + 4, startR, startG, startB, startA)) {
+      if (x <= DEFAULT_CANVAS_SIZE) {
+        if (matchStartColor(imgData, pixelPos + 4, startColor)) {
           if (!rightMarked) {
             pixelStack.push([x + 1, y]);
             rightMarked = true;
@@ -69,7 +93,7 @@ export default function applyBucket(ctx, canvasFieldSize, color, startX, startY)
         }
       }
 
-      pixelPos += canvasFieldSize * 4;
+      pixelPos += DEFAULT_CANVAS_SIZE * 4;
     }
   }
 

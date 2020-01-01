@@ -1,4 +1,14 @@
-export default function drawLine(ctx, pixelSize, x0, y0, x1, y1, strokeSize, isErasing) {
+import { scaleDown, hexToRGB } from '../../../shared/utilities';
+
+export default function drawLine(
+  { ctx, pixelSize, currMousePosition, prevMousePosition, strokeSize },
+  isErasing
+) {
+  const x0 = scaleDown(currMousePosition.x, pixelSize);
+  const y0 = scaleDown(currMousePosition.y, pixelSize);
+  const x1 = scaleDown(prevMousePosition?.x || currMousePosition.x, pixelSize);
+  const y1 = scaleDown(prevMousePosition?.y || currMousePosition.y, pixelSize);
+
   const dx = Math.abs(x1 - x0);
   const sx = x0 < x1 ? 1 : -1;
 
@@ -15,14 +25,14 @@ export default function drawLine(ctx, pixelSize, x0, y0, x1, y1, strokeSize, isE
         x0copy * pixelSize,
         y0copy * pixelSize,
         pixelSize * strokeSize,
-        pixelSize * strokeSize,
+        pixelSize * strokeSize
       );
     } else {
       ctx.fillRect(
         x0copy * pixelSize,
         y0copy * pixelSize,
         pixelSize * strokeSize,
-        pixelSize * strokeSize,
+        pixelSize * strokeSize
       );
     }
 
