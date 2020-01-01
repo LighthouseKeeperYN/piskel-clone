@@ -19,7 +19,7 @@ function FrameWindow({ imgData, index }) {
     deleteFrame,
     duplicateFrame,
     moveFrame,
-    setDraggingFrame,
+    setDraggingFrame
   } = useContext(FramePanelContext);
 
   const { canvasCtx } = useContext(CanvasContext);
@@ -35,6 +35,10 @@ function FrameWindow({ imgData, index }) {
     const ctx = frameRef.current.getContext('2d');
     ctx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
     ctx.putImageData(imgData, 0, 0);
+    // console.log(typeof imgData);
+    // if (typeof imgData === 'object') {
+    //   ctx.putImageData(imgData, 0, 0);
+    // } else ctx.drawImage(imgData, 0, 0);
   };
 
   useEffect(putCanvasOnFrame, [imgData]);
@@ -67,14 +71,14 @@ function FrameWindow({ imgData, index }) {
       onDragEnter={(e) => {
         e.stopPropagation();
         e.currentTarget.classList.add(
-          `frame-window--dragged-over-${draggingFrame > index ? 'top' : 'bottom'}`,
+          `frame-window--dragged-over-${draggingFrame > index ? 'top' : 'bottom'}`
         );
       }}
       onDragLeave={(e) => {
         e.stopPropagation();
         e.currentTarget.classList.remove(
           'frame-window--dragged-over-top',
-          'frame-window--dragged-over-bottom',
+          'frame-window--dragged-over-bottom'
         );
       }}
       onDragStart={(e) => {
@@ -84,7 +88,7 @@ function FrameWindow({ imgData, index }) {
       onDrop={(e) => {
         e.currentTarget.classList.remove(
           'frame-window--dragged-over-top',
-          'frame-window--dragged-over-bottom',
+          'frame-window--dragged-over-bottom'
         );
         moveFrame(draggingFrame, index);
       }}
@@ -107,7 +111,7 @@ function FrameWindow({ imgData, index }) {
 
 FrameWindow.propTypes = {
   imgData: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired
 };
 
 export default FrameWindow;

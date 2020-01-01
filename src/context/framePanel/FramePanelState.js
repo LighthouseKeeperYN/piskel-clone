@@ -1,6 +1,5 @@
 import React, { useReducer } from 'react';
 
-// import { DEFAULT_PIXEL_SIZE, DEFAULT_FRAME_RATE } from '../../shared/constants';
 import {
   ADD_FRAME,
   UPDATE_FRAME,
@@ -9,6 +8,7 @@ import {
   DUPLICATE_FRAME,
   MOVE_FRAME,
   SET_DRAGGING_FRAME,
+  CLEAR_FRAMES,
 } from '../types';
 
 import FramePanelContext from './framePanelContext';
@@ -72,6 +72,13 @@ const FramePanelState = (props) => {
     });
   };
 
+  const clearFrames = () => {
+    dispatch({
+      type: CLEAR_FRAMES,
+      payload: {},
+    });
+  }
+
   return (
     <FramePanelContext.Provider
       value={{
@@ -85,6 +92,7 @@ const FramePanelState = (props) => {
         duplicateFrame,
         moveFrame,
         setDraggingFrame,
+        clearFrames
       }}
     >
       {props.children}

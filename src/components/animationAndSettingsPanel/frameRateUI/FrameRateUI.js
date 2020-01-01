@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import './frameRateUI.scss';
-import { DEFAULT_FRAME_RATE } from '../../../shared/constants';
+// import { DEFAULT_FRAME_RATE } from '../../../shared/constants';
 
 import AnimationAndSettingsPanelContext from '../../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
 
@@ -16,7 +16,7 @@ function FrameRateUI() {
         type="range"
         min={1}
         max={24}
-        defaultValue={DEFAULT_FRAME_RATE}
+        value={frameRate}
         onChange={(e) => {
           setFrameRate(+e.target.value);
         }}

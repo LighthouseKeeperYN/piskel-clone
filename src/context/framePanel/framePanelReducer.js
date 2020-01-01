@@ -6,6 +6,7 @@ import {
   DUPLICATE_FRAME,
   MOVE_FRAME,
   SET_DRAGGING_FRAME,
+  CLEAR_FRAMES
 } from '../types';
 
 export default (state, action) => {
@@ -37,7 +38,7 @@ export default (state, action) => {
       stateCopy.frameCollection.splice(
         action.payload,
         0,
-        stateCopy.frameCollection[action.payload],
+        stateCopy.frameCollection[action.payload]
       );
       if (stateCopy.currentFrame > action.payload) stateCopy.currentFrame += 1;
       return stateCopy;
@@ -61,6 +62,8 @@ export default (state, action) => {
 
       return stateCopy;
 
+    case CLEAR_FRAMES:
+      return { ...state, frameCollection: [], currentFrame: -1 };
     default:
       return state;
   }

@@ -34,9 +34,11 @@ function Canvas() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    setCanvasCtx(canvasRef.current.getContext('2d'));
     const ctx = canvasRef.current.getContext('2d');
-    addFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
+    setCanvasCtx(ctx);
+    const userData = JSON.parse(localStorage.getItem('piskel-clone-lhk'));
+    if (!userData) addFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
+    // eslint-disable-next-line
   }, []);
 
   function handleDrawingOnCanvas(e) {

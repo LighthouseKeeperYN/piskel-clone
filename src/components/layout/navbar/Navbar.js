@@ -9,8 +9,8 @@ const Navbar = ({ title, projectName }) => (
     <h1 className="navbar__logo">{title}</h1>
     <p className="navbar__project-name">{projectName}</p>
     <div className="navbar__button-wrapper">
-      <a className="navbar__button">Create Sprite</a>
-      <a className="navbar__button">Sign in</a>
+      <p className="navbar__button" href="#">Create Sprite</p>
+      <p className="navbar__button" href="#">Sign in</p>
     </div>
   </nav>
 );

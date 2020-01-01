@@ -14,10 +14,10 @@ const CanvasState = (props) => {
 
   const [state, dispatch] = useReducer(CanvasReducer, initialState);
 
-  const setCanvasCtx = (ref) => {
+  const setCanvasCtx = (ctx) => {
     dispatch({
       type: SET_CANVAS_CTX,
-      payload: ref,
+      payload: ctx,
     });
   };
 

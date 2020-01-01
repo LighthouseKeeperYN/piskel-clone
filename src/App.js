@@ -10,32 +10,36 @@ import Canvas from './components/canvas/Canvas';
 import ToolPanel from './components/toolPanel/ToolPanel';
 import AnimationAndSettingsPanel from './components/animationAndSettingsPanel/AnimationAndSettingsPanel';
 import FramePanel from './components/framePanel/FramePanel';
+import LocalStorageController from './LocalStorageController';
 
 import ToolPanelState from './context/toolPanel/ToolPanelState';
 import AnimationAndSettingsPanelState from './context/animationAndSettingsPanel/AnimationAndSettingsPanelState';
 import CanvasState from './context/canvas/CanvasState';
 import FramePanelState from './context/framePanel/FramePanelState';
 
-const App = () => (
-  <ToolPanelState>
-    <AnimationAndSettingsPanelState>
-      <CanvasState>
-        <FramePanelState>
-          <Fragment>
-            <Navbar />
-            <main className="main">
-              <ToolPanel />
-              <FramePanel />
-              <div className="workbench" onContextMenu={(e) => e.preventDefault()}>
-                <Canvas />
-              </div>
-              <AnimationAndSettingsPanel />
-            </main>
-          </Fragment>
-        </FramePanelState>
-      </CanvasState>
-    </AnimationAndSettingsPanelState>
-  </ToolPanelState>
-);
+const App = () => {
+  return (
+    <ToolPanelState>
+      <AnimationAndSettingsPanelState>
+        <CanvasState>
+          <FramePanelState>
+            <Fragment>
+              <Navbar />
+              <main className="main">
+                <ToolPanel />
+                <FramePanel />
+                <div className="workbench" onContextMenu={(e) => e.preventDefault()}>
+                  <Canvas />
+                  <LocalStorageController />
+                </div>
+                <AnimationAndSettingsPanel />
+              </main>
+            </Fragment>
+          </FramePanelState>
+        </CanvasState>
+      </AnimationAndSettingsPanelState>
+    </ToolPanelState>
+  );
+};
 
 export default App;
