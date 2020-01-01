@@ -41,7 +41,7 @@ function LocalStorageDownloader() {
     return ctx.canvas.toDataURL('image/png');
   };
 
-  const loadDataFromLocalStorage = (userData, canvas) => {
+  const downloadDataFromLocalStorage = (userData, canvas) => {
     const ctx = canvas.getContext('2d');
 
     userData.frameCollection.forEach((frame) =>
@@ -79,7 +79,7 @@ function LocalStorageDownloader() {
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('piskel-clone-lhk'));
-    if (userData) loadDataFromLocalStorage(userData, canvasRef.current);
+    if (userData) downloadDataFromLocalStorage(userData, canvasRef.current);
     // eslint-disable-next-line
   }, []);
 
