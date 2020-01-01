@@ -1,4 +1,4 @@
-import { scaleDown, hexToRGB } from '../../../shared/utilities';
+import { scaleDown } from '../../../shared/utilities';
 
 export default function drawLine(
   { ctx, pixelSize, currMousePosition, prevMousePosition, strokeSize },

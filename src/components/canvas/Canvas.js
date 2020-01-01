@@ -26,8 +26,8 @@ function Canvas() {
     setColorSecondary
   } = useContext(ToolPanelContext);
   const { pixelSize } = useContext(AnimationAndSettingsPanelContext);
-  const { isDrawing, setCanvasCtx, setDrawing } = useContext(CanvasContext);
-  const { frameCollection, currentFrame, updateFrame, addFrame } = useContext(FramePanelContext);
+  const { setCanvasCtx, setDrawing, isDrawing } = useContext(CanvasContext);
+  const { updateFrame, addFrame } = useContext(FramePanelContext);
 
   const [prevMousePosition, setPrevMousePosition] = useState(null);
 
@@ -58,7 +58,8 @@ function Canvas() {
       colorToApply,
       e,
       setColorPrimary,
-      setColorSecondary
+      setColorSecondary,
+      isDrawing
     });
 
     updateFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
