@@ -7,7 +7,7 @@ import { PIXEL_SIZES } from '../../shared/constants';
 import AnimationPreview from './animationPreview/AnimationPreview';
 import FrameRateUI from './frameRateUI/FrameRateUI';
 import CanvasResolutionButton from './canvasResolutionButton/CanvasResolutionButton';
-import SaveAs from './saveAs/SaveAs';
+import SaveAsUI from './saveAsUI/SaveAsUI';
 
 function AnimationAndSettingsPanel() {
   return (
@@ -20,7 +20,7 @@ function AnimationAndSettingsPanel() {
         .map((pxSize) => (
           <CanvasResolutionButton key={`pxSize-${pxSize}`} pxSize={pxSize} />
         ))}
-      <SaveAs />
+      <SaveAsUI />
     </div>
   );
 }

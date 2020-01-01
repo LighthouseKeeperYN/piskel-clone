@@ -5,7 +5,7 @@ import {
   DELETE_FRAME,
   DUPLICATE_FRAME,
   MOVE_FRAME,
-  SET_DRAGGING_FRAME
+  SET_DRAGGING_FRAME,
 } from '../types';
 
 export default (state, action) => {
@@ -37,7 +37,7 @@ export default (state, action) => {
       stateCopy.frameCollection.splice(
         action.payload,
         0,
-        stateCopy.frameCollection[action.payload]
+        stateCopy.frameCollection[action.payload],
       );
       if (stateCopy.currentFrame > action.payload) stateCopy.currentFrame += 1;
       return stateCopy;

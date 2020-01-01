@@ -28,7 +28,6 @@ function SaveAs() {
       size: DEFAULT_CANVAS_SIZE,
       frameRate,
     });
-    console.log(image);
     saveImage(image, `${new Date().getTime()}.gif`);
   };
 

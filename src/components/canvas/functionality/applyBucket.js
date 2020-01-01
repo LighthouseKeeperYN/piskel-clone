@@ -18,11 +18,7 @@ function paintPixel(imgData, pixelPos, color) {
 
 export default function applyBucket(ctx, canvasFieldSize, color, startX, startY) {
   const imgData = ctx.getImageData(0, 0, canvasFieldSize, canvasFieldSize);
-  const startColor = ctx.getImageData(startX, startY, 1, 1).data;
-  const startR = startColor[0];
-  const startG = startColor[1];
-  const startB = startColor[2];
-  const startA = startColor[3];
+  const [startR, startG, startB, startA] = ctx.getImageData(startX, startY, 1, 1).data;
   const pixelStack = [[startX, startY]];
 
   if (startR === color[0] && startG === color[1] && startB === color[2] && startA === 255) {

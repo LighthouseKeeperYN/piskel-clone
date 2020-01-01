@@ -32,7 +32,7 @@ export function imageDataCollectionToGif({ frameCollection, size, frameRate, rep
   gif.writeHeader();
   gif.setFrameRate(frameRate);
   gif.setRepeat(repeatTimes);
-  gif.setTransparent(0)
+  gif.setTransparent(0);
   frameCollection.forEach((frame) => gif.addFrame(frame.data));
   gif.finish();
 
