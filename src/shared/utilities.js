@@ -25,7 +25,7 @@ export function imageDataCollectionToAPNG({ frameCollection, size, frameRate, co
   return header + pngBase64String;
 }
 
-export function imageDataCollectionToGif({ frameCollection, size, frameRate, repeatTimes = 0 }) {
+export function imageDataCollectionToGIF({ frameCollection, size, frameRate, repeatTimes = 0 }) {
   const header = 'data:image/gif;base64,';
   const gif = new GifEncoder(size, size);
 

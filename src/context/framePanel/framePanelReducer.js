@@ -6,14 +6,14 @@ import {
   DUPLICATE_FRAME,
   MOVE_FRAME,
   SET_DRAGGING_FRAME,
-  CLEAR_FRAMES
+  CLEAR_FRAMES,
 } from '../types';
 
 export default (state, action) => {
   const stateCopy = { ...state };
   const { from, to } = action.payload;
   const frameToMove = stateCopy.frameCollection[from];
-
+  
   switch (action.type) {
     case ADD_FRAME:
       stateCopy.frameCollection.push(action.payload);
@@ -38,7 +38,7 @@ export default (state, action) => {
       stateCopy.frameCollection.splice(
         action.payload,
         0,
-        stateCopy.frameCollection[action.payload]
+        stateCopy.frameCollection[action.payload],
       );
       if (stateCopy.currentFrame > action.payload) stateCopy.currentFrame += 1;
       return stateCopy;

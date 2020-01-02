@@ -1,0 +1,36 @@
+$width-standard: 144rem;
+$width-standard-half: 77rem;
+$padding-standard: 5rem;
+
+.landing-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.landing-title-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $padding-standard;
+
+  padding: $padding-standard;
+  width: $width-standard;
+  background-color: #4f4f4f;
+
+  color: white;
+}
+
+.title-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__title {
+    font-size: 6rem;
+  }
+
+  &__text {
+    font-size: 2.8rem;
+    line-height: 5rem;
+  }
+}

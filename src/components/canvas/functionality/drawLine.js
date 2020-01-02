@@ -2,12 +2,12 @@ import { scaleDown } from '../../../shared/utilities';
 
 export default function drawLine(
   { ctx, pixelSize, currMousePosition, prevMousePosition, strokeSize },
-  isErasing
+  isErasing,
 ) {
-  const x0 = scaleDown(currMousePosition.x, pixelSize);
-  const y0 = scaleDown(currMousePosition.y, pixelSize);
-  const x1 = scaleDown(prevMousePosition?.x || currMousePosition.x, pixelSize);
-  const y1 = scaleDown(prevMousePosition?.y || currMousePosition.y, pixelSize);
+  const x0 = scaleDown(currMousePosition.x + 1, pixelSize);
+  const y0 = scaleDown(currMousePosition.y + 1, pixelSize);
+  const x1 = scaleDown(prevMousePosition?.x + 1 || currMousePosition.x + 1, pixelSize);
+  const y1 = scaleDown(prevMousePosition?.y + 1 || currMousePosition.y + 1, pixelSize);
 
   const dx = Math.abs(x1 - x0);
   const sx = x0 < x1 ? 1 : -1;
@@ -25,14 +25,14 @@ export default function drawLine(
         x0copy * pixelSize,
         y0copy * pixelSize,
         pixelSize * strokeSize,
-        pixelSize * strokeSize
+        pixelSize * strokeSize,
       );
     } else {
       ctx.fillRect(
         x0copy * pixelSize,
         y0copy * pixelSize,
         pixelSize * strokeSize,
-        pixelSize * strokeSize
+        pixelSize * strokeSize,
       );
     }
 

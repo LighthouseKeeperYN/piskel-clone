@@ -28,7 +28,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "build:deploy": "react-scripts build && surge build simple-piskel-clone-lhk.surge.sh",
+    "deploy": "react-scripts build && surge build simple-piskel-clone-lhk.surge.sh",
     "lint": "eslint ./**/*.js",
     "lint:fix": "eslint --fix ./**/*.js"
   },

@@ -6,7 +6,7 @@ import './saveAs.scss';
 import FramePanelContext from '../../../context/framePanel/framePanelContext';
 import AnimationAndSettingsPanelContext from '../../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
 
-import { imageDataCollectionToAPNG, imageDataCollectionToGif } from '../../../shared/utilities';
+import { imageDataCollectionToAPNG, imageDataCollectionToGIF } from '../../../shared/utilities';
 import { DEFAULT_CANVAS_SIZE } from '../../../shared/constants';
 
 function SaveAs() {
@@ -23,7 +23,7 @@ function SaveAs() {
   };
 
   const saveAsGIF = () => {
-    const image = imageDataCollectionToGif({
+    const image = imageDataCollectionToGIF({
       frameCollection,
       size: DEFAULT_CANVAS_SIZE,
       frameRate,

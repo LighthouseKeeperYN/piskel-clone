@@ -2,7 +2,7 @@
 
 .navbar {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
 
   height: 3.6rem;
@@ -11,13 +11,6 @@
 
   &__logo {
     font-family: 'Courier Prime', monospace;
-  }
-
-  &__project-name {
-    margin: 0 auto;
-
-    color: #888888;
-    font-size: 2rem;
   }
 
   &__button-wrapper {

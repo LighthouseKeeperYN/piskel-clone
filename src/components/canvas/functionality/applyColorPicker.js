@@ -5,7 +5,7 @@ export default function applyColorPicker({
   e,
   currMousePosition,
   setColorPrimary,
-  setColorSecondary
+  setColorSecondary,
 }) {
   const { x, y } = currMousePosition;
   const pxData = ctx.getImageData(x, y, 1, 1).data.slice(0, -1);

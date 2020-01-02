@@ -2,7 +2,7 @@ import { hexToRGB } from '../../../shared/utilities';
 import {
   TRANSPARENCY_COLOR,
   BLACK_COLOR_REPLACEMENT,
-  DEFAULT_CANVAS_SIZE
+  DEFAULT_CANVAS_SIZE,
 } from '../../../shared/constants';
 
 function matchStartColor(imgData, pixelPos, startColor) {
@@ -19,15 +19,14 @@ function paintPixel(imgData, pixelPos, color) {
     imgData.data[pixelPos],
     imgData.data[pixelPos + 1],
     imgData.data[pixelPos + 2],
-    imgData.data[pixelPos + 3]
+    imgData.data[pixelPos + 3],
   ] = [color[0], color[1], color[2], 255];
 }
 
 export default function applyBucket({ ctx, colorToApply, currMousePosition }) {
-  const color =
-    colorToApply === TRANSPARENCY_COLOR
-      ? hexToRGB(BLACK_COLOR_REPLACEMENT)
-      : hexToRGB(colorToApply);
+  const color = colorToApply === TRANSPARENCY_COLOR
+    ? hexToRGB(BLACK_COLOR_REPLACEMENT)
+    : hexToRGB(colorToApply);
 
   const startX = currMousePosition.x;
   const startY = currMousePosition.y;
@@ -39,16 +38,16 @@ export default function applyBucket({ ctx, colorToApply, currMousePosition }) {
     startX,
     startY,
     1,
-    1
+    1,
   ).data;
 
   const pixelStack = [[startX, startY]];
 
   if (
-    startColor.r === color[0] &&
-    startColor.g === color[1] &&
-    startColor.b === color[2] &&
-    startColor.a === 255
+    startColor.r === color[0]
+    && startColor.g === color[1]
+    && startColor.b === color[2]
+    && startColor.a === 255
   ) {
     return;
   }

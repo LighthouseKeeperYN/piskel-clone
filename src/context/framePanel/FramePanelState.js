@@ -77,7 +77,7 @@ const FramePanelState = (props) => {
       type: CLEAR_FRAMES,
       payload: {},
     });
-  }
+  };
 
   return (
     <FramePanelContext.Provider
@@ -92,7 +92,7 @@ const FramePanelState = (props) => {
         duplicateFrame,
         moveFrame,
         setDraggingFrame,
-        clearFrames
+        clearFrames,
       }}
     >
       {props.children}

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import { useBeforeunload } from 'react-beforeunload';
 
-import { DEFAULT_CANVAS_SIZE } from './shared/constants';
+import { DEFAULT_CANVAS_SIZE, LOCAL_STORAGE_KEY } from './shared/constants';
 
 import FramePanelContext from './context/framePanel/framePanelContext';
 import ToolPanelContext from './context/toolPanel/toolPanelContext';
@@ -25,46 +25,49 @@ function LocalStorageDownloader() {
 
   const canvasRef = useRef(null);
 
-  const decodeFrameCollection = (ctx, frame, currentFrame, changeIndex) => {
+  const decodeFrame = (ctx, frame, currFrame, changeIndexFn) => {
     const img = new Image();
     img.src = frame;
     img.onload = () => {
       ctx.drawImage(img, 0, 0);
       addFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
       ctx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
-      changeIndex(currentFrame);
+      changeIndexFn(currFrame);
     };
   };
 
-  const encodeFrameCollection = (ctx, frame) => {
+  const encodeFrame = (ctx, frame) => {
     ctx.putImageData(frame, 0, 0);
     return ctx.canvas.toDataURL('image/png');
   };
 
-  const downloadDataFromLocalStorage = (userData, canvas) => {
-    const ctx = canvas.getContext('2d');
+  const downloadDataFromLocalStorage = (canvas) => {
+    const userData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 
-    userData.frameCollection.forEach((frame) =>
-      decodeFrameCollection(ctx, frame, userData.currentFrame, changeIndex)
-    );
+    if (userData) {
+      const ctx = canvas.getContext('2d');
 
-    setPixelSize(userData.pixelSize);
-    setFrameRate(userData.frameRate);
-    setStrokeSize(userData.strokeSize);
-    setToolType(userData.toolType);
-    setColorPrimary(userData.colorPrimary);
-    setColorSecondary(userData.colorSecondary);
-    changeIndex(userData.currentFrame);
+      userData.frameCollection.forEach((frame) => {
+        decodeFrame(ctx, frame, userData.currentFrame, changeIndex);
+      });
+
+      setPixelSize(userData.pixelSize);
+      setFrameRate(userData.frameRate);
+      setStrokeSize(userData.strokeSize);
+      setToolType(userData.toolType);
+      setColorPrimary(userData.colorPrimary);
+      setColorSecondary(userData.colorSecondary);
+      changeIndex(userData.currentFrame);
+    }
   };
 
-  const uploadDataToLocalStorage = (e, canvas) => {
-    e.preventDefault();
+  const uploadDataToLocalStorage = (canvas) => {
     const ctx = canvas.getContext('2d');
 
-    const framesEncoded = frameCollection.map((frame) => encodeFrameCollection(ctx, frame));
+    const encodedFrames = frameCollection.map((frame) => encodeFrame(ctx, frame));
 
     const userData = {
-      frameCollection: framesEncoded,
+      frameCollection: encodedFrames,
       currentFrame,
       pixelSize,
       frameRate,
@@ -74,16 +77,19 @@ function LocalStorageDownloader() {
       colorSecondary
     };
 
-    localStorage.setItem('piskel-clone-lhk', JSON.stringify(userData));
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(userData));
   };
 
   useEffect(() => {
-    const userData = JSON.parse(localStorage.getItem('piskel-clone-lhk'));
-    if (userData) downloadDataFromLocalStorage(userData, canvasRef.current);
+    window.addEventListener('load', () =>
+      downloadDataFromLocalStorage(canvasRef.current)
+    );
+    // const userData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    // if (userData) downloadDataFromLocalStorage(userData, canvasRef.current);
     // eslint-disable-next-line
   }, []);
 
-  useBeforeunload((e) => uploadDataToLocalStorage(e, canvasRef.current));
+  useBeforeunload(() => uploadDataToLocalStorage(canvasRef.current));
 
   return (
     <canvas

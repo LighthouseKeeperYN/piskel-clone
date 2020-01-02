@@ -1,0 +1,14 @@
+.create-sprite-button {
+  height: 5rem;
+  padding: 1rem;
+  border-radius: 0.2rem;
+  background-color: gold;
+
+  color: black;
+
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: white;
+  }
+}

@@ -6,7 +6,7 @@ import './canvas.scss';
 import {
   DEFAULT_CANVAS_SIZE,
   TRANSPARENCY_COLOR,
-  BLACK_COLOR_REPLACEMENT
+  BLACK_COLOR_REPLACEMENT,
 } from '../../shared/constants';
 
 import applyToolToCanvas from './functionality/applyToolToCanvas';
@@ -23,7 +23,7 @@ function Canvas() {
     colorPrimary,
     colorSecondary,
     setColorPrimary,
-    setColorSecondary
+    setColorSecondary,
   } = useContext(ToolPanelContext);
   const { pixelSize } = useContext(AnimationAndSettingsPanelContext);
   const { setCanvasCtx, setDrawing, isDrawing } = useContext(CanvasContext);
@@ -61,35 +61,39 @@ function Canvas() {
       e,
       setColorPrimary,
       setColorSecondary,
-      isDrawing
+      isDrawing,
     });
 
     updateFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
   }
 
   return (
-    <canvas
-      className="canvas"
-      height={DEFAULT_CANVAS_SIZE}
-      width={DEFAULT_CANVAS_SIZE}
-      ref={canvasRef}
-      onMouseDown={(e) => {
-        setDrawing(true);
-        handleDrawingOnCanvas(e);
-      }}
-      onMouseMove={(e) => {
-        if (e.buttons) handleDrawingOnCanvas(e);
-        else setPrevMousePosition(null);
-      }}
-      onContextMenu={(e) => e.preventDefault()}
-    >
-      <EventListener
-        target="window"
-        onMouseUp={() => {
-          setDrawing(false);
+    <div className="workbench" onContextMenu={(e) => e.preventDefault()}>
+      <canvas
+        className="canvas"
+        height={DEFAULT_CANVAS_SIZE}
+        width={DEFAULT_CANVAS_SIZE}
+        ref={canvasRef}
+        onMouseDown={(e) => {
+          setDrawing(true);
+          handleDrawingOnCanvas(e);
         }}
-      />
-    </canvas>
+        onMouseMove={(e) => {
+          if (e.buttons) {
+            setDrawing(true);
+            handleDrawingOnCanvas(e);
+          } else setPrevMousePosition(null);
+        }}
+        onContextMenu={(e) => e.preventDefault()}
+      >
+        <EventListener
+          target="window"
+          onMouseUp={() => {
+            setDrawing(false);
+          }}
+        />
+      </canvas>
+    </div>
   );
 }
 

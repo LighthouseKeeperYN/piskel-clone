@@ -1,3 +1,14 @@
+.workbench {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+  background-color: #a0a0a0;
+}
+
+
 .canvas {
   background: url(./canvas-bg.png) repeat;
 }
