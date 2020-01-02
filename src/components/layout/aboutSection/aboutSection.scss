@@ -1,0 +1,17 @@
+.landing-about-section {
+  display: flex;
+  justify-content: center;
+
+  background-color: #111;
+  width: 100%;
+
+  &__wrapper {
+    max-width: 144rem;
+    width: 100%;
+    padding: 2rem;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}
