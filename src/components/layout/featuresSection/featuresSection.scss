@@ -1,11 +1,19 @@
 .landing-features-section {
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
 
-  max-width: 144rem;
+  background-color: #171717;
   width: 100%;
-  height: 35rem;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    max-width: 144rem;
+    width: 100%;
+    height: 35rem;
+  }
 }
 
 .features-title {

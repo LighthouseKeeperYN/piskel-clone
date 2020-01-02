@@ -5,6 +5,7 @@ import './landing.scss';
 import TitleSection from '../../layout/titleSection/TitleSection';
 import ExamplesSection from '../../layout/examplesSection/ExamplesSection';
 import FeaturesSection from '../../layout/featuresSection/FeaturesSection';
+import AboutSection from '../../layout/aboutSection/AboutSection';
 
 function Landing() {
   return (
@@ -12,11 +13,7 @@ function Landing() {
       <TitleSection />
       <ExamplesSection />
       <FeaturesSection />
-
-      <section className="landing-about-section">
-        <div className="landing-about-me"></div>
-        <div className="landing-contacts"></div>
-      </section>
+      <AboutSection />
     </div>
   );
 }

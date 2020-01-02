@@ -13,6 +13,7 @@ const featureImgs = [
 function FeaturesSection() {
   return (
     <section className="landing-features-section">
+      <div className="landing-features-section__wrapper">
       <h4 className="features-title">Implemented features</h4>
       <div className="feature-imgs">
         {featureImgs.map((img, index) => (
@@ -23,6 +24,7 @@ function FeaturesSection() {
             key={`feature-${index}`}
           ></img>
         ))}
+      </div>
       </div>
     </section>
   );
