@@ -4,6 +4,6 @@
   grid-template-rows: 100%;
   gap: 0.8rem;
   align-items: center;
-  height: 100%;
+  height: calc(100vh - 3.6rem);
   padding: 0.8rem;
 }

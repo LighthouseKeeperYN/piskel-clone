@@ -5,7 +5,7 @@ import 'normalize.css';
 import './base.scss';
 import './App.scss';
 
-import Navbar from './components/layout/navbar/Navbar';
+import Header from './components/layout/header/Header';
 import Landing from './components/pages/landing/Landing';
 import Project from './components/pages/project/Project';
 import LocalStorageController from './LocalStorageController';
@@ -23,7 +23,7 @@ const App = () => (
           <Router>
           <LocalStorageController />
             <div className="app">
-              <Navbar />
+              <Header />
               <main className="main">
                 <Switch>
                   <Route exact path="/" component={Landing} />
