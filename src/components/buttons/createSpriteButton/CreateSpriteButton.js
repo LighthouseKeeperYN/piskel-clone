@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './createSpriteButton.scss';
 
 function CreateSpriteButton() {
   return (
-    <button className="create-sprite-button">
-      Create Sprite
-    </button>
+    <Link to="/project">
+      <button className="create-sprite-button">Create Sprite</button>
+    </Link>
   );
 }
 

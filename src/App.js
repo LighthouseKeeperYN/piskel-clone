@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route, HashRouter } from 'react-router-dom';
 
 import 'normalize.css';
 import './base.scss';
@@ -20,18 +20,18 @@ const App = () => (
     <AnimationAndSettingsPanelState>
       <CanvasState>
         <FramePanelState>
-          <Router>
-          <LocalStorageController />
-            <div className="app">
-              <Header />
-              <main className="main">
-                <Switch>
-                  <Route exact path="/" component={Landing} />
-                  <Route exact path="/project" component={Project} />
-                </Switch>
-              </main>
-            </div>
-          </Router>
+            <HashRouter>
+              <LocalStorageController />
+              <div className="app">
+                <Header />
+                <main className="main">
+                  <Switch>
+                    <Route exact path="/" component={Landing} />
+                    <Route exact path="/project" component={Project} />
+                  </Switch>
+                </main>
+              </div>
+            </HashRouter>
         </FramePanelState>
       </CanvasState>
     </AnimationAndSettingsPanelState>

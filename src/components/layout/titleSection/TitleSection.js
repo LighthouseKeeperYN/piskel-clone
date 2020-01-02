@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 
 import './titleSection.scss';
 
@@ -17,9 +17,9 @@ function TitleSection() {
           tempora rem qui distinctio quasi in non numquam asperiores debitis iste ea illum
           voluptatem ipsa error eos magni.
         </p>
-        <Link to="/project">
+
           <CreateSpriteButton />
-        </Link>
+
       </div>
       <img src={appViewImg} alt="app-view" />
     </section>
