@@ -17,6 +17,9 @@ import FramePanelContext from '../../context/framePanel/framePanelContext';
 import AnimationAndSettingsPanelContext from '../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
 
 function Canvas() {
+  const { pixelSize } = useContext(AnimationAndSettingsPanelContext);
+  const { setCanvasCtx, setDrawing, isDrawing } = useContext(CanvasContext);
+  const { updateFrame, addFrame } = useContext(FramePanelContext);
   const {
     strokeSize,
     toolType,
@@ -25,9 +28,6 @@ function Canvas() {
     setColorPrimary,
     setColorSecondary,
   } = useContext(ToolPanelContext);
-  const { pixelSize } = useContext(AnimationAndSettingsPanelContext);
-  const { setCanvasCtx, setDrawing, isDrawing } = useContext(CanvasContext);
-  const { updateFrame, addFrame } = useContext(FramePanelContext);
 
   const [prevMousePosition, setPrevMousePosition] = useState(null);
 

@@ -13,7 +13,7 @@ export default (state, action) => {
   const stateCopy = { ...state };
   const { from, to } = action.payload;
   const frameToMove = stateCopy.frameCollection[from];
-  
+
   switch (action.type) {
     case ADD_FRAME:
       stateCopy.frameCollection.push(action.payload);

@@ -10,7 +10,7 @@ import AnimationAndSettingsPanelContext from './context/animationAndSettingsPane
 function LocalStorageDownloader() {
   const { addFrame, frameCollection, changeIndex, currentFrame } = useContext(FramePanelContext);
   const { setPixelSize, setFrameRate, pixelSize, frameRate } = useContext(
-    AnimationAndSettingsPanelContext
+    AnimationAndSettingsPanelContext,
   );
   const {
     strokeSize,
@@ -20,7 +20,7 @@ function LocalStorageDownloader() {
     setStrokeSize,
     setToolType,
     setColorPrimary,
-    setColorSecondary
+    setColorSecondary,
   } = useContext(ToolPanelContext);
 
   const canvasRef = useRef(null);
@@ -74,16 +74,14 @@ function LocalStorageDownloader() {
       strokeSize,
       toolType,
       colorPrimary,
-      colorSecondary
+      colorSecondary,
     };
 
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(userData));
   };
 
   useEffect(() => {
-    window.addEventListener('load', () =>
-      downloadDataFromLocalStorage(canvasRef.current)
-    );
+    window.addEventListener('load', () => downloadDataFromLocalStorage(canvasRef.current));
     // const userData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     // if (userData) downloadDataFromLocalStorage(userData, canvasRef.current);
     // eslint-disable-next-line
