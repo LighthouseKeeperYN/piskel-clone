@@ -5,7 +5,14 @@ import './landing.scss';
 
 import CreateSpriteButton from '../../buttons/createSpriteButton/CreateSpriteButton';
 
-const appViewImg = require('./app-view.png');
+const appViewImg = require('./assets/app-view.png');
+const exampleImgs = [
+  require('./assets/example-1.gif'),
+  require('./assets/example-2.gif'),
+  require('./assets/example-3.png'),
+  require('./assets/example-4.gif'),
+  require('./assets/example-5.gif')
+];
 
 function Landing() {
   return (
@@ -24,7 +31,19 @@ function Landing() {
         </div>
         <img src={appViewImg} alt="app-view" />
       </section>
-      <section className="landing-examples-section"></section>
+      <section className="landing-examples-section">
+        <h4 className="examples-title">Example sprites</h4>
+        <div className="example-imgs">
+          {exampleImgs.map((img, index) => (
+            <img
+              className="example-imgs__img"
+              src={img}
+              alt={`example-img-${index + 1}`}
+              key={`example-img-${index + 1}`}
+            ></img>
+          ))}
+        </div>
+      </section>
       <section className="landing-features-section"></section>
       <section className="landing-about-section">
         <div className="landing-about-me"></div>
