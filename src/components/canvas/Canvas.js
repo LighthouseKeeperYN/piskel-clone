@@ -7,6 +7,7 @@ import {
   DEFAULT_CANVAS_SIZE,
   TRANSPARENCY_COLOR,
   BLACK_COLOR_REPLACEMENT,
+  LOCAL_STORAGE_KEY,
 } from '../../shared/constants';
 
 import applyToolToCanvas from './functionality/applyToolToCanvas';
@@ -33,15 +34,21 @@ function Canvas() {
 
   const canvasRef = useRef(null);
 
-  useEffect(() => {
+  const addEmptyFrameIfUserDataIsAbsent = (ctx) => {
+    const userData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (!userData) addFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
+  };
+
+  const initCanvas = () => {
     const ctx = canvasRef.current.getContext('2d');
     setCanvasCtx(ctx);
-    const userData = JSON.parse(localStorage.getItem('piskel-clone-lhk'));
-    if (!userData) addFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
+    addEmptyFrameIfUserDataIsAbsent(ctx);
     // eslint-disable-next-line
-  }, []);
+  }
 
-  function handleDrawingOnCanvas(e) {
+  useEffect(initCanvas, []);
+
+  const handleDrawingOnCanvas = (e) => {
     const colorToApply = e.buttons === 1 ? colorPrimary : colorSecondary;
     const ctx = canvasRef.current.getContext('2d');
     ctx.fillStyle = colorToApply === TRANSPARENCY_COLOR ? BLACK_COLOR_REPLACEMENT : colorToApply;
@@ -65,7 +72,7 @@ function Canvas() {
     });
 
     updateFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
-  }
+  };
 
   return (
     <div className="workbench" onContextMenu={(e) => e.preventDefault()}>

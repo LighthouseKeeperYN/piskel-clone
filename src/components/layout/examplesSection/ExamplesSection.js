@@ -1,13 +1,13 @@
 import React from 'react';
 
-import './examplesSection.scss'
+import './examplesSection.scss';
 
 const exampleImgs = [
   require('./assets/sprite-example-1.gif'),
   require('./assets/sprite-example-2.gif'),
-  require('./assets/sprite-example-3.png'),
+  require('./assets/sprite-example-3.gif'),
   require('./assets/sprite-example-4.gif'),
-  require('./assets/sprite-example-5.gif')
+  require('./assets/sprite-example-5.gif'),
 ];
 
 function ExamplesSection() {

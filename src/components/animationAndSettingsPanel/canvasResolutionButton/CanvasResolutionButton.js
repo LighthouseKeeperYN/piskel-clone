@@ -16,16 +16,18 @@ function CanvasResolutionButton({ pxSize }) {
 
   const resolution = DEFAULT_CANVAS_SIZE / pxSize;
 
+  const changeResolutionAndClearCanvas = () => {
+    setPixelSize(pxSize);
+    canvasCtx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
+    clearFrames();
+    addFrame(canvasCtx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
+  };
+
   return (
     <button
       className={`canvasResolutionButton ${pxSize === pixelSize
         && 'canvasResolutionButton--selected'}`}
-      onClick={() => {
-        setPixelSize(pxSize);
-        canvasCtx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
-        clearFrames();
-        addFrame(canvasCtx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
-      }}
+      onClick={changeResolutionAndClearCanvas}
     >{`${resolution} x ${resolution}`}</button>
   );
 }

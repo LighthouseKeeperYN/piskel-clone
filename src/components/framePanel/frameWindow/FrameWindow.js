@@ -19,7 +19,7 @@ function FrameWindow({ imgData, index }) {
     deleteFrame,
     duplicateFrame,
     moveFrame,
-    setDraggingFrame
+    setDraggingFrame,
   } = useContext(FramePanelContext);
 
   const { canvasCtx } = useContext(CanvasContext);
@@ -46,6 +46,8 @@ function FrameWindow({ imgData, index }) {
   //   changeIndex(index);
   // };
 
+  // ++++++++++ EVENTS ++++++++++
+
   const handleFrameDeletion = (e) => {
     e.stopPropagation();
     canvasCtx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
@@ -58,37 +60,51 @@ function FrameWindow({ imgData, index }) {
     duplicateFrame(index);
   };
 
+  const markLandingZone = (e) => {
+    e.stopPropagation();
+    e.currentTarget.classList.add(
+      `frame-window--dragged-over-${draggingFrame > index ? 'top' : 'bottom'}`,
+    );
+  };
+
+  const clearLandingMark = (e) => {
+    e.stopPropagation();
+    e.currentTarget.classList.remove(
+      'frame-window--dragged-over-top',
+      'frame-window--dragged-over-bottom',
+    );
+  };
+
+  const ejectFrameWindow = (e) => {
+    e.currentTarget.classList.add('frame-window--being-dragged');
+    setDraggingFrame(index);
+  };
+
+  const moveFrameToNewPosition = (e) => {
+    e.currentTarget.classList.remove(
+      'frame-window--dragged-over-top',
+      'frame-window--dragged-over-bottom',
+    );
+    moveFrame(draggingFrame, index);
+  };
+
+  const endDragging = (e) => {
+    e.currentTarget.classList.remove('frame-window--being-dragged');
+  };
+
+  // ---------- EVENTS ----------
+
   return (
     <div
       className={`frame-window ${currentFrame === index ? 'frame-window--selected' : ''}`}
       draggable={true}
       onClick={() => changeIndex(index)}
       onDragOver={(e) => e.preventDefault()}
-      onDragEnter={(e) => {
-        e.stopPropagation();
-        e.currentTarget.classList.add(
-          `frame-window--dragged-over-${draggingFrame > index ? 'top' : 'bottom'}`
-        );
-      }}
-      onDragLeave={(e) => {
-        e.stopPropagation();
-        e.currentTarget.classList.remove(
-          'frame-window--dragged-over-top',
-          'frame-window--dragged-over-bottom'
-        );
-      }}
-      onDragStart={(e) => {
-        e.currentTarget.classList.add('frame-window--being-dragged');
-        setDraggingFrame(index);
-      }}
-      onDrop={(e) => {
-        e.currentTarget.classList.remove(
-          'frame-window--dragged-over-top',
-          'frame-window--dragged-over-bottom'
-        );
-        moveFrame(draggingFrame, index);
-      }}
-      onDragEnd={(e) => e.currentTarget.classList.remove('frame-window--being-dragged')}
+      onDragStart={ejectFrameWindow}
+      onDragEnter={markLandingZone}
+      onDragLeave={clearLandingMark}
+      onDrop={moveFrameToNewPosition}
+      onDragEnd={endDragging}
     >
       <span className="frame-number">{index + 1}</span>
 
@@ -110,7 +126,7 @@ function FrameWindow({ imgData, index }) {
 
 FrameWindow.propTypes = {
   imgData: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired
+  index: PropTypes.number.isRequired,
 };
 
 export default FrameWindow;

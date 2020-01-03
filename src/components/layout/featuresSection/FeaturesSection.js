@@ -14,17 +14,17 @@ function FeaturesSection() {
   return (
     <section className="landing-features-section">
       <div className="landing-features-section__wrapper">
-      <h4 className="features-title">Implemented features</h4>
-      <div className="feature-imgs">
-        {featureImgs.map((img, index) => (
-          <img
-            className="feature-imgs__img"
-            src={img}
-            alt={`feature-${index + 1}`}
-            key={`feature-${index}`}
-          ></img>
-        ))}
-      </div>
+        <h4 className="features-title">Implemented features</h4>
+        <div className="feature-imgs">
+          {featureImgs.map((img, index) => (
+            <img
+              className="feature-imgs__img"
+              src={img}
+              alt={`feature-${index + 1}`}
+              key={`feature-${index}`}
+            ></img>
+          ))}
+        </div>
       </div>
     </section>
   );

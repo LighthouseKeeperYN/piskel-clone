@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { saveAs as saveImage } from 'file-saver';
 
-import './saveAs.scss';
+import './saveAsUI.scss';
 
 import FramePanelContext from '../../../context/framePanel/framePanelContext';
 import AnimationAndSettingsPanelContext from '../../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';

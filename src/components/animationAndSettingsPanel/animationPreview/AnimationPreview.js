@@ -15,7 +15,7 @@ function AnimationPreview() {
 
   const animationPreviewRef = useRef(null);
 
-  useEffect(() => {
+  const updateAnimationPreview = () => {
     const ctx = animationPreviewRef.current.getContext('2d');
     let counter = -1;
 
@@ -26,7 +26,9 @@ function AnimationPreview() {
 
     clearInterval(animation);
     animation = setInterval(animate, 1000 / frameRate);
-  }, [frameCollection, frameRate]);
+  };
+
+  useEffect(updateAnimationPreview, [frameCollection, frameRate]);
 
   return (
     <canvas
