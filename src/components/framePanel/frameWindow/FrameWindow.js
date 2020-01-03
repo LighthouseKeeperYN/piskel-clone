@@ -1,15 +1,15 @@
 import React, { useRef, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Tooltip from 'react-tooltip-lite';
 
 import './frameWindows.scss';
 
-import { DEFAULT_CANVAS_SIZE, TOOLTIP_PROPS, SHORTCUT_ACTIONS } from '../../../shared/constants';
-import { tooltipShortcutTemplate } from '../../../shared/utilities';
+import { DEFAULT_CANVAS_SIZE } from '../../../shared/constants';
 
 import FramePanelContext from '../../../context/framePanel/framePanelContext';
 import CanvasContext from '../../../context/canvas/canvasContext';
-import ShortcutsContext from '../../../context/shortcuts/shortcutsContext';
+
+import CopyButton from './CopyButton';
+import DeleteButton from './DeleteButton';
 
 function FrameWindow({ imgData, index }) {
   const frameRef = useRef(null);
@@ -19,14 +19,11 @@ function FrameWindow({ imgData, index }) {
     currentFrame,
     draggingFrame,
     changeIndex,
-    deleteFrame,
-    duplicateFrame,
     moveFrame,
     setDraggingFrame
   } = useContext(FramePanelContext);
 
   const { canvasCtx } = useContext(CanvasContext);
-  const { shortcuts } = useContext(ShortcutsContext);
 
   const putFrameOnCanvas = () => {
     if (currentFrame === index && canvasCtx) {
@@ -43,19 +40,6 @@ function FrameWindow({ imgData, index }) {
 
   useEffect(putCanvasOnFrame, [imgData]);
   useEffect(putFrameOnCanvas, [frameCollection.length, currentFrame, canvasCtx]);
-
-  // ++++++++++ EVENTS ++++++++++
-
-  const handleFrameDeletion = (e) => {
-    e.stopPropagation();
-    canvasCtx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
-    deleteFrame(index);
-  };
-
-  const handleFrameDuplication = (e) => {
-    e.stopPropagation();
-    duplicateFrame(index);
-  };
 
   const markLandingZone = (e) => {
     e.stopPropagation();
@@ -89,8 +73,6 @@ function FrameWindow({ imgData, index }) {
     e.currentTarget.classList.remove('frame-window--being-dragged');
   };
 
-  // ---------- EVENTS ----------
-
   return (
     <div
       className={`frame-window ${currentFrame === index ? 'frame-window--selected' : ''}`}
@@ -105,41 +87,8 @@ function FrameWindow({ imgData, index }) {
     >
       <span className="frame-number">{index + 1}</span>
 
-      {frameCollection.length > 1 && (
-        <div className="frame-delete__wrapper">
-          <Tooltip
-            content={[
-              <span key="copyFrame">Delete this frame </span>,
-              <span className="tooltip-shortcut" key="tooltip-shortcut">
-                {tooltipShortcutTemplate(shortcuts, SHORTCUT_ACTIONS.deleteCurrentFrame)}
-              </span>
-            ]}
-            direction={TOOLTIP_PROPS.directions.right}
-            arrowSize={TOOLTIP_PROPS.arrowSize}
-            padding={TOOLTIP_PROPS.padding}
-            hoverDelay={TOOLTIP_PROPS.delay}
-          >
-            <div className="frame-delete" onClick={handleFrameDeletion}></div>
-          </Tooltip>
-        </div>
-      )}
-
-      <div className="frame-duplicate__wrapper">
-        <Tooltip
-          content={[
-            <span key="copyFrame">Copy this frame </span>,
-            <span className="tooltip-shortcut" key="tooltip-shortcut">
-              {tooltipShortcutTemplate(shortcuts, SHORTCUT_ACTIONS.copyCurrentFrame)}
-            </span>
-          ]}
-          direction={TOOLTIP_PROPS.directions.right}
-          arrowSize={TOOLTIP_PROPS.arrowSize}
-          padding={TOOLTIP_PROPS.padding}
-          hoverDelay={TOOLTIP_PROPS.delay}
-        >
-          <div className="frame-duplicate" onClick={handleFrameDuplication}></div>
-        </Tooltip>
-      </div>
+      {frameCollection.length > 1 && <DeleteButton index={index} />}
+      <CopyButton index={index} />
 
       <canvas
         className="frame-canvas"
