@@ -8,7 +8,7 @@ import FramePanelContext from '../../../context/framePanel/framePanelContext';
 import AnimationAndSettingsPanelContext from '../../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
 
 import { imageDataCollectionToAPNG, imageDataCollectionToGIF } from '../../../shared/utilities';
-import { DEFAULT_CANVAS_SIZE } from '../../../shared/constants';
+import { DEFAULT_CANVAS_SIZE, TOOLTIP_PROPS } from '../../../shared/constants';
 
 function SaveAs() {
   const { frameCollection } = useContext(FramePanelContext);
@@ -37,11 +37,11 @@ function SaveAs() {
       <p>Save as:</p>
       <Tooltip
         content="(n)"
-        direction="down"
+        direction={TOOLTIP_PROPS.directions.down}
         className="save-as-tooltip"
-        arrowSize={5}
-        padding={5}
-        hoverDelay={0}
+        arrowSize={TOOLTIP_PROPS.arrowSize}
+        padding={TOOLTIP_PROPS.padding}
+        hoverDelay={TOOLTIP_PROPS.delay}
       >
         <button className="save-as-button" onClick={saveAsAPNG}>
           APNG
@@ -49,11 +49,11 @@ function SaveAs() {
       </Tooltip>
       <Tooltip
         content="(n)"
-        direction="down"
+        direction={TOOLTIP_PROPS.directions.down}
         className="save-as-tooltip"
-        arrowSize={5}
-        padding={5}
-        hoverDelay={0}
+        arrowSize={TOOLTIP_PROPS.arrowSize}
+        padding={TOOLTIP_PROPS.padding}
+        hoverDelay={TOOLTIP_PROPS.delay}
       >
         <button className="save-as-button" onClick={saveAsGIF}>
           GIF

@@ -4,7 +4,7 @@ import Tooltip from 'react-tooltip-lite';
 
 import './frameWindows.scss';
 
-import { DEFAULT_CANVAS_SIZE } from '../../../shared/constants';
+import { DEFAULT_CANVAS_SIZE, TOOLTIP_PROPS } from '../../../shared/constants';
 
 import FramePanelContext from '../../../context/framePanel/framePanelContext';
 import CanvasContext from '../../../context/canvas/canvasContext';
@@ -51,7 +51,7 @@ function FrameWindow({ imgData, index }) {
 
   const handleFrameDuplication = (e) => {
     e.stopPropagation();
-    canvasCtx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
+    // canvasCtx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
     duplicateFrame(index);
   };
 
@@ -107,10 +107,10 @@ function FrameWindow({ imgData, index }) {
         <div className="frame-delete__wrapper">
           <Tooltip
             content="Delete this frame"
-            direction="right"
-            arrowSize={5}
-            padding={5}
-            hoverDelay={0}
+            direction={TOOLTIP_PROPS.directions.right}
+            arrowSize={TOOLTIP_PROPS.arrowSize}
+            padding={TOOLTIP_PROPS.padding}
+            hoverDelay={TOOLTIP_PROPS.delay}
           >
             <div className="frame-delete" onClick={handleFrameDeletion}></div>
           </Tooltip>
@@ -120,10 +120,10 @@ function FrameWindow({ imgData, index }) {
       <div className="frame-duplicate__wrapper">
         <Tooltip
           content="Duplicate this frame"
-          direction="right"
-          arrowSize={5}
-          padding={5}
-          hoverDelay={0}
+          direction={TOOLTIP_PROPS.directions.right}
+          arrowSize={TOOLTIP_PROPS.arrowSize}
+          padding={TOOLTIP_PROPS.padding}
+          hoverDelay={TOOLTIP_PROPS.delay}
         >
           <div className="frame-duplicate" onClick={handleFrameDuplication}></div>
         </Tooltip>

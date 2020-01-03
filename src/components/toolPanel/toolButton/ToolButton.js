@@ -5,6 +5,7 @@ import Tooltip from 'react-tooltip-lite';
 import './toolButton.scss';
 
 import ToolPanelContext from '../../../context/toolPanel/toolPanelContext';
+import { TOOLTIP_PROPS } from '../../../shared/constants';
 
 function ToolButton({ tool, toolName }) {
   const { toolType, setToolType } = useContext(ToolPanelContext);
@@ -12,11 +13,11 @@ function ToolButton({ tool, toolName }) {
   return (
     <Tooltip
       content={toolName}
-      direction="right"
+      direction={TOOLTIP_PROPS.directions.right}
       className="tool-button__tooltip"
-      arrowSize={5}
-      padding={5}
-      hoverDelay={0}
+      arrowSize={TOOLTIP_PROPS.arrowSize}
+      padding={TOOLTIP_PROPS.padding}
+      hoverDelay={TOOLTIP_PROPS.delay}
     >
       <div
         className={`tool-button tool-button--${tool} ${

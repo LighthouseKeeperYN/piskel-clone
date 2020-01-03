@@ -21,3 +21,5 @@ export const DUPLICATE_FRAME = 'DUPLICATE_FRAME';
 export const MOVE_FRAME = 'MOVE_FRAME';
 export const SET_DRAGGING_FRAME = 'SET_DRAGGING_FRAME';
 export const CLEAR_FRAMES = 'CLEAR_FRAMES';
+
+export const SET_SHORTCUT = 'SET_SHORTCUT';

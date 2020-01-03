@@ -36,7 +36,7 @@ function Canvas() {
 
   const addEmptyFrameIfUserDataIsAbsent = (ctx) => {
     const userData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    if (!userData) addFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
+    if (!userData) addFrame(new ImageData(DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
   };
 
   const initCanvas = () => {
