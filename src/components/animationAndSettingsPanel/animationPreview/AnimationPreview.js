@@ -30,7 +30,7 @@ function AnimationPreview() {
 
   const toggleFullScreen = () => {
     if (document.fullscreenElement) document.exitFullscreen();
-    animationPreviewRef.current.requestFullscreen();
+    else animationPreviewRef.current.requestFullscreen();
   };
 
   useEffect(updateAnimationPreview, [frameCollection, frameRate]);
