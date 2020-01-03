@@ -28,6 +28,11 @@ function AnimationPreview() {
     animation = setInterval(animate, 1000 / frameRate);
   };
 
+  const toggleFullScreen = () => {
+    if (document.fullscreenElement) document.exitFullscreen();
+    animationPreviewRef.current.requestFullscreen();
+  };
+
   useEffect(updateAnimationPreview, [frameCollection, frameRate]);
 
   return (
@@ -36,6 +41,7 @@ function AnimationPreview() {
       width={DEFAULT_CANVAS_SIZE}
       height={DEFAULT_CANVAS_SIZE}
       ref={animationPreviewRef}
+      onClick={toggleFullScreen}
     ></canvas>
   );
 }
