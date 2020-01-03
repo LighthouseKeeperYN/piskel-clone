@@ -7,7 +7,7 @@ import {
   DEFAULT_CANVAS_SIZE,
   TRANSPARENCY_COLOR,
   BLACK_COLOR_REPLACEMENT,
-  LOCAL_STORAGE_KEY,
+  LOCAL_STORAGE_KEY
 } from '../../shared/constants';
 
 import applyToolToCanvas from './functionality/applyToolToCanvas';
@@ -27,7 +27,7 @@ function Canvas() {
     colorPrimary,
     colorSecondary,
     setColorPrimary,
-    setColorSecondary,
+    setColorSecondary
   } = useContext(ToolPanelContext);
 
   const [prevMousePosition, setPrevMousePosition] = useState(null);
@@ -44,7 +44,7 @@ function Canvas() {
     setCanvasCtx(ctx);
     addEmptyFrameIfUserDataIsAbsent(ctx);
     // eslint-disable-next-line
-  }
+  };
 
   useEffect(initCanvas, []);
 
@@ -68,7 +68,7 @@ function Canvas() {
       e,
       setColorPrimary,
       setColorSecondary,
-      isDrawing,
+      isDrawing
     });
 
     updateFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
@@ -93,12 +93,7 @@ function Canvas() {
         }}
         onContextMenu={(e) => e.preventDefault()}
       >
-        <EventListener
-          target="window"
-          onMouseUp={() => {
-            setDrawing(false);
-          }}
-        />
+        <EventListener target="window" onMouseUp={() => setDrawing(false)} />
       </canvas>
     </div>
   );

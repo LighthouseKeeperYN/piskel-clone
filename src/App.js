@@ -2,13 +2,12 @@ import React from 'react';
 import { Switch, Route, HashRouter } from 'react-router-dom';
 
 import 'normalize.css';
-import './base.scss';
 import './App.scss';
 
+import LocalStorageController from './components/LocalStorageController';
 import Header from './components/layout/header/Header';
-import Landing from './components/pages/landing/Landing';
-import Project from './components/pages/project/Project';
-import LocalStorageController from './LocalStorageController';
+import Landing from './pages/landing/Landing';
+import Project from './pages/project/Project';
 
 import ToolPanelState from './context/toolPanel/ToolPanelState';
 import AnimationAndSettingsPanelState from './context/animationAndSettingsPanel/AnimationAndSettingsPanelState';

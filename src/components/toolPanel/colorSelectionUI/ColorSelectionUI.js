@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from 'react';
-import { ChromePicker } from 'react-color';
+import { ChromePicker as ColorSelector } from 'react-color';
 import useOnClickOutside from 'use-onclickoutside';
 
 import './colorSelectionUI.scss';
@@ -22,6 +22,7 @@ function ColorSelectorUI() {
   } = useContext(ToolPanelContext);
 
   const ref = useRef(null);
+
   useOnClickOutside(ref, removeColorSelectors);
 
   return (
@@ -35,7 +36,7 @@ function ColorSelectorUI() {
 
         {colorSelectorPrimary && (
           <div className="color-selector" ref={ref}>
-            <ChromePicker
+            <ColorSelector
               disableAlpha={true}
               color={colorPrimary}
               onChangeComplete={(color) => setColorPrimary(color.hex)}
@@ -53,7 +54,7 @@ function ColorSelectorUI() {
 
         {colorSelectorSecondary && (
           <div className="color-selector color-selector--secondary" ref={ref}>
-            <ChromePicker
+            <ColorSelector
               disableAlpha={true}
               color={colorSecondary}
               onChangeComplete={(color) => setColorSecondary(color.hex)}

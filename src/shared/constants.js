@@ -1,6 +1,8 @@
 export const DEFAULT_PIXEL_SIZE = 16;
-export const DEFAULT_FRAME_RATE = 1;
 export const DEFAULT_CANVAS_SIZE = 512;
+export const DEFAULT_FRAME_RATE = 1;
+export const MIN_FRAME_RATE = 1;
+export const MAX_FRAME_RATE = 24;
 export const TRANSPARENCY_COLOR = '#000000';
 export const BLACK_COLOR_REPLACEMENT = '#000001';
 export const LOCAL_STORAGE_KEY = 'piskel-clone-lhk';

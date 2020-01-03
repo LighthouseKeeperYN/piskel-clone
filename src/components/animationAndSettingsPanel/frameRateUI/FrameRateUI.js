@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 
 import './frameRateUI.scss';
 
+import { MIN_FRAME_RATE, MAX_FRAME_RATE } from '../../../shared/constants';
+
 import AnimationAndSettingsPanelContext from '../../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
 
 function FrameRateUI() {
@@ -9,16 +11,17 @@ function FrameRateUI() {
 
   return (
     <div className="frame-rate-ui-wrapper">
-      <span>{frameRate}{' FPS'}</span>
+      <span>
+        {frameRate}
+        {' FPS'}
+      </span>
       <input
-      className="frame-rate-ui-input"
+        className="frame-rate-ui-input"
         type="range"
-        min={1}
-        max={24}
+        min={MIN_FRAME_RATE}
+        max={MAX_FRAME_RATE}
         value={frameRate}
-        onChange={(e) => {
-          setFrameRate(+e.target.value);
-        }}
+        onChange={(e) => setFrameRate(+e.target.value)}
       ></input>
     </div>
   );

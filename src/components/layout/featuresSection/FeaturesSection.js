@@ -7,7 +7,7 @@ const featureImgs = [
   require('./assets/feature-2.png'),
   require('./assets/feature-3.png'),
   require('./assets/feature-4.png'),
-  require('./assets/feature-5.png')
+  require('./assets/feature-5.png'),
 ];
 
 function FeaturesSection() {

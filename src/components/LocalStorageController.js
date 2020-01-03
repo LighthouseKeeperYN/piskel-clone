@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import { useBeforeunload } from 'react-beforeunload';
 
-import { DEFAULT_CANVAS_SIZE, LOCAL_STORAGE_KEY } from './shared/constants';
+import { DEFAULT_CANVAS_SIZE, LOCAL_STORAGE_KEY } from '../shared/constants';
 
-import FramePanelContext from './context/framePanel/framePanelContext';
-import ToolPanelContext from './context/toolPanel/toolPanelContext';
-import AnimationAndSettingsPanelContext from './context/animationAndSettingsPanel/animationAndSettingsPanelContext';
+import FramePanelContext from '../context/framePanel/framePanelContext';
+import ToolPanelContext from '../context/toolPanel/toolPanelContext';
+import AnimationAndSettingsPanelContext from '../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
 
 function LocalStorageDownloader() {
   const { addFrame, frameCollection, changeIndex, currentFrame } = useContext(FramePanelContext);
