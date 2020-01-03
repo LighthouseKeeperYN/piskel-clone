@@ -43,10 +43,6 @@
 
 .frame-delete,
 .frame-duplicate {
-  position: absolute;
-  right: 0.6rem;
-  z-index: 10;
-
   visibility: hidden;
   width: 4rem;
   height: 4rem;
@@ -55,18 +51,31 @@
   &:hover {
     background-color: #444;
   }
+
+  &__wrapper {
+    position: absolute;
+    right: 0.6rem;
+    z-index: 10;
+    pointer-events: none;
+  }
 }
 
 .frame-delete {
-  top: 0.6rem;
   border-radius: 0 0 0 0.4rem;
   background: url(./icons/delete-icon.png) center no-repeat;
+
+  &__wrapper {
+    top: 0.6rem;
+  }
 }
 
 .frame-duplicate {
-  bottom: 0.6rem;
   border-radius: 0.4rem 0 0 0;
   background: url(./icons/duplicate-icon.png) center no-repeat;
+
+  &__wrapper {
+    bottom: 0.6rem;
+  }
 }
 
 .frame-number {

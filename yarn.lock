@@ -2716,6 +2716,11 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+classnames@^2.2.5:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+  integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
+
 clean-css@4.2.x:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.1.tgz#2d411ef76b8569b6d0c84068dabe85b0aa5e5c17"
@@ -6891,7 +6896,7 @@ minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
   resolved "https://registry.yarnpkg.com/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
   integrity sha1-9sAMHAsIIkblxNmd+4x8CDsrWCo=
 
-minimatch@3.0.4, minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.4, minimatch@~3.0.2:
+minimatch@3.0.4, minimatch@^3.0.0, minimatch@^3.0.4, minimatch@~3.0.2:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   integrity sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==
@@ -7103,13 +7108,6 @@ no-case@^2.2.0:
   integrity sha512-rmTZ9kz+f3rCvK2TD1Ue/oZlns7OGoIWP4fc3llxxRXlOkHKoWPPWJOfFYpITabSow43QJbRIoHQXtt10VldyQ==
   dependencies:
     lower-case "^1.1.1"
-
-node-dir@^0.1.17:
-  version "0.1.17"
-  resolved "https://registry.yarnpkg.com/node-dir/-/node-dir-0.1.17.tgz#5f5665d93351335caabef8f1c554516cf5f1e4e5"
-  integrity sha1-X1Zl2TNRM1yqvvjxxVRRbPXx5OU=
-  dependencies:
-    minimatch "^3.0.2"
 
 node-forge@0.9.0:
   version "0.9.0"
@@ -8674,7 +8672,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.3"
 
-prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -9019,6 +9017,21 @@ react-scripts@3.3.0:
   optionalDependencies:
     fsevents "2.1.2"
 
+react-tooltip-lite@^1.11.1:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/react-tooltip-lite/-/react-tooltip-lite-1.11.1.tgz#d529679a5e9a2765e55a180a0fb4d2f3c813e356"
+  integrity sha512-l+iVOFA4gu4Fydv8aAQ5q7E3x+TL4tQLudGlbTRgWlURVaYZusM8rLDO9axymzcB4u38g/ouscNqaBgjezFEjQ==
+  dependencies:
+    prop-types "^15.5.8"
+
+react-tooltip@^3.11.1:
+  version "3.11.1"
+  resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-3.11.1.tgz#7b4ce48ed26a46e996662b19a2afebbfd483513b"
+  integrity sha512-YCMVlEC2KuHIzOQhPplTK5jmBBwoL+PYJJdJKXj7M/h7oevupd/QSVq6z5U7/ehIGXyHsAqvwpdxexDfyQ0o3A==
+  dependencies:
+    classnames "^2.2.5"
+    prop-types "^15.6.0"
+
 react@^16.12.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
@@ -9334,13 +9347,6 @@ request@^2.87.0, request@^2.88.0:
     tough-cookie "~2.4.3"
     tunnel-agent "^0.6.0"
     uuid "^3.3.2"
-
-require-context@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/require-context/-/require-context-1.1.0.tgz#f77e60dddb0a296946e6915bf580c73dbe75ab4d"
-  integrity sha512-nfYSy3Q9W3W1fCo0nief19bDq216IGY9+wOUsmCWAJ5jssyak0r110rvqIj4KJYoUYDxLDaeA66ONOYy4PJEUw==
-  dependencies:
-    node-dir "^0.1.17"
 
 require-directory@^2.1.1:
   version "2.1.1"

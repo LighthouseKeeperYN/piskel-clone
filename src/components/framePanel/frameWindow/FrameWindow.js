@@ -1,5 +1,6 @@
 import React, { useRef, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import Tooltip from 'react-tooltip-lite';
 
 import './frameWindows.scss';
 
@@ -19,7 +20,7 @@ function FrameWindow({ imgData, index }) {
     deleteFrame,
     duplicateFrame,
     moveFrame,
-    setDraggingFrame,
+    setDraggingFrame
   } = useContext(FramePanelContext);
 
   const { canvasCtx } = useContext(CanvasContext);
@@ -40,12 +41,6 @@ function FrameWindow({ imgData, index }) {
   useEffect(putCanvasOnFrame, [imgData]);
   useEffect(putFrameOnCanvas, [frameCollection.length, currentFrame, canvasCtx]);
 
-  // const handleFrameSelection = () => {
-  //   // canvasCtx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
-  //   // canvasCtx.drawImage(frameRef.current, 0, 0);
-  //   changeIndex(index);
-  // };
-
   // ++++++++++ EVENTS ++++++++++
 
   const handleFrameDeletion = (e) => {
@@ -63,7 +58,7 @@ function FrameWindow({ imgData, index }) {
   const markLandingZone = (e) => {
     e.stopPropagation();
     e.currentTarget.classList.add(
-      `frame-window--dragged-over-${draggingFrame > index ? 'top' : 'bottom'}`,
+      `frame-window--dragged-over-${draggingFrame > index ? 'top' : 'bottom'}`
     );
   };
 
@@ -71,7 +66,7 @@ function FrameWindow({ imgData, index }) {
     e.stopPropagation();
     e.currentTarget.classList.remove(
       'frame-window--dragged-over-top',
-      'frame-window--dragged-over-bottom',
+      'frame-window--dragged-over-bottom'
     );
   };
 
@@ -83,7 +78,7 @@ function FrameWindow({ imgData, index }) {
   const moveFrameToNewPosition = (e) => {
     e.currentTarget.classList.remove(
       'frame-window--dragged-over-top',
-      'frame-window--dragged-over-bottom',
+      'frame-window--dragged-over-bottom'
     );
     moveFrame(draggingFrame, index);
   };
@@ -109,10 +104,30 @@ function FrameWindow({ imgData, index }) {
       <span className="frame-number">{index + 1}</span>
 
       {frameCollection.length > 1 && (
-        <div className="frame-delete" onClick={handleFrameDeletion}></div>
+        <div className="frame-delete__wrapper">
+          <Tooltip
+            content="Delete this frame"
+            direction="right"
+            arrowSize={5}
+            padding={5}
+            hoverDelay={0}
+          >
+            <div className="frame-delete" onClick={handleFrameDeletion}></div>
+          </Tooltip>
+        </div>
       )}
 
-      <div className="frame-duplicate" onClick={handleFrameDuplication}></div>
+      <div className="frame-duplicate__wrapper">
+        <Tooltip
+          content="Duplicate this frame"
+          direction="right"
+          arrowSize={5}
+          padding={5}
+          hoverDelay={0}
+        >
+          <div className="frame-duplicate" onClick={handleFrameDuplication}></div>
+        </Tooltip>
+      </div>
 
       <canvas
         className="frame-canvas"
@@ -126,7 +141,7 @@ function FrameWindow({ imgData, index }) {
 
 FrameWindow.propTypes = {
   imgData: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired
 };
 
 export default FrameWindow;

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { saveAs as saveImage } from 'file-saver';
+import Tooltip from 'react-tooltip-lite';
 
 import './saveAsUI.scss';
 
@@ -17,7 +18,7 @@ function SaveAs() {
     const image = imageDataCollectionToAPNG({
       frameCollection,
       size: DEFAULT_CANVAS_SIZE,
-      frameRate,
+      frameRate
     });
     saveImage(image, `${new Date().getTime()}.png`);
   };
@@ -26,7 +27,7 @@ function SaveAs() {
     const image = imageDataCollectionToGIF({
       frameCollection,
       size: DEFAULT_CANVAS_SIZE,
-      frameRate,
+      frameRate
     });
     saveImage(image, `${new Date().getTime()}.gif`);
   };
@@ -34,12 +35,30 @@ function SaveAs() {
   return (
     <div className="save-as-wrapper">
       <p>Save as:</p>
-      <button className="save-as-button" onClick={saveAsAPNG}>
-        APNG
-      </button>
-      <button className="save-as-button" onClick={saveAsGIF}>
-        GIF
-      </button>
+      <Tooltip
+        content="(n)"
+        direction="down"
+        className="save-as-tooltip"
+        arrowSize={5}
+        padding={5}
+        hoverDelay={0}
+      >
+        <button className="save-as-button" onClick={saveAsAPNG}>
+          APNG
+        </button>
+      </Tooltip>
+      <Tooltip
+        content="(n)"
+        direction="down"
+        className="save-as-tooltip"
+        arrowSize={5}
+        padding={5}
+        hoverDelay={0}
+      >
+        <button className="save-as-button" onClick={saveAsGIF}>
+          GIF
+        </button>
+      </Tooltip>
     </div>
   );
 }

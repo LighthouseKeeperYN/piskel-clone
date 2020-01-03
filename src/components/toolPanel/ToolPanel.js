@@ -2,7 +2,7 @@ import React from 'react';
 
 import './toolPanel.scss';
 
-import { TOOL_TYPE } from '../../shared/constants';
+import { TOOL_TYPES, TOOL_NAMES } from '../../shared/constants';
 
 import StrokeSizeUI from './strokeSizeUI/StrokeSizeUI';
 import ToolButton from './toolButton/ToolButton';
@@ -15,8 +15,8 @@ function ToolPanel() {
         <StrokeSizeUI />
       </div>
       <div className="tool-panel__tools">
-        {Object.values(TOOL_TYPE).map((tool) => (
-          <ToolButton key={`tool-${tool}`} tool={tool} />
+        {Object.values(TOOL_TYPES).map((tool) => (
+          <ToolButton key={`tool-${tool}`} tool={tool} toolName={TOOL_NAMES[tool]} />
         ))}
       </div>
       <div className="tool-panel__colors">

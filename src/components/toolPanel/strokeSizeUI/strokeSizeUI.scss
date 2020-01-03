@@ -1,3 +1,18 @@
+.stroke-size-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+
+  padding: 0.1rem;
+  height: 2rem;
+
+  pointer-events: all;
+
+  &__tooltip {
+    pointer-events: none;
+    text-align: center;
+  }
+}
+
 .stroke-size {
   display: flex;
   justify-content: center;

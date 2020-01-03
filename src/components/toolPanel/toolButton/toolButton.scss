@@ -3,6 +3,7 @@
   height: 4rem;
 
   cursor: pointer;
+  pointer-events: all;
 
   &:hover {
     background-color: #888;
@@ -33,6 +34,10 @@
   }
 
   &--selected {
-    border: .4rem solid gold;
+    border: 0.4rem solid gold;
+  }
+
+  &__tooltip {
+    pointer-events: none;
   }
 }

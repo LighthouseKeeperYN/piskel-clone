@@ -65,3 +65,19 @@ input[type='search']::-webkit-search-results-decoration {
   min-height: calc(100vh - 3.6rem);
   width: 100%;
 }
+
+// TOOLTIP
+
+.react-tooltip-lite {
+  background-color: #2d2d2d;
+  border-radius: .4rem;
+
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  border: 1px solid #666;
+}
+
+.react-tooltip-lite-arrow {
+  border-color: #666;
+}

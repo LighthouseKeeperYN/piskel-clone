@@ -1,4 +1,5 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
+import Tooltip from 'react-tooltip-lite';
 
 import './strokeSizeUI.scss';
 
@@ -10,17 +11,26 @@ function StrokeSizeUI() {
   const { strokeSize, setStrokeSize } = useContext(ToolPanelContext);
 
   return (
-    <Fragment>
-      {Object.values(STROKE_SCALE).map((scale) => (
-        <div
-          key={`stroke-size-${scale}`}
-          className={`stroke-size stroke-size--${scale} ${
-            strokeSize === scale ? 'stroke-size--selected' : ''
-          }`}
-          onClick={() => setStrokeSize(scale)}
-        ></div>
-      ))}
-    </Fragment>
+    <Tooltip
+      content="Pen size"
+      direction="up"
+      className="stroke-size-wrapper__tooltip"
+      arrowSize={5}
+      padding={5}
+      hoverDelay={0}
+    >
+      <div className="stroke-size-wrapper">
+        {Object.values(STROKE_SCALE).map((scale) => (
+          <div
+            key={`stroke-size-${scale}`}
+            className={`stroke-size stroke-size--${scale} ${
+              strokeSize === scale ? 'stroke-size--selected' : ''
+            }`}
+            onClick={() => setStrokeSize(scale)}
+          ></div>
+        ))}
+      </div>
+    </Tooltip>
   );
 }
 

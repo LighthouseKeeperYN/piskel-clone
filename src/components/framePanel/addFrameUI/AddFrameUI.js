@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Tooltip from 'react-tooltip-lite';
 
 import './addFrameUI.scss';
 
@@ -17,10 +18,19 @@ function AddFrameUI() {
   };
 
   return (
-    <div className="add-frame-ui" onClick={handleFrameAddition}>
-      <span className="add-frame-ui__icon">+</span>
-      <span className="add-frame-ui__text">Add new frame</span>
-    </div>
+    <Tooltip
+      content="(n)"
+      direction="right"
+      className="add-frame-ui__tooltip"
+      arrowSize={5}
+      padding={5}
+      hoverDelay={0}
+    >
+      <div className="add-frame-ui" onClick={handleFrameAddition}>
+        <span className="add-frame-ui__icon">+</span>
+        <span className="add-frame-ui__text">Add new frame</span>
+      </div>
+    </Tooltip>
   );
 }
 

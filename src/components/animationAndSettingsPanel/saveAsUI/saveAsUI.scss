@@ -12,10 +12,15 @@
   height: 3rem;
   border-radius: 0.2rem;
   background-color: gold;
+  pointer-events: all;
 
   transition: all 0.4s;
 
   &:hover {
     background-color: white;
   }
+}
+
+.save-as-tooltip {
+  pointer-events: none;
 }

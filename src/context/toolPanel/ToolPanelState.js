@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 
-import { STROKE_SCALE, TOOL_TYPE, DEFAULT_COLORS } from '../../shared/constants';
+import { STROKE_SCALE, TOOL_TYPES, DEFAULT_COLORS } from '../../shared/constants';
 import {
   SET_STROKE_SIZE,
   SET_TOOL_TYPE,
@@ -18,7 +18,7 @@ import ToolPanelReducer from './toolPanelReducer';
 const ToolPanelState = (props) => {
   const initialState = {
     strokeSize: STROKE_SCALE.x1,
-    toolType: TOOL_TYPE.pen,
+    toolType: TOOL_TYPES.pen,
     colorPrimary: DEFAULT_COLORS.primary,
     colorSecondary: DEFAULT_COLORS.secondary,
     colorSelectorPrimary: false,

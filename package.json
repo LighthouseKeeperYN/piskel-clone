@@ -20,6 +20,8 @@
     "react-interval": "^2.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
+    "react-tooltip": "^3.11.1",
+    "react-tooltip-lite": "^1.11.1",
     "surge": "^0.21.3",
     "upng-js": "^2.1.0",
     "use-onclickoutside": "^0.3.1"

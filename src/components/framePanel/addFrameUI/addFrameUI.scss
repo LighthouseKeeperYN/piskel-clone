@@ -10,11 +10,16 @@
   border-radius: 0.4rem;
   border: #888 solid 3px;
   background-color: #222;
-
   cursor: pointer;
+  pointer-events: all;
 
   &:hover {
     border-color: gold;
+  }
+
+  &__tooltip {
+    pointer-events: none;
+    text-align: center;
   }
 
   &__icon {
