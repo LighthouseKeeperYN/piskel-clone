@@ -13,7 +13,7 @@ export const TOOL_TYPES = {
   bucket: 'bucket',
   bucketAll: 'bucket-all',
   eraser: 'eraser',
-  colorPicker: 'color-picker'
+  colorPicker: 'color-picker',
 };
 export const TOOL_NAMES = {
   [TOOL_TYPES.pen]: 'Pen tool',
@@ -21,16 +21,16 @@ export const TOOL_NAMES = {
   [TOOL_TYPES.bucket]: 'Paint bucket tool',
   [TOOL_TYPES.bucketAll]: 'Pain all pixels of the same color',
   [TOOL_TYPES.eraser]: 'Eraser Tool',
-  [TOOL_TYPES.colorPicker]: 'Color picker'
+  [TOOL_TYPES.colorPicker]: 'Color picker',
 };
 export const DEFAULT_COLORS = {
   primary: '#ffffff',
-  secondary: '#000000'
+  secondary: '#000000',
 };
 export const PIXEL_SIZES = {
   16: 16,
   8: 8,
-  4: 4
+  4: 4,
 };
 export const TOOLTIP_PROPS = {
   delay: 0,
@@ -40,8 +40,8 @@ export const TOOLTIP_PROPS = {
     left: 'left',
     up: 'up',
     right: 'right',
-    down: 'down'
-  }
+    down: 'down',
+  },
 };
 export const SHORTCUT_ACTIONS = {
   strokeSizeUp: 'strokeSizeUp',
@@ -52,5 +52,5 @@ export const SHORTCUT_ACTIONS = {
   deleteCurrentFrame: 'deleteCurrentFrame',
   addNewFrame: 'addNewFrame',
   saveAsAPNG: 'saveAsAPNG',
-  saveAsGIF: 'saveAsGIF'
+  saveAsGIF: 'saveAsGIF',
 };

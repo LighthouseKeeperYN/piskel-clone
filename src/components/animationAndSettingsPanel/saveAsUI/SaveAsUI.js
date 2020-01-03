@@ -11,7 +11,7 @@ import AnimationAndSettingsPanelContext from '../../../context/animationAndSetti
 import {
   imageDataCollectionToAPNG,
   imageDataCollectionToGIF,
-  tooltipShortcutTemplate
+  tooltipShortcutTemplate,
 } from '../../../shared/utilities';
 import { DEFAULT_CANVAS_SIZE, TOOLTIP_PROPS, SHORTCUT_ACTIONS } from '../../../shared/constants';
 
@@ -24,7 +24,7 @@ function SaveAs() {
     const image = imageDataCollectionToAPNG({
       frameCollection,
       size: DEFAULT_CANVAS_SIZE,
-      frameRate
+      frameRate,
     });
     saveImage(image, `${new Date().getTime()}.png`);
   };
@@ -33,7 +33,7 @@ function SaveAs() {
     const image = imageDataCollectionToGIF({
       frameCollection,
       size: DEFAULT_CANVAS_SIZE,
-      frameRate
+      frameRate,
     });
     saveImage(image, `${new Date().getTime()}.gif`);
   };

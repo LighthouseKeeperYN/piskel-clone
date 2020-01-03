@@ -19,52 +19,52 @@ const ShortcutsState = (props) => {
         key: ']',
         ctrlKey: false,
         shiftKey: false,
-        altKey: false
+        altKey: false,
       },
       [SHORTCUT_ACTIONS.strokeSizeDown]: {
         key: '[',
         ctrlKey: false,
         shiftKey: false,
-        altKey: false
+        altKey: false,
       },
       [SHORTCUT_ACTIONS.previousFrame]: {
         key: 'ArrowUp',
         ctrlKey: false,
         shiftKey: false,
-        altKey: false
+        altKey: false,
       },
       [SHORTCUT_ACTIONS.nextFrame]: {
         key: 'ArrowDown',
         ctrlKey: false,
         shiftKey: false,
-        altKey: false
+        altKey: false,
       },
       [SHORTCUT_ACTIONS.copyCurrentFrame]: {
         key: 'ArrowDown',
         ctrlKey: false,
         shiftKey: true,
-        altKey: true
+        altKey: true,
       },
       [SHORTCUT_ACTIONS.deleteCurrentFrame]: {
         key: 'Delete',
         ctrlKey: false,
         shiftKey: false,
-        altKey: false
+        altKey: false,
       },
       [SHORTCUT_ACTIONS.addNewFrame]: {
         key: 'n',
         ctrlKey: false,
         shiftKey: false,
-        altKey: false
+        altKey: false,
       },
       [SHORTCUT_ACTIONS.saveAsAPNG]: {
         key: 'p',
         ctrlKey: false,
         shiftKey: true,
-        altKey: false
+        altKey: false,
       },
-      [SHORTCUT_ACTIONS.saveAsGIF]: { key: 'g', ctrlKey: false, shiftKey: true, altKey: false }
-    }
+      [SHORTCUT_ACTIONS.saveAsGIF]: { key: 'g', ctrlKey: false, shiftKey: true, altKey: false },
+    },
   };
 
   const [state, dispatch] = useReducer(ShortcutsReducer, initialState);
@@ -72,7 +72,7 @@ const ShortcutsState = (props) => {
   const setShortcut = (action, key, ctrlKey, shiftKey, altKey) => {
     dispatch({
       type: SET_SHORTCUT,
-      payload: { action, key: { key, ctrlKey, shiftKey, altKey } }
+      payload: { action, key: { key, ctrlKey, shiftKey, altKey } },
     });
   };
 
@@ -80,7 +80,7 @@ const ShortcutsState = (props) => {
     <ShortcutsContext.Provider
       value={{
         shortcuts: state.shortcuts,
-        setShortcut
+        setShortcut,
       }}
     >
       {props.children}

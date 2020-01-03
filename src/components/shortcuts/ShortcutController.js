@@ -11,13 +11,13 @@ import {
   TOOL_TYPES,
   SHORTCUT_ACTIONS,
   STROKE_SCALES,
-  DEFAULT_CANVAS_SIZE
+  DEFAULT_CANVAS_SIZE,
 } from '../../shared/constants';
 
 import {
   isObjectEqual,
   imageDataCollectionToAPNG,
-  imageDataCollectionToGIF
+  imageDataCollectionToGIF,
 } from '../../shared/utilities';
 
 function ShortcutController() {
@@ -30,16 +30,15 @@ function ShortcutController() {
     changeIndex,
     duplicateFrame,
     deleteFrame,
-    addFrame
+    addFrame,
   } = useContext(FramePanelContext);
 
   const getAction = (e) => {
-    console.log(e);
     const keyPressed = {
       key: e.key.length === 1 ? e.key.toLowerCase() : e.key,
       ctrlKey: e.ctrlKey,
       shiftKey: e.shiftKey,
-      altKey: e.altKey
+      altKey: e.altKey,
     };
 
     let action = null;
@@ -98,7 +97,7 @@ function ShortcutController() {
         img = imageDataCollectionToAPNG({
           frameCollection,
           size: DEFAULT_CANVAS_SIZE,
-          frameRate
+          frameRate,
         });
         saveImage(img, `${new Date().getTime()}.png`);
         break;
@@ -106,12 +105,11 @@ function ShortcutController() {
         img = imageDataCollectionToGIF({
           frameCollection,
           size: DEFAULT_CANVAS_SIZE,
-          frameRate
+          frameRate,
         });
         saveImage(img, `${new Date().getTime()}.gif`);
         break;
       default:
-        return;
     }
   };
 

@@ -20,7 +20,7 @@ function ToolButton({ tool, toolName }) {
         <span key="toolName">{`${toolName} `}</span>,
         <span className="tooltip-shortcut" key="tooltip-shortcut">
           {tooltipShortcutTemplate(shortcuts, tool)}
-        </span>
+        </span>,
       ]}
       direction={TOOLTIP_PROPS.directions.right}
       className="tool-button__tooltip"
@@ -42,5 +42,5 @@ export default ToolButton;
 
 ToolButton.propTypes = {
   tool: PropTypes.string.isRequired,
-  toolName: PropTypes.string.isRequired
+  toolName: PropTypes.string.isRequired,
 };

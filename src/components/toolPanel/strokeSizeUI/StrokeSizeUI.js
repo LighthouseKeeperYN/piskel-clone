@@ -26,7 +26,7 @@ function StrokeSizeUI() {
           <span className="tooltip-shortcut">
             {tooltipShortcutTemplate(shortcuts, SHORTCUT_ACTIONS.strokeSizeUp)}
           </span>
-        </p>
+        </p>,
       ]}
       direction={TOOLTIP_PROPS.directions.up}
       className="stroke-size-wrapper__tooltip"

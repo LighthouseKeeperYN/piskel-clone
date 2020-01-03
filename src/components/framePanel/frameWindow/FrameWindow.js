@@ -20,7 +20,7 @@ function FrameWindow({ imgData, index }) {
     draggingFrame,
     changeIndex,
     moveFrame,
-    setDraggingFrame
+    setDraggingFrame,
   } = useContext(FramePanelContext);
 
   const { canvasCtx } = useContext(CanvasContext);
@@ -44,7 +44,7 @@ function FrameWindow({ imgData, index }) {
   const markLandingZone = (e) => {
     e.stopPropagation();
     e.currentTarget.classList.add(
-      `frame-window--dragged-over-${draggingFrame > index ? 'top' : 'bottom'}`
+      `frame-window--dragged-over-${draggingFrame > index ? 'top' : 'bottom'}`,
     );
   };
 
@@ -52,7 +52,7 @@ function FrameWindow({ imgData, index }) {
     e.stopPropagation();
     e.currentTarget.classList.remove(
       'frame-window--dragged-over-top',
-      'frame-window--dragged-over-bottom'
+      'frame-window--dragged-over-bottom',
     );
   };
 
@@ -64,7 +64,7 @@ function FrameWindow({ imgData, index }) {
   const moveFrameToNewPosition = (e) => {
     e.currentTarget.classList.remove(
       'frame-window--dragged-over-top',
-      'frame-window--dragged-over-bottom'
+      'frame-window--dragged-over-bottom',
     );
     moveFrame(draggingFrame, index);
   };
@@ -102,7 +102,7 @@ function FrameWindow({ imgData, index }) {
 
 FrameWindow.propTypes = {
   imgData: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired
+  index: PropTypes.number.isRequired,
 };
 
 export default FrameWindow;

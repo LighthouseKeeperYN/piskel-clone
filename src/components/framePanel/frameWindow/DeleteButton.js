@@ -28,7 +28,7 @@ function CopyButton({ index }) {
           <span key="copyFrame">Delete this frame </span>,
           <span className="tooltip-shortcut" key="tooltip-shortcut">
             {tooltipShortcutTemplate(shortcuts, SHORTCUT_ACTIONS.deleteCurrentFrame)}
-          </span>
+          </span>,
         ]}
         direction={TOOLTIP_PROPS.directions.right}
         arrowSize={TOOLTIP_PROPS.arrowSize}
@@ -42,7 +42,7 @@ function CopyButton({ index }) {
 }
 
 CopyButton.propTypes = {
-  index: PropTypes.number.isRequired
+  index: PropTypes.number.isRequired,
 };
 
 export default CopyButton;

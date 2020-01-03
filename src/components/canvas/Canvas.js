@@ -7,7 +7,7 @@ import {
   DEFAULT_CANVAS_SIZE,
   TRANSPARENCY_COLOR,
   BLACK_COLOR_REPLACEMENT,
-  LOCAL_STORAGE_KEY
+  LOCAL_STORAGE_KEY,
 } from '../../shared/constants';
 
 import applyToolToCanvas from './functionality/applyToolToCanvas';
@@ -27,14 +27,14 @@ function Canvas() {
     colorPrimary,
     colorSecondary,
     setColorPrimary,
-    setColorSecondary
+    setColorSecondary,
   } = useContext(ToolPanelContext);
 
   const [prevMousePosition, setPrevMousePosition] = useState(null);
 
   const canvasRef = useRef(null);
 
-  const addEmptyFrameIfUserDataIsAbsent = (ctx) => {
+  const addEmptyFrameIfUserDataIsAbsent = () => {
     const userData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     if (!userData) addFrame(new ImageData(DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
   };
@@ -42,7 +42,7 @@ function Canvas() {
   const initCanvas = () => {
     const ctx = canvasRef.current.getContext('2d');
     setCanvasCtx(ctx);
-    addEmptyFrameIfUserDataIsAbsent(ctx);
+    addEmptyFrameIfUserDataIsAbsent();
     // eslint-disable-next-line
   };
 
@@ -68,7 +68,7 @@ function Canvas() {
       e,
       setColorPrimary,
       setColorSecondary,
-      isDrawing
+      isDrawing,
     });
 
     updateFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));

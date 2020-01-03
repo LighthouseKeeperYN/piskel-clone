@@ -82,8 +82,6 @@ function LocalStorageDownloader() {
 
   useEffect(() => {
     window.addEventListener('load', () => downloadDataFromLocalStorage(canvasRef.current));
-    // const userData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    // if (userData) downloadDataFromLocalStorage(userData, canvasRef.current);
     // eslint-disable-next-line
   }, []);
 
