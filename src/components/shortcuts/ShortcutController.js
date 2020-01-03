@@ -34,11 +34,18 @@ function ShortcutController() {
   } = useContext(FramePanelContext);
 
   const getAction = (e) => {
-    const keyPressed = { code: e.code, ctrlKey: e.ctrlKey, shiftKey: e.shiftKey, altKey: e.altKey };
+    console.log(e);
+    const keyPressed = {
+      key: e.key.length === 1 ? e.key.toLowerCase() : e.key,
+      ctrlKey: e.ctrlKey,
+      shiftKey: e.shiftKey,
+      altKey: e.altKey
+    };
+
     let action = null;
 
-    Object.entries(shortcuts).forEach(([key, value]) => {
-      if (isObjectEqual(value, keyPressed)) action = key;
+    Object.entries(shortcuts).forEach(([actionKey, actionObj]) => {
+      if (isObjectEqual(actionObj, keyPressed)) action = actionKey;
     });
 
     return action;
@@ -82,7 +89,7 @@ function ShortcutController() {
         duplicateFrame(currentFrame);
         break;
       case SHORTCUT_ACTIONS.deleteCurrentFrame:
-        deleteFrame(currentFrame);
+        if (frameCollection.length > 1) deleteFrame(currentFrame);
         break;
       case SHORTCUT_ACTIONS.addNewFrame:
         addFrame(new ImageData(DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));

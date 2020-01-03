@@ -5,14 +5,20 @@ import Tooltip from 'react-tooltip-lite';
 import './saveAsUI.scss';
 
 import FramePanelContext from '../../../context/framePanel/framePanelContext';
+import ShortcutsContext from '../../../context/shortcuts/shortcutsContext';
 import AnimationAndSettingsPanelContext from '../../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
 
-import { imageDataCollectionToAPNG, imageDataCollectionToGIF } from '../../../shared/utilities';
-import { DEFAULT_CANVAS_SIZE, TOOLTIP_PROPS } from '../../../shared/constants';
+import {
+  imageDataCollectionToAPNG,
+  imageDataCollectionToGIF,
+  tooltipShortcutTemplate
+} from '../../../shared/utilities';
+import { DEFAULT_CANVAS_SIZE, TOOLTIP_PROPS, SHORTCUT_ACTIONS } from '../../../shared/constants';
 
 function SaveAs() {
   const { frameCollection } = useContext(FramePanelContext);
   const { frameRate } = useContext(AnimationAndSettingsPanelContext);
+  const { shortcuts } = useContext(ShortcutsContext);
 
   const saveAsAPNG = () => {
     const image = imageDataCollectionToAPNG({
@@ -36,7 +42,11 @@ function SaveAs() {
     <div className="save-as-wrapper">
       <p>Save as:</p>
       <Tooltip
-        content="(n)"
+        content={
+          <span className="tooltip-shortcut">
+            {tooltipShortcutTemplate(shortcuts, SHORTCUT_ACTIONS.saveAsAPNG)}
+          </span>
+        }
         direction={TOOLTIP_PROPS.directions.down}
         className="save-as-tooltip"
         arrowSize={TOOLTIP_PROPS.arrowSize}
@@ -48,7 +58,11 @@ function SaveAs() {
         </button>
       </Tooltip>
       <Tooltip
-        content="(n)"
+        content={
+          <span className="tooltip-shortcut">
+            {tooltipShortcutTemplate(shortcuts, SHORTCUT_ACTIONS.saveAsGIF)}
+          </span>
+        }
         direction={TOOLTIP_PROPS.directions.down}
         className="save-as-tooltip"
         arrowSize={TOOLTIP_PROPS.arrowSize}

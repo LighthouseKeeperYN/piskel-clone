@@ -5,14 +5,23 @@ import Tooltip from 'react-tooltip-lite';
 import './toolButton.scss';
 
 import ToolPanelContext from '../../../context/toolPanel/toolPanelContext';
+import ShortcutsContext from '../../../context/shortcuts/shortcutsContext';
+
 import { TOOLTIP_PROPS } from '../../../shared/constants';
+import { tooltipShortcutTemplate } from '../../../shared/utilities';
 
 function ToolButton({ tool, toolName }) {
   const { toolType, setToolType } = useContext(ToolPanelContext);
+  const { shortcuts } = useContext(ShortcutsContext);
 
   return (
     <Tooltip
-      content={toolName}
+      content={[
+        <span key="toolName">{`${toolName} `}</span>,
+        <span className="tooltip-shortcut" key="tooltip-shortcut">
+          {tooltipShortcutTemplate(shortcuts, tool)}
+        </span>
+      ]}
       direction={TOOLTIP_PROPS.directions.right}
       className="tool-button__tooltip"
       arrowSize={TOOLTIP_PROPS.arrowSize}

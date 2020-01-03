@@ -3,12 +3,15 @@ import Tooltip from 'react-tooltip-lite';
 
 import './addFrameUI.scss';
 
-import { DEFAULT_CANVAS_SIZE, TOOLTIP_PROPS } from '../../../shared/constants';
+import { DEFAULT_CANVAS_SIZE, TOOLTIP_PROPS, SHORTCUT_ACTIONS } from '../../../shared/constants';
+import { tooltipShortcutTemplate } from '../../../shared/utilities';
 
 import FramePanelContext from '../../../context/framePanel/framePanelContext';
+import ShortcutsContext from '../../../context/shortcuts/shortcutsContext';
 
 function AddFrameUI() {
   const { addFrame } = useContext(FramePanelContext);
+  const { shortcuts } = useContext(ShortcutsContext);
 
   const handleFrameAddition = () => {
     addFrame(new ImageData(DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
@@ -16,7 +19,11 @@ function AddFrameUI() {
 
   return (
     <Tooltip
-      content="(n)"
+      content={
+        <span className="tooltip-shortcut">
+          {tooltipShortcutTemplate(shortcuts, SHORTCUT_ACTIONS.addNewFrame)}
+        </span>
+      }
       direction={TOOLTIP_PROPS.directions.right}
       className="add-frame-ui__tooltip"
       arrowSize={TOOLTIP_PROPS.arrowSize}

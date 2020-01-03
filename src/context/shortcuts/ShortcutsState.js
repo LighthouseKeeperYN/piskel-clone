@@ -9,70 +9,70 @@ import ShortcutsReducer from './shortcutsReducer';
 const ShortcutsState = (props) => {
   const initialState = {
     shortcuts: {
-      [TOOL_TYPES.pen]: { code: 'KeyP', ctrlKey: false, shiftKey: false, altKey: false },
-      [TOOL_TYPES.stroke]: { code: 'KeyL', ctrlKey: false, shiftKey: false, altKey: false },
-      [TOOL_TYPES.bucket]: { code: 'KeyB', ctrlKey: false, shiftKey: false, altKey: false },
-      [TOOL_TYPES.bucketAll]: { code: 'KeyA', ctrlKey: false, shiftKey: false, altKey: false },
-      [TOOL_TYPES.eraser]: { code: 'KeyE', ctrlKey: false, shiftKey: false, altKey: false },
-      [TOOL_TYPES.colorPicker]: { code: 'KeyO', ctrlKey: false, shiftKey: false, altKey: false },
+      [TOOL_TYPES.pen]: { key: 'p', ctrlKey: false, shiftKey: false, altKey: false },
+      [TOOL_TYPES.stroke]: { key: 'l', ctrlKey: false, shiftKey: false, altKey: false },
+      [TOOL_TYPES.bucket]: { key: 'b', ctrlKey: false, shiftKey: false, altKey: false },
+      [TOOL_TYPES.bucketAll]: { key: 'a', ctrlKey: false, shiftKey: false, altKey: false },
+      [TOOL_TYPES.eraser]: { key: 'e', ctrlKey: false, shiftKey: false, altKey: false },
+      [TOOL_TYPES.colorPicker]: { key: 'o', ctrlKey: false, shiftKey: false, altKey: false },
       [SHORTCUT_ACTIONS.strokeSizeUp]: {
-        code: 'BracketRight',
+        key: ']',
         ctrlKey: false,
         shiftKey: false,
         altKey: false
       },
       [SHORTCUT_ACTIONS.strokeSizeDown]: {
-        code: 'BracketLeft',
+        key: '[',
         ctrlKey: false,
         shiftKey: false,
         altKey: false
       },
       [SHORTCUT_ACTIONS.previousFrame]: {
-        code: 'ArrowUp',
+        key: 'ArrowUp',
         ctrlKey: false,
         shiftKey: false,
         altKey: false
       },
       [SHORTCUT_ACTIONS.nextFrame]: {
-        code: 'ArrowDown',
+        key: 'ArrowDown',
         ctrlKey: false,
         shiftKey: false,
         altKey: false
       },
       [SHORTCUT_ACTIONS.copyCurrentFrame]: {
-        code: 'ArrowDown',
+        key: 'ArrowDown',
         ctrlKey: false,
         shiftKey: true,
         altKey: true
       },
       [SHORTCUT_ACTIONS.deleteCurrentFrame]: {
-        code: 'Delete',
+        key: 'Delete',
         ctrlKey: false,
         shiftKey: false,
         altKey: false
       },
       [SHORTCUT_ACTIONS.addNewFrame]: {
-        code: 'KeyN',
+        key: 'n',
         ctrlKey: false,
         shiftKey: false,
         altKey: false
       },
       [SHORTCUT_ACTIONS.saveAsAPNG]: {
-        code: 'KeyP',
+        key: 'p',
         ctrlKey: false,
         shiftKey: true,
         altKey: false
       },
-      [SHORTCUT_ACTIONS.saveAsGIF]: { code: 'KeyG', ctrlKey: false, shiftKey: true, altKey: false }
+      [SHORTCUT_ACTIONS.saveAsGIF]: { key: 'g', ctrlKey: false, shiftKey: true, altKey: false }
     }
   };
 
   const [state, dispatch] = useReducer(ShortcutsReducer, initialState);
 
-  const setShortcut = (action, code, ctrlKey, shiftKey, altKey) => {
+  const setShortcut = (action, key, ctrlKey, shiftKey, altKey) => {
     dispatch({
       type: SET_SHORTCUT,
-      payload: { action, key: { code, ctrlKey, shiftKey, altKey } }
+      payload: { action, key: { key, ctrlKey, shiftKey, altKey } }
     });
   };
 

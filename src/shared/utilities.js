@@ -21,11 +21,17 @@ export function isObjectEqual(obj1, obj2) {
 
   if (obj1keys.length !== obj2keys.length) result = false;
 
-  obj1keys.forEach(key => {
+  obj1keys.forEach((key) => {
     if (obj1[key] !== obj2[key]) result = false;
-  })
+  });
 
   return result;
+}
+
+export function tooltipShortcutTemplate(keyObj, action) {
+  return `(${keyObj[action].ctrlKey ? 'Ctrl + ' : ''} ${keyObj[action].shiftKey ? 'Shift + ' : ''}${
+    keyObj[action].altKey ? 'Alt + ' : ''
+  }${keyObj[action].key} )`;
 }
 
 export function imageDataCollectionToAPNG({ frameCollection, size, frameRate, colorDepth = 0 }) {
