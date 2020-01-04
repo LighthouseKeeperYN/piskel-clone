@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 
-import DEFAULT_SHORTCUTS from './defaultShortcuts';
+import DEFAULT_SHORTCUTS from '../../shared/defaultShortcuts';
 import {
   SET_SHORTCUT,
   TOGGLE_SHORTCUTS_MODAL_VISIBILITY,

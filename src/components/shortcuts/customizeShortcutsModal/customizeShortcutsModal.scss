@@ -71,3 +71,20 @@
     text-transform: capitalize;
   }
 }
+
+.restore-default-shortcuts-button {
+  position: absolute;
+  bottom: 3vh;
+  left: 50%;
+  transform: translate(-50%);
+
+  padding: 1rem;
+  background-color: gold;
+  border-radius: 0.2rem;
+
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: white;
+  }
+}

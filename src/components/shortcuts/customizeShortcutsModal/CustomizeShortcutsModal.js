@@ -8,6 +8,7 @@ import ShortcutsContext from '../../../context/shortcuts/shortcutsContext';
 import { tooltipShortcutTemplate } from '../../../shared/utilities';
 
 import CustomizeShortcutsCell from './CustomizeShortcutsCell';
+import RestoreDefaultShortcutsButton from './RestoreDefaultShortcutsButton';
 
 function CustomizeShortcutsModal() {
   const { shortcuts, shortcutsModalVisibility, toggleShortcutsModalVisibility } = useContext(
@@ -15,7 +16,8 @@ function CustomizeShortcutsModal() {
   );
 
   const ref = useRef(null);
-  const dismissModal = () => {
+  const dismissModal = (e) => {
+    console.log(e);
     if (shortcutsModalVisibility) toggleShortcutsModalVisibility();
   };
   useOnClickOutside(ref, dismissModal);
@@ -32,6 +34,7 @@ function CustomizeShortcutsModal() {
                 key={action}
               />
             ))}
+            <RestoreDefaultShortcutsButton />
           </div>
         </div>
       )}
