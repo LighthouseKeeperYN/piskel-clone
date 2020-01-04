@@ -18,13 +18,13 @@ const ShortcutsState = (props) => {
       [TOOL_TYPES.eraser]: { code: 'KeyE', ctrlKey: false, shiftKey: false, altKey: false },
       [TOOL_TYPES.colorPicker]: { code: 'KeyO', ctrlKey: false, shiftKey: false, altKey: false },
       [SHORTCUT_ACTIONS.strokeSizeUp]: {
-        code: ']',
+        code: 'BracketRight',
         ctrlKey: false,
         shiftKey: false,
         altKey: false
       },
       [SHORTCUT_ACTIONS.strokeSizeDown]: {
-        code: '[',
+        code: 'BracketLeft',
         ctrlKey: false,
         shiftKey: false,
         altKey: false

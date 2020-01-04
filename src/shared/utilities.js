@@ -28,17 +28,6 @@ export function isObjectEqual(obj1, obj2) {
   return result;
 }
 
-export function tooltipShortcutTemplate(keyObj, action) {
-  let symbol = keyObj[action].code;
-  if (symbol.includes('Key') || symbol.includes('Digit') || symbol.includes('Numpad')) {
-    symbol = symbol.slice(-1).toUpperCase();
-  }
-
-  return `(${keyObj[action].ctrlKey ? 'Ctrl + ' : ''} ${keyObj[action].shiftKey ? 'Shift + ' : ''}${
-    keyObj[action].altKey ? 'Alt + ' : ''
-  }${symbol} )`;
-}
-
 export function imageDataCollectionToAPNG({ frameCollection, size, frameRate, colorDepth = 0 }) {
   const header = 'data:image/png;base64,';
   const frames = frameCollection.map((frame) => frame.data.buffer);
@@ -64,4 +53,51 @@ export function imageDataCollectionToGIF({ frameCollection, size, frameRate, rep
   const gifBase64String = btoa(String.fromCharCode(...gif.read()));
 
   return header + gifBase64String;
+}
+
+export function tooltipShortcutTemplate(keyObj, action) {
+  let symbol = keyObj[action].code;
+  switch (symbol) {
+    case 'BracketLeft':
+      symbol = '[';
+      break;
+    case 'BracketRight':
+      symbol = ']';
+      break;
+    case 'Equal':
+      symbol = '=';
+      break;
+    case 'Slash':
+      symbol = '/';
+      break;
+    case 'Minus':
+      symbol = '-';
+      break;
+    case 'Comma':
+      symbol = ',';
+      break;
+    case 'Period':
+      symbol = '.';
+      break;
+    case 'Semicolon':
+      symbol = ';';
+      break;
+    case 'Quote':
+      symbol = "'";
+      break;
+    case 'Backslash':
+      symbol = '\\';
+      break;
+    case 'Backquote':
+      symbol = '`';
+      break;
+    default:
+      break;
+  }
+
+  if (symbol.includes('Key') || symbol.includes('Digit')) symbol = symbol.slice(-1).toUpperCase();
+
+  return `(${keyObj[action].ctrlKey ? 'Ctrl + ' : ''} ${keyObj[action].shiftKey ? 'Shift + ' : ''}${
+    keyObj[action].altKey ? 'Alt + ' : ''
+  }${symbol} )`;
 }
