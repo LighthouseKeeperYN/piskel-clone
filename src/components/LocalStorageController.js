@@ -25,20 +25,20 @@ function LocalStorageDownloader() {
 
   const canvasRef = useRef(null);
 
-  const decodeFrame = (ctx, frame, currFrame, changeIndexFn) => {
+  const encodeFrame = (ctx, frame) => {
+    ctx.putImageData(frame, 0, 0);
+    return ctx.canvas.toDataURL('image/png');
+  };
+
+  const decodeFrame = (ctx, frame, currFrame) => {
     const img = new Image();
     img.src = frame;
     img.onload = () => {
       ctx.drawImage(img, 0, 0);
       addFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
       ctx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
-      changeIndexFn(currFrame);
+      changeIndex(currFrame);
     };
-  };
-
-  const encodeFrame = (ctx, frame) => {
-    ctx.putImageData(frame, 0, 0);
-    return ctx.canvas.toDataURL('image/png');
   };
 
   const downloadDataFromLocalStorage = (canvas) => {
@@ -48,7 +48,7 @@ function LocalStorageDownloader() {
       const ctx = canvas.getContext('2d');
 
       userData.frameCollection.forEach((frame) => {
-        decodeFrame(ctx, frame, userData.currentFrame, changeIndex);
+        decodeFrame(ctx, frame, userData.currentFrame);
       });
 
       setPixelSize(userData.pixelSize);

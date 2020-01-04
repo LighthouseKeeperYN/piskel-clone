@@ -6,6 +6,8 @@ import Canvas from '../../components/canvas/Canvas';
 import ToolPanel from '../../components/toolPanel/ToolPanel';
 import AnimationAndSettingsPanel from '../../components/animationAndSettingsPanel/AnimationAndSettingsPanel';
 import FramePanel from '../../components/framePanel/FramePanel';
+import CustomizeShortcutsButton from '../../components/shortcuts/customizeShortcutsButton/CustomizeShortcutsButton';
+import CustomizeShortcutsModal from '../../components/shortcuts/customizeShortcutsModal/CustomizeShortcutsModal';
 
 function Project() {
   return (
@@ -14,6 +16,8 @@ function Project() {
       <FramePanel />
       <Canvas />
       <AnimationAndSettingsPanel />
+      <CustomizeShortcutsButton />
+      <CustomizeShortcutsModal />
     </div>
   );
 }

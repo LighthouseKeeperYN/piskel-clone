@@ -1,0 +1,21 @@
+.customize-shortcuts-modal-wrapper {
+  position: fixed;
+  z-index: 90;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.customize-shortcuts-modal {
+  height: 80vh;
+  width: 80vw;
+  background-color: #1d1d1d;
+  border: 0.4rem solid gold;
+  border-radius: 0.2rem;
+}
