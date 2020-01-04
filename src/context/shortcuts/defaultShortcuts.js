@@ -1,4 +1,4 @@
-import { TOOL_TYPES, SHORTCUT_ACTIONS } from './constants';
+import { TOOL_TYPES, SHORTCUT_ACTIONS } from '../../shared/constants';
 
 const DEFAULT_SHORTCUTS = {
   [TOOL_TYPES.pen]: { code: 'KeyP', ctrlKey: false, shiftKey: false, altKey: false },
