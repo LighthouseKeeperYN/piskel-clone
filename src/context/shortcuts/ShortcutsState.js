@@ -1,7 +1,12 @@
 import React, { useReducer } from 'react';
 
-import { TOOL_TYPES, SHORTCUT_ACTIONS } from '../../shared/constants';
-import { SET_SHORTCUT, TOGGLE_SHORTCUTS_MODAL_VISIBILITY, TOGGLE_SHORTCUT_EDIT } from '../types';
+import DEFAULT_SHORTCUTS from './defaultShortcuts';
+import {
+  SET_SHORTCUT,
+  TOGGLE_SHORTCUTS_MODAL_VISIBILITY,
+  TOGGLE_SHORTCUT_EDIT,
+  SET_ALL_SHORTCUTS
+} from '../types';
 
 import ShortcutsContext from './shortcutsContext';
 import ShortcutsReducer from './shortcutsReducer';
@@ -10,66 +15,18 @@ const ShortcutsState = (props) => {
   const initialState = {
     shortcutsModalVisibility: false,
     isShortcutBeingEdited: false,
-    shortcuts: {
-      [TOOL_TYPES.pen]: { code: 'KeyP', ctrlKey: false, shiftKey: false, altKey: false },
-      [TOOL_TYPES.stroke]: { code: 'KeyL', ctrlKey: false, shiftKey: false, altKey: false },
-      [TOOL_TYPES.bucket]: { code: 'KeyB', ctrlKey: false, shiftKey: false, altKey: false },
-      [TOOL_TYPES.bucketAll]: { code: 'KeyA', ctrlKey: false, shiftKey: false, altKey: false },
-      [TOOL_TYPES.eraser]: { code: 'KeyE', ctrlKey: false, shiftKey: false, altKey: false },
-      [TOOL_TYPES.colorPicker]: { code: 'KeyO', ctrlKey: false, shiftKey: false, altKey: false },
-      [SHORTCUT_ACTIONS.strokeSizeUp]: {
-        code: 'BracketRight',
-        ctrlKey: false,
-        shiftKey: false,
-        altKey: false
-      },
-      [SHORTCUT_ACTIONS.strokeSizeDown]: {
-        code: 'BracketLeft',
-        ctrlKey: false,
-        shiftKey: false,
-        altKey: false
-      },
-      [SHORTCUT_ACTIONS.previousFrame]: {
-        code: 'ArrowUp',
-        ctrlKey: false,
-        shiftKey: false,
-        altKey: false
-      },
-      [SHORTCUT_ACTIONS.nextFrame]: {
-        code: 'ArrowDown',
-        ctrlKey: false,
-        shiftKey: false,
-        altKey: false
-      },
-      [SHORTCUT_ACTIONS.copyCurrentFrame]: {
-        code: 'ArrowDown',
-        ctrlKey: false,
-        shiftKey: true,
-        altKey: true
-      },
-      [SHORTCUT_ACTIONS.deleteCurrentFrame]: {
-        code: 'Delete',
-        ctrlKey: false,
-        shiftKey: false,
-        altKey: false
-      },
-      [SHORTCUT_ACTIONS.addNewFrame]: {
-        code: 'KeyN',
-        ctrlKey: false,
-        shiftKey: false,
-        altKey: false
-      },
-      [SHORTCUT_ACTIONS.saveAsAPNG]: {
-        code: 'KeyP',
-        ctrlKey: false,
-        shiftKey: true,
-        altKey: false
-      },
-      [SHORTCUT_ACTIONS.saveAsGIF]: { code: 'KeyG', ctrlKey: false, shiftKey: true, altKey: false }
-    }
+    shortcuts: { ...DEFAULT_SHORTCUTS },
+    defaultShortcuts: { ...DEFAULT_SHORTCUTS }
   };
 
   const [state, dispatch] = useReducer(ShortcutsReducer, initialState);
+
+  const setAllShortcuts = (shortcuts) => {
+    dispatch({
+      type: SET_ALL_SHORTCUTS,
+      payload: shortcuts
+    });
+  };
 
   const setShortcut = (action, key) => {
     dispatch({
@@ -100,7 +57,8 @@ const ShortcutsState = (props) => {
         isShortcutBeingEdited: state.isShortcutBeingEdited,
         setShortcut,
         toggleShortcutsModalVisibility,
-        toggleShortcutEdit
+        toggleShortcutEdit,
+        setAllShortcuts
       }}
     >
       {props.children}

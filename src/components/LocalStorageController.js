@@ -5,9 +5,11 @@ import { DEFAULT_CANVAS_SIZE, LOCAL_STORAGE_KEY } from '../shared/constants';
 
 import FramePanelContext from '../context/framePanel/framePanelContext';
 import ToolPanelContext from '../context/toolPanel/toolPanelContext';
+import ShortcutsContext from '../context/shortcuts/shortcutsContext';
 import AnimationAndSettingsPanelContext from '../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
 
 function LocalStorageDownloader() {
+  const { shortcuts, setAllShortcuts } = useContext(ShortcutsContext);
   const { addFrame, frameCollection, changeIndex, currentFrame } = useContext(FramePanelContext);
   const { setPixelSize, setFrameRate, pixelSize, frameRate } = useContext(
     AnimationAndSettingsPanelContext,
@@ -58,6 +60,7 @@ function LocalStorageDownloader() {
       setColorPrimary(userData.colorPrimary);
       setColorSecondary(userData.colorSecondary);
       changeIndex(userData.currentFrame);
+      setAllShortcuts(userData.shortcuts);
     }
   };
 
@@ -75,6 +78,7 @@ function LocalStorageDownloader() {
       toolType,
       colorPrimary,
       colorSecondary,
+      shortcuts
     };
 
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(userData));

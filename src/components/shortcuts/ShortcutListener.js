@@ -11,16 +11,16 @@ import {
   TOOL_TYPES,
   SHORTCUT_ACTIONS,
   STROKE_SCALES,
-  DEFAULT_CANVAS_SIZE,
+  DEFAULT_CANVAS_SIZE
 } from '../../shared/constants';
 
 import {
   isObjectEqual,
   imageDataCollectionToAPNG,
-  imageDataCollectionToGIF,
+  imageDataCollectionToGIF
 } from '../../shared/utilities';
 
-function ShortcutController() {
+function ShortcutListener() {
   const { shortcuts } = useContext(ShortcutsContext);
   const { strokeSize, setToolType, setStrokeSize } = useContext(ToolPanelContext);
   const { frameRate } = useContext(AnimationAndSettingsPanelContext);
@@ -30,7 +30,7 @@ function ShortcutController() {
     changeIndex,
     duplicateFrame,
     deleteFrame,
-    addFrame,
+    addFrame
   } = useContext(FramePanelContext);
 
   const getAction = (e) => {
@@ -38,7 +38,7 @@ function ShortcutController() {
       code: e.code,
       ctrlKey: e.ctrlKey,
       shiftKey: e.shiftKey,
-      altKey: e.altKey,
+      altKey: e.altKey
     };
 
     let action = null;
@@ -97,7 +97,7 @@ function ShortcutController() {
         img = imageDataCollectionToAPNG({
           frameCollection,
           size: DEFAULT_CANVAS_SIZE,
-          frameRate,
+          frameRate
         });
         saveImage(img, `${new Date().getTime()}.png`);
         break;
@@ -105,7 +105,7 @@ function ShortcutController() {
         img = imageDataCollectionToGIF({
           frameCollection,
           size: DEFAULT_CANVAS_SIZE,
-          frameRate,
+          frameRate
         });
         saveImage(img, `${new Date().getTime()}.gif`);
         break;
@@ -116,4 +116,4 @@ function ShortcutController() {
   return <EventListener target="window" onKeyUp={handleKeyPress} />;
 }
 
-export default ShortcutController;
+export default ShortcutListener;
