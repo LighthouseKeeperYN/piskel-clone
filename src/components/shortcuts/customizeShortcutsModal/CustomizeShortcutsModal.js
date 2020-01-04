@@ -5,12 +5,18 @@ import './customizeShortcutsModal.scss';
 
 import ShortcutsContext from '../../../context/shortcuts/shortcutsContext';
 
+import { ACTION_DESCRIPTIONS } from '../../../shared/constants';
+import { tooltipShortcutTemplate } from '../../../shared/utilities';
+
+import CustomizeShortcutsCell from './CustomizeShortcutsCell';
+
 function CustomizeShortcutsModal() {
-  const { shortcutsModalVisibility, toggleShortcutsModalVisibility } = useContext(ShortcutsContext);
+  const { shortcuts, shortcutsModalVisibility, toggleShortcutsModalVisibility } = useContext(
+    ShortcutsContext
+  );
 
   const ref = useRef(null);
-  const dismissModal = (e) => {
-    console.log(e);
+  const dismissModal = () => {
     if (shortcutsModalVisibility) toggleShortcutsModalVisibility();
   };
   useOnClickOutside(ref, dismissModal);
@@ -19,7 +25,15 @@ function CustomizeShortcutsModal() {
     <Fragment>
       {shortcutsModalVisibility && (
         <div className="customize-shortcuts-modal-wrapper">
-          <div className="customize-shortcuts-modal" ref={ref}></div>
+          <div className="customize-shortcuts-modal" ref={ref}>
+            {Object.entries(shortcuts).map(([action]) => (
+              <CustomizeShortcutsCell
+                action={ACTION_DESCRIPTIONS[action]}
+                shortcut={tooltipShortcutTemplate(shortcuts, action)}
+                key={action}
+              />
+            ))}
+          </div>
         </div>
       )}
     </Fragment>
