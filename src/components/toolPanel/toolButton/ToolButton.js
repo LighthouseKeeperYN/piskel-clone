@@ -8,7 +8,7 @@ import ToolPanelContext from '../../../context/toolPanel/toolPanelContext';
 import ShortcutsContext from '../../../context/shortcuts/shortcutsContext';
 
 import { TOOLTIP_PROPS } from '../../../shared/constants';
-import { tooltipShortcutTemplate } from '../../../shared/utilities';
+import { shortcutToString } from '../../../shared/utilities';
 
 function ToolButton({ tool, toolName }) {
   const { toolType, setToolType } = useContext(ToolPanelContext);
@@ -19,7 +19,7 @@ function ToolButton({ tool, toolName }) {
       content={[
         <span key="toolName">{`${toolName} `}</span>,
         <span className="tooltip-shortcut" key="tooltip-shortcut">
-          {tooltipShortcutTemplate(shortcuts, tool)}
+          {shortcutToString(shortcuts, tool)}
         </span>,
       ]}
       direction={TOOLTIP_PROPS.directions.right}

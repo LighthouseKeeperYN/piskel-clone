@@ -4,7 +4,7 @@ import Tooltip from 'react-tooltip-lite';
 import './strokeSizeUI.scss';
 
 import { STROKE_SCALES, TOOLTIP_PROPS, SHORTCUT_ACTIONS } from '../../../shared/constants';
-import { tooltipShortcutTemplate } from '../../../shared/utilities';
+import { shortcutToString } from '../../../shared/utilities';
 
 import ToolPanelContext from '../../../context/toolPanel/toolPanelContext';
 import ShortcutsContext from '../../../context/shortcuts/shortcutsContext';
@@ -20,13 +20,13 @@ function StrokeSizeUI() {
         <p key="tooltip-shortcut">
           Down:{' '}
           <span className="tooltip-shortcut">
-            {tooltipShortcutTemplate(shortcuts, SHORTCUT_ACTIONS.strokeSizeDown)}
-          </span>{' '}
+            {shortcutToString(shortcuts, SHORTCUT_ACTIONS.strokeSizeDown)}
+          </span>
           Up:{' '}
           <span className="tooltip-shortcut">
-            {tooltipShortcutTemplate(shortcuts, SHORTCUT_ACTIONS.strokeSizeUp)}
+            {shortcutToString(shortcuts, SHORTCUT_ACTIONS.strokeSizeUp)}
           </span>
-        </p>,
+        </p>
       ]}
       direction={TOOLTIP_PROPS.directions.up}
       className="stroke-size-wrapper__tooltip"

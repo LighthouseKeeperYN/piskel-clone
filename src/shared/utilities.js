@@ -55,7 +55,7 @@ export function imageDataCollectionToGIF({ frameCollection, size, frameRate, rep
   return header + gifBase64String;
 }
 
-export function tooltipShortcutTemplate(keyObj, action) {
+export function shortcutToString(keyObj, action) {
   let symbol = keyObj[action].code;
   switch (symbol) {
     case 'BracketLeft':

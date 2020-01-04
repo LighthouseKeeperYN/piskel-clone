@@ -4,7 +4,7 @@ import Tooltip from 'react-tooltip-lite';
 import './addFrameUI.scss';
 
 import { DEFAULT_CANVAS_SIZE, TOOLTIP_PROPS, SHORTCUT_ACTIONS } from '../../../shared/constants';
-import { tooltipShortcutTemplate } from '../../../shared/utilities';
+import { shortcutToString } from '../../../shared/utilities';
 
 import FramePanelContext from '../../../context/framePanel/framePanelContext';
 import ShortcutsContext from '../../../context/shortcuts/shortcutsContext';
@@ -21,7 +21,7 @@ function AddFrameUI() {
     <Tooltip
       content={
         <span className="tooltip-shortcut">
-          {tooltipShortcutTemplate(shortcuts, SHORTCUT_ACTIONS.addNewFrame)}
+          {shortcutToString(shortcuts, SHORTCUT_ACTIONS.addNewFrame)}
         </span>
       }
       direction={TOOLTIP_PROPS.directions.right}

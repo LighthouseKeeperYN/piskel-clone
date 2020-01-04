@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Tooltip from 'react-tooltip-lite';
 
 import { DEFAULT_CANVAS_SIZE, TOOLTIP_PROPS, SHORTCUT_ACTIONS } from '../../../shared/constants';
-import { tooltipShortcutTemplate } from '../../../shared/utilities';
+import { shortcutToString } from '../../../shared/utilities';
 
 import FramePanelContext from '../../../context/framePanel/framePanelContext';
 import CanvasContext from '../../../context/canvas/canvasContext';
@@ -27,7 +27,7 @@ function CopyButton({ index }) {
         content={[
           <span key="copyFrame">Delete this frame </span>,
           <span className="tooltip-shortcut" key="tooltip-shortcut">
-            {tooltipShortcutTemplate(shortcuts, SHORTCUT_ACTIONS.deleteCurrentFrame)}
+            {shortcutToString(shortcuts, SHORTCUT_ACTIONS.deleteCurrentFrame)}
           </span>,
         ]}
         direction={TOOLTIP_PROPS.directions.right}

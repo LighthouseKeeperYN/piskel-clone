@@ -19,7 +19,8 @@ export default function drawLine(
   let x0copy = x0;
   let y0copy = y0;
 
-  const offset = (pixelSize * strokeSize) / 2 - pixelSize / 2;
+  let offset = (pixelSize * strokeSize) / 2 - pixelSize / 2;
+  offset += offset % pixelSize;
 
   for (;;) {
     if (isErasing) {

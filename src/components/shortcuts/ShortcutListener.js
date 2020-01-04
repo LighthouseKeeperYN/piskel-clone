@@ -110,6 +110,7 @@ function ShortcutListener() {
         saveImage(img, `${new Date().getTime()}.gif`);
         break;
       default:
+        break;
     }
   };
 
