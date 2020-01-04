@@ -11,61 +11,61 @@ const ShortcutsState = (props) => {
     shortcutsModalVisibility: false,
     isShortcutBeingEdited: false,
     shortcuts: {
-      [TOOL_TYPES.pen]: { key: 'p', ctrlKey: false, shiftKey: false, altKey: false },
-      [TOOL_TYPES.stroke]: { key: 'l', ctrlKey: false, shiftKey: false, altKey: false },
-      [TOOL_TYPES.bucket]: { key: 'b', ctrlKey: false, shiftKey: false, altKey: false },
-      [TOOL_TYPES.bucketAll]: { key: 'a', ctrlKey: false, shiftKey: false, altKey: false },
-      [TOOL_TYPES.eraser]: { key: 'e', ctrlKey: false, shiftKey: false, altKey: false },
-      [TOOL_TYPES.colorPicker]: { key: 'o', ctrlKey: false, shiftKey: false, altKey: false },
+      [TOOL_TYPES.pen]: { code: 'KeyP', ctrlKey: false, shiftKey: false, altKey: false },
+      [TOOL_TYPES.stroke]: { code: 'KeyL', ctrlKey: false, shiftKey: false, altKey: false },
+      [TOOL_TYPES.bucket]: { code: 'KeyB', ctrlKey: false, shiftKey: false, altKey: false },
+      [TOOL_TYPES.bucketAll]: { code: 'KeyA', ctrlKey: false, shiftKey: false, altKey: false },
+      [TOOL_TYPES.eraser]: { code: 'KeyE', ctrlKey: false, shiftKey: false, altKey: false },
+      [TOOL_TYPES.colorPicker]: { code: 'KeyO', ctrlKey: false, shiftKey: false, altKey: false },
       [SHORTCUT_ACTIONS.strokeSizeUp]: {
-        key: ']',
+        code: ']',
         ctrlKey: false,
         shiftKey: false,
         altKey: false
       },
       [SHORTCUT_ACTIONS.strokeSizeDown]: {
-        key: '[',
+        code: '[',
         ctrlKey: false,
         shiftKey: false,
         altKey: false
       },
       [SHORTCUT_ACTIONS.previousFrame]: {
-        key: 'ArrowUp',
+        code: 'ArrowUp',
         ctrlKey: false,
         shiftKey: false,
         altKey: false
       },
       [SHORTCUT_ACTIONS.nextFrame]: {
-        key: 'ArrowDown',
+        code: 'ArrowDown',
         ctrlKey: false,
         shiftKey: false,
         altKey: false
       },
       [SHORTCUT_ACTIONS.copyCurrentFrame]: {
-        key: 'ArrowDown',
+        code: 'ArrowDown',
         ctrlKey: false,
         shiftKey: true,
         altKey: true
       },
       [SHORTCUT_ACTIONS.deleteCurrentFrame]: {
-        key: 'Delete',
+        code: 'Delete',
         ctrlKey: false,
         shiftKey: false,
         altKey: false
       },
       [SHORTCUT_ACTIONS.addNewFrame]: {
-        key: 'n',
+        code: 'KeyN',
         ctrlKey: false,
         shiftKey: false,
         altKey: false
       },
       [SHORTCUT_ACTIONS.saveAsAPNG]: {
-        key: 'p',
+        code: 'KeyP',
         ctrlKey: false,
         shiftKey: true,
         altKey: false
       },
-      [SHORTCUT_ACTIONS.saveAsGIF]: { key: 'g', ctrlKey: false, shiftKey: true, altKey: false }
+      [SHORTCUT_ACTIONS.saveAsGIF]: { code: 'KeyG', ctrlKey: false, shiftKey: true, altKey: false }
     }
   };
 

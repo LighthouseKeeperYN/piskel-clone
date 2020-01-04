@@ -8,7 +8,7 @@ import { ACTION_DESCRIPTIONS } from '../../../shared/constants';
 import ShortcutsContext from '../../../context/shortcuts/shortcutsContext';
 
 function CustomizeShortcutsCell({ action, shortcut }) {
-  const { isShortcutBeingEdited, toggleShortcutEdit, setShortcut,shortcuts } = useContext(ShortcutsContext);
+  const { isShortcutBeingEdited, toggleShortcutEdit, setShortcut } = useContext(ShortcutsContext);
   const [isEditing, setIsEditing] = useState(false);
 
   const ref = useRef(null);
@@ -29,7 +29,7 @@ function CustomizeShortcutsCell({ action, shortcut }) {
 
   const setNewShortcutAndToggleEditOFF = (e) => {
     const keyPressed = {
-      key: e.key.length === 1 ? e.key.toLowerCase() : e.key,
+      code: e.code,
       ctrlKey: e.ctrlKey,
       shiftKey: e.shiftKey,
       altKey: e.altKey
@@ -42,7 +42,6 @@ function CustomizeShortcutsCell({ action, shortcut }) {
   };
 
   useOnClickOutside(ref, toggleEditOFF);
-
 
   return (
     <div className="customize-shortcuts-cell" ref={ref} onClick={toggleEditON}>

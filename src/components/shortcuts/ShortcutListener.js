@@ -35,7 +35,7 @@ function ShortcutController() {
 
   const getAction = (e) => {
     const keyPressed = {
-      key: e.key.length === 1 ? e.key.toLowerCase() : e.key,
+      code: e.code,
       ctrlKey: e.ctrlKey,
       shiftKey: e.shiftKey,
       altKey: e.altKey,

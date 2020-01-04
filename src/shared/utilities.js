@@ -29,9 +29,14 @@ export function isObjectEqual(obj1, obj2) {
 }
 
 export function tooltipShortcutTemplate(keyObj, action) {
+  let symbol = keyObj[action].code;
+  if (symbol.includes('Key') || symbol.includes('Digit') || symbol.includes('Numpad')) {
+    symbol = symbol.slice(-1).toUpperCase();
+  }
+
   return `(${keyObj[action].ctrlKey ? 'Ctrl + ' : ''} ${keyObj[action].shiftKey ? 'Shift + ' : ''}${
     keyObj[action].altKey ? 'Alt + ' : ''
-  }${keyObj[action].key} )`;
+  }${symbol} )`;
 }
 
 export function imageDataCollectionToAPNG({ frameCollection, size, frameRate, colorDepth = 0 }) {
