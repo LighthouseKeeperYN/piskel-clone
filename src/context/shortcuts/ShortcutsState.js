@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 
 import { TOOL_TYPES, SHORTCUT_ACTIONS } from '../../shared/constants';
-import { SET_SHORTCUT, TOGGLE_SHORTCUTS_MODAL_VISIBILITY } from '../types';
+import { SET_SHORTCUT, TOGGLE_SHORTCUTS_MODAL_VISIBILITY, TOGGLE_SHORTCUT_EDIT } from '../types';
 
 import ShortcutsContext from './shortcutsContext';
 import ShortcutsReducer from './shortcutsReducer';
@@ -9,6 +9,7 @@ import ShortcutsReducer from './shortcutsReducer';
 const ShortcutsState = (props) => {
   const initialState = {
     shortcutsModalVisibility: false,
+    isShortcutBeingEdited: false,
     shortcuts: {
       [TOOL_TYPES.pen]: { key: 'p', ctrlKey: false, shiftKey: false, altKey: false },
       [TOOL_TYPES.stroke]: { key: 'l', ctrlKey: false, shiftKey: false, altKey: false },
@@ -70,10 +71,10 @@ const ShortcutsState = (props) => {
 
   const [state, dispatch] = useReducer(ShortcutsReducer, initialState);
 
-  const setShortcut = (action, key, ctrlKey, shiftKey, altKey) => {
+  const setShortcut = (action, key) => {
     dispatch({
       type: SET_SHORTCUT,
-      payload: { action, key: { key, ctrlKey, shiftKey, altKey } }
+      payload: { action, key }
     });
   };
 
@@ -84,13 +85,22 @@ const ShortcutsState = (props) => {
     });
   };
 
+  const toggleShortcutEdit = () => {
+    dispatch({
+      type: TOGGLE_SHORTCUT_EDIT,
+      payload: {}
+    });
+  };
+
   return (
     <ShortcutsContext.Provider
       value={{
         shortcuts: state.shortcuts,
         shortcutsModalVisibility: state.shortcutsModalVisibility,
+        isShortcutBeingEdited: state.isShortcutBeingEdited,
         setShortcut,
-        toggleShortcutsModalVisibility
+        toggleShortcutsModalVisibility,
+        toggleShortcutEdit
       }}
     >
       {props.children}

@@ -5,7 +5,6 @@ import './customizeShortcutsModal.scss';
 
 import ShortcutsContext from '../../../context/shortcuts/shortcutsContext';
 
-import { ACTION_DESCRIPTIONS } from '../../../shared/constants';
 import { tooltipShortcutTemplate } from '../../../shared/utilities';
 
 import CustomizeShortcutsCell from './CustomizeShortcutsCell';
@@ -28,7 +27,7 @@ function CustomizeShortcutsModal() {
           <div className="customize-shortcuts-modal" ref={ref}>
             {Object.entries(shortcuts).map(([action]) => (
               <CustomizeShortcutsCell
-                action={ACTION_DESCRIPTIONS[action]}
+                action={action}
                 shortcut={tooltipShortcutTemplate(shortcuts, action)}
                 key={action}
               />

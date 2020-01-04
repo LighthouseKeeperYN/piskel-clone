@@ -5,7 +5,7 @@ import 'normalize.css';
 import './App.scss';
 
 import LocalStorageController from './components/LocalStorageController';
-import ShortcutController from './components/shortcuts/ShortcutController';
+import ShortcutListener from './components/shortcuts/ShortcutListener';
 import Header from './components/layout/header/Header';
 import Landing from './pages/landing/Landing';
 import Project from './pages/project/Project';
@@ -24,7 +24,7 @@ const App = () => (
           <ShortcutsState>
             <HashRouter>
               <LocalStorageController />
-              <ShortcutController />
+              <ShortcutListener />
               <div className="app">
                 <Header />
                 <main className="main">

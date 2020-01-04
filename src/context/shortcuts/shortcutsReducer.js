@@ -1,4 +1,4 @@
-import { SET_SHORTCUT, TOGGLE_SHORTCUTS_MODAL_VISIBILITY } from '../types';
+import { SET_SHORTCUT, TOGGLE_SHORTCUTS_MODAL_VISIBILITY ,TOGGLE_SHORTCUT_EDIT} from '../types';
 
 export default (state, action) => {
   const stateCopy = { ...state };
@@ -10,6 +10,9 @@ export default (state, action) => {
     case TOGGLE_SHORTCUTS_MODAL_VISIBILITY:
       if (state.shortcutsModalVisibility) return { ...state, shortcutsModalVisibility: false };
       else return { ...state, shortcutsModalVisibility: true };
+      case TOGGLE_SHORTCUT_EDIT:
+        if (state.isShortcutBeingEdited) return { ...state, isShortcutBeingEdited: false };
+        else return { ...state, isShortcutBeingEdited: true };
     default:
       return state;
   }

@@ -36,6 +36,7 @@ export const TOOLTIP_PROPS = {
   }
 };
 export const SHORTCUT_ACTIONS = {
+  ...TOOL_TYPES,
   strokeSizeUp: 'strokeSizeUp',
   strokeSizeDown: 'strokeSizeDown',
   previousFrame: 'previousFrame',
@@ -46,7 +47,6 @@ export const SHORTCUT_ACTIONS = {
   saveAsAPNG: 'saveAsAPNG',
   saveAsGIF: 'saveAsGIF'
 };
-
 export const ACTION_DESCRIPTIONS = {
   [TOOL_TYPES.pen]: 'Pen tool',
   [TOOL_TYPES.stroke]: 'Stroke tool',
