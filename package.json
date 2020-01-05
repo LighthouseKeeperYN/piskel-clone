@@ -30,7 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false",
     "test:watch": "react-scripts test",
-    "test:coverage": "react-scripts test --coverage",
+    "test:coverage": "react-scripts test --watchAll=false --coverage",
     "deploy": "react-scripts build && surge build simple-piskel-clone-lhk.surge.sh",
     "lint": "eslint ./**/*.js",
     "lint:fix": "eslint --fix ./**/*.js"
