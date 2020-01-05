@@ -86,7 +86,6 @@ function LocalStorageDownloader() {
 
   useEffect(() => {
     window.addEventListener('load', () => downloadDataFromLocalStorage(canvasRef.current));
-    // eslint-disable-next-line
   }, []);
 
   useBeforeunload(() => uploadDataToLocalStorage(canvasRef.current));

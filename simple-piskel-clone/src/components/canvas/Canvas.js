@@ -43,7 +43,6 @@ function Canvas() {
     const ctx = canvasRef.current.getContext('2d');
     setCanvasCtx(ctx);
     addEmptyFrameIfUserDataIsAbsent();
-    // eslint-disable-next-line
   };
 
   useEffect(initCanvas, []);
