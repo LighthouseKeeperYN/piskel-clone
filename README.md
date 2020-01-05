@@ -1,4 +1,4 @@
-# codejam-image-api
+# simple-piskel-clone
 
 * npm install - install dependencies
 * npm run lint - use ESLint
