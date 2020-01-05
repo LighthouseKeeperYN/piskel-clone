@@ -3,20 +3,18 @@ import GoogleLogin from 'react-google-login';
 
 import './signInButton.scss';
 
+import { OAUTH_ID } from '../../../shared/constants';
+
 function SignInButton() {
-  const [isSigned, setIsSigned] = useState(false);
   const [loginName, setLoginName] = useState(null);
 
-  const signIn = (res) => {
-    setIsSigned(true);
-    setLoginName(res.profileObj.name);
-  }
+  const signIn = (res) => setLoginName(res.profileObj.name);
 
-  if (isSigned) return <p>{loginName}</p>;
+  if (loginName) return <p>{loginName}</p>;
 
   return (
     <GoogleLogin
-      clientId="708401454754-oese7afdmi01minpdh0n7k26dgfvpg76.apps.googleusercontent.com"
+      clientId={OAUTH_ID}
       render={(renderProps) => (
         <button
           className="sign-in-button"
@@ -26,10 +24,8 @@ function SignInButton() {
           Sign in
         </button>
       )}
-      buttonText="Login"
       onSuccess={signIn}
       onFailure={() => {}}
-      cookiePolicy={'single_host_origin'}
     />
   );
 }
