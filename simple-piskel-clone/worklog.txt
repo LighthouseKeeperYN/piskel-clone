@@ -1,0 +1,42 @@
+set up environment - dec23 dec23 1h
+default styles and resets - dec24 dec24 1h
+navbar markup and styling - dec24 dec24 1h
+workbench and layout for a future gui - dec24 dec24 2h
+basic canvas drawing functionality - dec25 dec25 3h
+global ui state and stroke size ui - dec25 dec25 2h
+tool ui and state - dec25 dec25 1h
+color selection ui - dec26 dec26 1h
+color selection state - dec26 dec26 1h
+color selector ui and color change - dec26 dec 26 2h
+framerate ui and right panel state - dec26 dec26 1h
+pixel size button and state - dec26 dec26 40min
+drawing handler - dec26 dec27 2h
+migrate bucket tool - dec27 dec27 2h
+eraser - dec 27 dec27 10min
+color picker - dec 27 dec27 40min
+fixing fill on on empty canvas - dec27 dec27 2h
+frame panel ui - dec27 dec27 1h
+stroke size - dec27 dec27 10min
+frame preview and state - dec27 dec27 3h
+frame storage - dec27 dec27 1h
+switching between frames - dec28 dec28 1h
+animation preview - dec28 dec28 5h
+frame deletion dec28 dec29 2h
+frame duplication dec29 dec29 30min
+drag'n'drop dec29 dec29 5h
+save as buttons dec30 dec30 10min
+save as APNG dec30 dec30 2h
+save as GIF dec30 dec30 3h
+bucket all jan1 jan1 20min
+stroke jam1 jam1 30min
+sprite resolution jam2 jam2 30min
+local storage jam2 jam2 3h
+landing page and routing jam2 jam2 6h
+fullscreen preview jan3 jan3 10min
+offset to stroke size jan3 jan3 30min
+tooltips jan3 jan3 3h
+shortcuts jan3 jan3 5h
+shortcut customization jan4 jan4 4h
+shortcut reset jan4 jan4 30min
+testing jan5 jan5 2h
+oauth jan5 jan5 1h
