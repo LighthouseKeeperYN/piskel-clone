@@ -21,7 +21,7 @@ function AddFrameUI() {
     <Tooltip
       content={
         <span className="tooltip-shortcut">
-          {shortcutToString(shortcuts, SHORTCUT_ACTIONS.addNewFrame)}
+          {shortcutToString(shortcuts[SHORTCUT_ACTIONS.addNewFrame])}
         </span>
       }
       direction={TOOLTIP_PROPS.directions.right}

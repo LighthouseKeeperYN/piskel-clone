@@ -29,7 +29,7 @@ function CustomizeShortcutsModal() {
             {Object.entries(shortcuts).map(([action]) => (
               <CustomizeShortcutsCell
                 action={action}
-                shortcut={shortcutToString(shortcuts, action)}
+                shortcut={shortcutToString(shortcuts[action])}
                 key={action}
               />
             ))}

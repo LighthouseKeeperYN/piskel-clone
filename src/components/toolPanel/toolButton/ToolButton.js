@@ -19,7 +19,7 @@ function ToolButton({ tool, toolName }) {
       content={[
         <span key="toolName">{`${toolName} `}</span>,
         <span className="tooltip-shortcut" key="tooltip-shortcut">
-          {shortcutToString(shortcuts, tool)}
+          {shortcutToString(shortcuts[tool])}
         </span>,
       ]}
       direction={TOOLTIP_PROPS.directions.right}

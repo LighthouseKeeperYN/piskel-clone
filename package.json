@@ -4,11 +4,12 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
+    "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.1.2",
     "eslint-config-airbnb-base": "^14.0.0",
     "file-saver": "^2.0.2",
     "gif-encoder": "^0.7.2",
+    "lodash": "^4.17.15",
     "node-sass": "^4.13.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
@@ -27,7 +28,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
+    "test:watch": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage",
     "deploy": "react-scripts build && surge build simple-piskel-clone-lhk.surge.sh",
     "lint": "eslint ./**/*.js",
     "lint:fix": "eslint --fix ./**/*.js"

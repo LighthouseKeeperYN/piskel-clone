@@ -13,21 +13,6 @@ export function hexToRGB(hex) {
 export function rgbToHex(rgb) {
   return `#${((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1)}`;
 }
-
-export function isObjectEqual(obj1, obj2) {
-  const obj1keys = Object.keys(obj1);
-  const obj2keys = Object.keys(obj2);
-  let result = true;
-
-  if (obj1keys.length !== obj2keys.length) result = false;
-
-  obj1keys.forEach((key) => {
-    if (obj1[key] !== obj2[key]) result = false;
-  });
-
-  return result;
-}
-
 export function imageDataCollectionToAPNG({ frameCollection, size, frameRate, colorDepth = 0 }) {
   const header = 'data:image/png;base64,';
   const frames = frameCollection.map((frame) => frame.data.buffer);
@@ -55,8 +40,8 @@ export function imageDataCollectionToGIF({ frameCollection, size, frameRate, rep
   return header + gifBase64String;
 }
 
-export function shortcutToString(keyObj, action) {
-  let symbol = keyObj[action].code;
+export function shortcutToString(keyObj) {
+  let symbol = keyObj.code;
   switch (symbol) {
     case 'BracketLeft':
       symbol = '[';
@@ -97,7 +82,5 @@ export function shortcutToString(keyObj, action) {
 
   if (symbol.includes('Key') || symbol.includes('Digit')) symbol = symbol.slice(-1).toUpperCase();
 
-  return `(${keyObj[action].ctrlKey ? 'Ctrl + ' : ''} ${keyObj[action].shiftKey ? 'Shift + ' : ''}${
-    keyObj[action].altKey ? 'Alt + ' : ''
-  }${symbol} )`;
+  return `( ${keyObj.ctrlKey ? 'Ctrl + ' : ''}${keyObj.shiftKey ? 'Shift + ' : ''}${keyObj.altKey ? 'Alt + ' : ''}${symbol} )`;
 }

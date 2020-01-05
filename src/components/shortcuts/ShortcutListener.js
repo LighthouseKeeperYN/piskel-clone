@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import EventListener from 'react-event-listener';
 import { saveAs as saveImage } from 'file-saver';
+import _ from 'lodash';
 
 import ShortcutsContext from '../../context/shortcuts/shortcutsContext';
 import ToolPanelContext from '../../context/toolPanel/toolPanelContext';
@@ -15,7 +16,6 @@ import {
 } from '../../shared/constants';
 
 import {
-  isObjectEqual,
   imageDataCollectionToAPNG,
   imageDataCollectionToGIF
 } from '../../shared/utilities';
@@ -44,7 +44,7 @@ function ShortcutListener() {
     let action = null;
 
     Object.entries(shortcuts).forEach(([actionKey, actionObj]) => {
-      if (isObjectEqual(actionObj, keyPressed)) action = actionKey;
+      if (_.isEqual(actionObj, keyPressed)) action = actionKey;
     });
 
     return action;

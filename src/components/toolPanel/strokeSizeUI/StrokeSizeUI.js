@@ -20,11 +20,11 @@ function StrokeSizeUI() {
         <p key="tooltip-shortcut">
           Down:{' '}
           <span className="tooltip-shortcut">
-            {shortcutToString(shortcuts, SHORTCUT_ACTIONS.strokeSizeDown)}
+            {shortcutToString(shortcuts[SHORTCUT_ACTIONS.strokeSizeDown])}
           </span>
           Up:{' '}
           <span className="tooltip-shortcut">
-            {shortcutToString(shortcuts, SHORTCUT_ACTIONS.strokeSizeUp)}
+            {shortcutToString(shortcuts[SHORTCUT_ACTIONS.strokeSizeUp])}
           </span>
         </p>
       ]}

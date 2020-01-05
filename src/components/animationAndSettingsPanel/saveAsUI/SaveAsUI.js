@@ -44,7 +44,7 @@ function SaveAs() {
       <Tooltip
         content={
           <span className="tooltip-shortcut">
-            {shortcutToString(shortcuts, SHORTCUT_ACTIONS.saveAsAPNG)}
+            {shortcutToString(shortcuts[SHORTCUT_ACTIONS.saveAsAPNG])}
           </span>
         }
         direction={TOOLTIP_PROPS.directions.down}
@@ -60,7 +60,7 @@ function SaveAs() {
       <Tooltip
         content={
           <span className="tooltip-shortcut">
-            {shortcutToString(shortcuts, SHORTCUT_ACTIONS.saveAsGIF)}
+            {shortcutToString(shortcuts[SHORTCUT_ACTIONS.saveAsGIF])}
           </span>
         }
         direction={TOOLTIP_PROPS.directions.down}

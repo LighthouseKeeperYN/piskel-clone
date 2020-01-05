@@ -27,7 +27,7 @@ function CopyButton({ index }) {
         content={[
           <span key="copyFrame">Delete this frame </span>,
           <span className="tooltip-shortcut" key="tooltip-shortcut">
-            {shortcutToString(shortcuts, SHORTCUT_ACTIONS.deleteCurrentFrame)}
+            {shortcutToString(shortcuts[SHORTCUT_ACTIONS.deleteCurrentFrame])}
           </span>,
         ]}
         direction={TOOLTIP_PROPS.directions.right}

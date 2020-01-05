@@ -24,7 +24,7 @@ function CopyButton({ index }) {
         content={[
           <span key="copyFrame">Copy this frame </span>,
           <span className="tooltip-shortcut" key="tooltip-shortcut">
-            {shortcutToString(shortcuts, SHORTCUT_ACTIONS.copyCurrentFrame)}
+            {shortcutToString(shortcuts[SHORTCUT_ACTIONS.copyCurrentFrame])}
           </span>,
         ]}
         direction={TOOLTIP_PROPS.directions.right}
