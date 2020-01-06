@@ -17,7 +17,7 @@ const params = {
   isDrawing: true,
   isErasing: true,
   toolType: TOOL_TYPES.pen,
-  colorToApply: '#ffffff'
+  colorToApply: '#ffffff',
 };
 
 test("applyToolToCanvas doesn't throw when tool not specified", () => {
@@ -25,11 +25,9 @@ test("applyToolToCanvas doesn't throw when tool not specified", () => {
 });
 
 test('applyToolToCanvas applies all types of tools except stroke correctly', () => {
-  expect(() =>
-    Object.values(TOOL_TYPES).forEach((toolType) => {
-      if (toolType !== TOOL_TYPES.stroke) applyToolToCanvas({ ...params, toolType });
-    })
-  ).not.toThrow();
+  expect(() => Object.values(TOOL_TYPES).forEach((toolType) => {
+    if (toolType !== TOOL_TYPES.stroke) applyToolToCanvas({ ...params, toolType });
+  })).not.toThrow();
 });
 
 params.isDrawing = false;

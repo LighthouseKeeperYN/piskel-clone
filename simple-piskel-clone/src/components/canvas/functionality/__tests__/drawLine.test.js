@@ -7,7 +7,7 @@ const pixelSize = 16;
 const currMousePosition = { x: 1, y: 2 };
 const prevMousePosition = { x: 3, y: 4 };
 const strokeSize = 2;
-let isErasing = true;
+const isErasing = true;
 
 test('drawLine throws when current mouse position not specified', () => {
   expect(() => drawLine({ ctx, pixelSize, prevMousePosition, strokeSize })).toThrow();
@@ -18,13 +18,16 @@ test("drawLine doesn't throws when previous mouse position not specified", () =>
 });
 
 test('drawLine draws correctly', () => {
-  expect(() =>
-    drawLine({ ctx, pixelSize, currMousePosition, prevMousePosition, strokeSize })
-  ).not.toThrow();
+  expect(
+    () => drawLine({ ctx, pixelSize, currMousePosition, prevMousePosition, strokeSize }),
+  )
+    .not.toThrow();
 });
 
 test('drawLine erases correctly', () => {
-  expect(() =>
-    drawLine({ ctx, pixelSize, currMousePosition, prevMousePosition, strokeSize }, isErasing)
-  ).not.toThrow();
+  expect(() => drawLine(
+    { ctx, pixelSize, currMousePosition, prevMousePosition, strokeSize },
+    isErasing,
+  ))
+    .not.toThrow();
 });
