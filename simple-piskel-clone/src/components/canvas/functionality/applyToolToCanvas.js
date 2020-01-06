@@ -29,7 +29,7 @@ const applyToolToCanvas = (params) => {
       if (!params.isDrawing) {
         initialImage = params.ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
         initialPrevMousePosition = params.currMousePosition;
-      } else params.ctx.putImageData(initialImage, 0, 0);
+      } else {params.ctx.putImageData(initialImage, 0, 0);}
 
       drawLine({ ...params, prevMousePosition: initialPrevMousePosition });
       break;
