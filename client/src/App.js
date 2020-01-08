@@ -9,6 +9,7 @@ import ShortcutListener from './components/shortcuts/ShortcutListener';
 import Header from './components/layout/header/Header';
 import Landing from './pages/landing/Landing';
 import Project from './pages/project/Project';
+import Register from './pages/register/Register';
 
 import ToolPanelState from './context/toolPanel/ToolPanelState';
 import AnimationAndSettingsPanelState from './context/animationAndSettingsPanel/AnimationAndSettingsPanelState';
@@ -31,6 +32,7 @@ const App = () => (
                   <Switch>
                     <Route exact path="/" component={Landing} />
                     <Route exact path="/project" component={Project} />
+                    <Route exact path="/register" component={Register} />
                   </Switch>
                 </main>
               </div>

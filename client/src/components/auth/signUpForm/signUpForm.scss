@@ -1,0 +1,44 @@
+.sign-up-form-wrapper {
+  width: 40rem;
+  height: 60rem;
+}
+
+.sign-up-form-title {
+  text-align: center;
+}
+
+.input-group {
+  margin: 2rem 0;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  input {
+    width: 100%;
+    height: 4rem;
+    background-color: #2d2d2d;
+    border: 0.1rem solid #666;
+    padding: 0 0.5rem;
+
+    font-size: 2rem;
+    color: white;
+
+    -webkit-box-shadow: 0 0 0 500rem #2d2d2d inset;
+    -webkit-text-fill-color: white;
+  }
+}
+
+.sign-up-form-button {
+  width: 100%;
+  height: 4rem;
+  cursor: pointer;
+  background-color: gold;
+  border: 0;
+  border-radius: 0.2rem;
+
+  &:hover {
+    background-color: white;
+  }
+}

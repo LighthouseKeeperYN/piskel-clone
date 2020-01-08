@@ -12,7 +12,7 @@ function LocalStorageDownloader() {
   const { shortcuts, setAllShortcuts } = useContext(ShortcutsContext);
   const { addFrame, frameCollection, changeIndex, currentFrame } = useContext(FramePanelContext);
   const { setPixelSize, setFrameRate, pixelSize, frameRate } = useContext(
-    AnimationAndSettingsPanelContext,
+    AnimationAndSettingsPanelContext
   );
   const {
     strokeSize,
@@ -22,7 +22,7 @@ function LocalStorageDownloader() {
     setStrokeSize,
     setToolType,
     setColorPrimary,
-    setColorSecondary,
+    setColorSecondary
   } = useContext(ToolPanelContext);
 
   const canvasRef = useRef(null);
@@ -78,7 +78,7 @@ function LocalStorageDownloader() {
       toolType,
       colorPrimary,
       colorSecondary,
-      shortcuts,
+      shortcuts
     };
 
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(userData));
@@ -86,6 +86,7 @@ function LocalStorageDownloader() {
 
   useEffect(() => {
     window.addEventListener('load', () => downloadDataFromLocalStorage(canvasRef.current));
+    // eslint-disable-next-line
   }, []);
 
   useBeforeunload(() => uploadDataToLocalStorage(canvasRef.current));
