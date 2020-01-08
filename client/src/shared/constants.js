@@ -7,23 +7,22 @@ export const TRANSPARENCY_COLOR = '#000000';
 export const BLACK_COLOR_REPLACEMENT = '#000001';
 export const LOCAL_STORAGE_KEY = 'piskel-clone-lhk';
 export const STROKE_SCALES = [1, 2, 3, 4];
-export const OAUTH_ID = '708401454754-oese7afdmi01minpdh0n7k26dgfvpg76.apps.googleusercontent.com';
 export const TOOL_TYPES = {
   pen: 'pen',
   stroke: 'stroke',
   bucket: 'bucket',
   bucketAll: 'bucket-all',
   eraser: 'eraser',
-  colorPicker: 'color-picker',
+  colorPicker: 'color-picker'
 };
 export const DEFAULT_COLORS = {
   primary: '#ffffff',
-  secondary: '#000000',
+  secondary: '#000000'
 };
 export const PIXEL_SIZES = {
   16: 16,
   8: 8,
-  4: 4,
+  4: 4
 };
 export const TOOLTIP_PROPS = {
   delay: 0,
@@ -33,8 +32,8 @@ export const TOOLTIP_PROPS = {
     left: 'left',
     up: 'up',
     right: 'right',
-    down: 'down',
-  },
+    down: 'down'
+  }
 };
 export const SHORTCUT_ACTIONS = {
   ...TOOL_TYPES,
@@ -46,7 +45,7 @@ export const SHORTCUT_ACTIONS = {
   deleteCurrentFrame: 'deleteCurrentFrame',
   addNewFrame: 'addNewFrame',
   saveAsAPNG: 'saveAsAPNG',
-  saveAsGIF: 'saveAsGIF',
+  saveAsGIF: 'saveAsGIF'
 };
 export const ACTION_DESCRIPTIONS = {
   [TOOL_TYPES.pen]: 'Pen tool',
@@ -63,5 +62,8 @@ export const ACTION_DESCRIPTIONS = {
   [SHORTCUT_ACTIONS.deleteCurrentFrame]: 'Delete selected frame',
   [SHORTCUT_ACTIONS.addNewFrame]: 'Add new frame',
   [SHORTCUT_ACTIONS.saveAsAPNG]: 'Save as APNG',
-  [SHORTCUT_ACTIONS.saveAsGIF]: 'Save as GIF',
+  [SHORTCUT_ACTIONS.saveAsGIF]: 'Save as GIF'
+};
+export const HTTP_HEADERS = {
+  xAuthToken: 'x-auth-token'
 };

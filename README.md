@@ -1,8 +1,7 @@
-# simple-piskel-clone
+### Run Server
 
-* npm install - install dependencies
-* npm run lint - use ESLint
-* npm run start - start dev server
-* npm run deploy - deploy project to surge.sh
-* npm run test - run unit tests
-* npm run test:coverage - check test coverage
+```bash
+npm run dev     # Express & React :3000 & :5000
+npm run server  # Express API Only :5000
+npm run client  # React Client Only :3000
+```

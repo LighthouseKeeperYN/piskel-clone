@@ -1,5 +1,8 @@
 import UPNG from 'upng-js';
 import GifEncoder from 'gif-encoder';
+import axios from 'axios';
+
+import { HTTP_HEADERS } from './constants';
 
 export function scaleDown(coordinate, ratio) {
   return Math.floor(coordinate / ratio);
@@ -82,5 +85,12 @@ export function shortcutToString(keyObj) {
 
   if (symbol.includes('Key') || symbol.includes('Digit')) symbol = symbol.slice(-1).toUpperCase();
 
-  return `( ${keyObj.ctrlKey ? 'Ctrl + ' : ''}${keyObj.shiftKey ? 'Shift + ' : ''}${keyObj.altKey ? 'Alt + ' : ''}${symbol} )`;
+  return `( ${keyObj.ctrlKey ? 'Ctrl + ' : ''}${keyObj.shiftKey ? 'Shift + ' : ''}${
+    keyObj.altKey ? 'Alt + ' : ''
+  }${symbol} )`;
 }
+
+export const setAuthToken = (token) => {
+  if (token) axios.defaults.headers.common[HTTP_HEADERS.xAuthToken] = token;
+  else delete axios.defaults.headers.common[HTTP_HEADERS.xAuthToken];
+};
