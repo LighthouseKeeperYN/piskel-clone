@@ -12,10 +12,10 @@ import AnimationAndSettingsPanelContext from '../context/animationAndSettingsPan
 function LocalStorageDownloader() {
   const { shortcuts, setAllShortcuts } = useContext(ShortcutsContext);
   const { addFrame, frameCollection, changeIndex, currentFrame, clearFrames } = useContext(
-    FramePanelContext,
+    FramePanelContext
   );
   const { setPixelSize, setFrameRate, pixelSize, frameRate } = useContext(
-    AnimationAndSettingsPanelContext,
+    AnimationAndSettingsPanelContext
   );
   const {
     strokeSize,
@@ -25,7 +25,7 @@ function LocalStorageDownloader() {
     setStrokeSize,
     setToolType,
     setColorPrimary,
-    setColorSecondary,
+    setColorSecondary
   } = useContext(ToolPanelContext);
 
   const downloadDataFromLocalStorage = () => {
@@ -34,8 +34,9 @@ function LocalStorageDownloader() {
     if (userData) {
       clearFrames();
 
-      decodeFramesAll(userData.frameCollection)
-        .then((frames) => frames.forEach((frame) => addFrame(frame)));
+      decodeFramesAll(userData.frameCollection).then((frames) =>
+        frames.forEach((frame) => addFrame(frame))
+      );
 
       setPixelSize(userData.pixelSize);
       setFrameRate(userData.frameRate);
@@ -60,7 +61,7 @@ function LocalStorageDownloader() {
       toolType,
       colorPrimary,
       colorSecondary,
-      shortcuts,
+      shortcuts
     };
 
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(userData));

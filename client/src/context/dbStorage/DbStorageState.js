@@ -10,13 +10,14 @@ import {
   SET_CURRENT,
   UPDATE_PROJECT,
   PROJECT_ERROR,
+  CLEAR_PROJECTS
 } from '../types';
 
 const DbStorageState = (props) => {
   const initialState = {
     projects: [],
     current: null,
-    error: null,
+    error: null
   };
 
   const [state, dispatch] = useReducer(dbStorageReducer, initialState);
@@ -27,12 +28,12 @@ const DbStorageState = (props) => {
 
       dispatch({
         type: GET_PROJECTS,
-        payload: res.data,
+        payload: res.data
       });
     } catch (err) {
       dispatch({
         type: PROJECT_ERROR,
-        payload: err.response.msg,
+        payload: err.response.msg
       });
     }
   };
@@ -45,12 +46,12 @@ const DbStorageState = (props) => {
 
       dispatch({
         type: ADD_PROJECT,
-        payload: res.data,
+        payload: res.data
       });
     } catch (err) {
       dispatch({
         type: PROJECT_ERROR,
-        payload: err.response.msg,
+        payload: err.response.msg
       });
     }
   };
@@ -61,12 +62,12 @@ const DbStorageState = (props) => {
 
       dispatch({
         type: DELETE_PROJECT,
-        payload: id,
+        payload: id
       });
     } catch (err) {
       dispatch({
         type: PROJECT_ERROR,
-        payload: err.response.msg,
+        payload: err.response.msg
       });
     }
   };
@@ -79,18 +80,22 @@ const DbStorageState = (props) => {
 
       dispatch({
         type: UPDATE_PROJECT,
-        payload: res.data,
+        payload: res.data
       });
     } catch (err) {
       dispatch({
         type: PROJECT_ERROR,
-        payload: err.response.msg,
+        payload: err.response.msg
       });
     }
   };
 
   const setCurrent = (project) => {
     dispatch({ type: SET_CURRENT, payload: project });
+  };
+
+  const clearProjects = () => {
+    dispatch({ type: CLEAR_PROJECTS });
   };
 
   return (
@@ -104,6 +109,7 @@ const DbStorageState = (props) => {
         deleteProject,
         updateProject,
         setCurrent,
+        clearProjects
       }}
     >
       {props.children}

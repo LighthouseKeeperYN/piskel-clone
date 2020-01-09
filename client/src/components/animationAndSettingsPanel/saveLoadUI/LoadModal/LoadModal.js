@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import useOnClickOutside from 'use-onclickoutside';
 
 import './loadModal.scss';
@@ -8,9 +8,12 @@ import AnimationAndSettingsPanelContext from '../../../../context/animationAndSe
 
 function LoadModal() {
   const { toggleLoadModal } = useContext(AnimationAndSettingsPanelContext);
-  const { projects } = useContext(DbStorageContext);
+  const { projects, getProjects } = useContext(DbStorageContext);
 
-  console.log(projects);
+  useEffect(() => {
+    getProjects();
+    // eslint-disable-next-line
+  }, []);
 
   const modalRef = useRef(null);
   useOnClickOutside(modalRef, toggleLoadModal);
@@ -18,8 +21,8 @@ function LoadModal() {
   return (
     <div className="load-modal-wrapper">
       <div className="load-modal" ref={modalRef}>
-        {projects.map((project) => (
-          <div className="load-cell" key={project.name}>
+        {projects.map((project, index) => (
+          <div className="load-cell" key={index}>
             <p>{project.name}</p>
           </div>
         ))}

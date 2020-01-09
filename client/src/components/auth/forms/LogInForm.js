@@ -4,12 +4,16 @@ import PropTypes from 'prop-types';
 import './form.scss';
 
 import AuthContext from '../../../context/auth/authContext';
+import DbStorageContext from '../../../context/dbStorage/dbStorageContext';
 
 const LogInForm = ({ pageProps }) => {
   const { logIn, error, clearErrors, isAuthenticated } = useContext(AuthContext);
+  const { getProjects } = useContext(DbStorageContext);
 
   useEffect(() => {
-    if (isAuthenticated) pageProps.history.push('/project');
+    if (isAuthenticated) {
+      pageProps.history.push('/project');
+    }
 
     if (error === 'Invalid Credentials') {
       alert(error);
@@ -27,6 +31,7 @@ const LogInForm = ({ pageProps }) => {
   const execLogIn = (e) => {
     e.preventDefault();
     logIn({ email, password });
+    getProjects();
   };
 
   return (
@@ -48,7 +53,7 @@ const LogInForm = ({ pageProps }) => {
 };
 
 LogInForm.propTypes = {
-  pageProps: PropTypes.object.isRequired,
+  pageProps: PropTypes.object.isRequired
 };
 
 export default LogInForm;
