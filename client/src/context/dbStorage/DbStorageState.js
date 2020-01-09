@@ -9,14 +9,14 @@ import {
   DELETE_PROJECT,
   SET_CURRENT,
   UPDATE_PROJECT,
-  PROJECT_ERROR
+  PROJECT_ERROR,
 } from '../types';
 
 const DbStorageState = (props) => {
   const initialState = {
     projects: [],
     current: null,
-    error: null
+    error: null,
   };
 
   const [state, dispatch] = useReducer(dbStorageReducer, initialState);
@@ -27,12 +27,12 @@ const DbStorageState = (props) => {
 
       dispatch({
         type: GET_PROJECTS,
-        payload: res.data
+        payload: res.data,
       });
     } catch (err) {
       dispatch({
         type: PROJECT_ERROR,
-        payload: err.response.msg
+        payload: err.response.msg,
       });
     }
   };
@@ -45,13 +45,12 @@ const DbStorageState = (props) => {
 
       dispatch({
         type: ADD_PROJECT,
-        payload: res.data
+        payload: res.data,
       });
     } catch (err) {
-      console.log(err);
       dispatch({
         type: PROJECT_ERROR,
-        payload: err.response.msg
+        payload: err.response.msg,
       });
     }
   };
@@ -62,12 +61,12 @@ const DbStorageState = (props) => {
 
       dispatch({
         type: DELETE_PROJECT,
-        payload: id
+        payload: id,
       });
     } catch (err) {
       dispatch({
         type: PROJECT_ERROR,
-        payload: err.response.msg
+        payload: err.response.msg,
       });
     }
   };
@@ -80,12 +79,12 @@ const DbStorageState = (props) => {
 
       dispatch({
         type: UPDATE_PROJECT,
-        payload: res.data
+        payload: res.data,
       });
     } catch (err) {
       dispatch({
         type: PROJECT_ERROR,
-        payload: err.response.msg
+        payload: err.response.msg,
       });
     }
   };
@@ -104,7 +103,7 @@ const DbStorageState = (props) => {
         addProject,
         deleteProject,
         updateProject,
-        setCurrent
+        setCurrent,
       }}
     >
       {props.children}

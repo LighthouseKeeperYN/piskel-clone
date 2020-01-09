@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 import './form.scss';
 
@@ -21,7 +22,7 @@ const SignUpForm = ({ pageProps }) => {
     name: '',
     email: '',
     password: '',
-    password2: ''
+    password2: '',
   });
 
   const writeValue = (e) => setUser({ ...user, [e.target.name]: e.target.value });
@@ -73,6 +74,10 @@ const SignUpForm = ({ pageProps }) => {
       </form>
     </div>
   );
+};
+
+SignUpForm.propTypes = {
+  pageProps: PropTypes.object.isRequired,
 };
 
 export default SignUpForm;

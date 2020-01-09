@@ -4,7 +4,7 @@ import {
   DELETE_PROJECT,
   SET_CURRENT,
   UPDATE_PROJECT,
-  PROJECT_ERROR
+  PROJECT_ERROR,
 } from '../types';
 
 export default (state, action) => {
@@ -16,14 +16,14 @@ export default (state, action) => {
     case UPDATE_PROJECT:
       return {
         ...state,
-        projects: state.projects.map((project) =>
-          project._id === action.payload._id ? action.payload : project
-        )
+        projects: state.projects.map(
+          (project) => (project._id === action.payload._id ? action.payload : project),
+        ),
       };
     case DELETE_PROJECT:
       return {
         ...state,
-        projects: state.projects.filter((contact) => contact._id !== action.payload)
+        projects: state.projects.filter((contact) => contact._id !== action.payload),
       };
     case SET_CURRENT:
       return { ...state, current: action.payload };

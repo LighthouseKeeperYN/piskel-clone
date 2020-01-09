@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 import './form.scss';
 
@@ -44,6 +45,10 @@ const LogInForm = ({ pageProps }) => {
       </form>
     </div>
   );
+};
+
+LogInForm.propTypes = {
+  pageProps: PropTypes.object.isRequired,
 };
 
 export default LogInForm;

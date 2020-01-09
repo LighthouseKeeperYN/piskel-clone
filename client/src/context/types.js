@@ -13,6 +13,7 @@ export const SET_CANVAS_CTX = 'SET_CANVAS_CTX';
 export const SET_PIXEL_SIZE = 'SET_PIXEL_SIZE';
 export const SET_FRAME_RATE = 'SET_FRAME_RATE';
 export const TOGGLE_SAVE_MODAL = 'TOGGLE_SAVE_MODAL';
+export const TOGGLE_LOAD_MODAL = 'TOGGLE_LOAD_MODAL';
 
 export const ADD_FRAME = 'ADD_FRAME';
 export const UPDATE_FRAME = 'UPDATE_FRAME';
@@ -37,9 +38,9 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const CLEAR_ERRORS = 'CLEAR_ERROR';
 
-export const GET_PROJECTS = 'GET_PROJECTS'
-export const ADD_PROJECT = 'ADD_PROJECT'
-export const DELETE_PROJECT = 'DELETE_PROJECT'
-export const SET_CURRENT = 'SET_CURRENT'
-export const UPDATE_PROJECT = 'UPDATE_PROJECT'
-export const PROJECT_ERROR = 'PROJECT_ERROR'
+export const GET_PROJECTS = 'GET_PROJECTS';
+export const ADD_PROJECT = 'ADD_PROJECT';
+export const DELETE_PROJECT = 'DELETE_PROJECT';
+export const SET_CURRENT = 'SET_CURRENT';
+export const UPDATE_PROJECT = 'UPDATE_PROJECT';
+export const PROJECT_ERROR = 'PROJECT_ERROR';

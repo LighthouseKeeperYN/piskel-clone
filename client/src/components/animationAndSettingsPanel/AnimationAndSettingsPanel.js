@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import './animationAndSettingsPanel.scss';
 
@@ -10,19 +10,21 @@ import CanvasResolutionButton from './canvasResolutionButton/CanvasResolutionBut
 import SaveAsUI from './saveAsUI/SaveAsUI';
 import SaveLoadUI from './saveLoadUI/SaveLoadUI';
 
+import AuthContext from '../../context/auth/authContext';
+
 function AnimationAndSettingsPanel() {
+  const { isAuthenticated } = useContext(AuthContext);
+
   return (
     <div className="animation-and-settings-panel">
       <AnimationPreview />
       <FrameRateUI />
       <p className="sprite-resolution-title">Sprite resolution:</p>
-      {Object.values(PIXEL_SIZES)
-        .reverse()
-        .map((pxSize) => (
-          <CanvasResolutionButton key={`pxSize-${pxSize}`} pxSize={pxSize} />
-        ))}
+      {PIXEL_SIZES.map((pxSize) => (
+        <CanvasResolutionButton key={`pxSize-${pxSize}`} pxSize={pxSize} />
+      ))}
       <SaveAsUI />
-      <SaveLoadUI />
+      {isAuthenticated && <SaveLoadUI />}
     </div>
   );
 }

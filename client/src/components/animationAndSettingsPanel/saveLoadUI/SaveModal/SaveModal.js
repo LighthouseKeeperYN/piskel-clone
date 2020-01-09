@@ -26,7 +26,7 @@ function SaveModal() {
     toggleSaveModal();
   };
 
-  const modalRef = useRef(null)
+  const modalRef = useRef(null);
   useOnClickOutside(modalRef, toggleSaveModal);
 
   return (

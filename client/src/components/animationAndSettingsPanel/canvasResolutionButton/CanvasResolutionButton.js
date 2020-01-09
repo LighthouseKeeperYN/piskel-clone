@@ -34,7 +34,7 @@ function CanvasResolutionButton({ pxSize }) {
 }
 
 CanvasResolutionButton.propTypes = {
-  pxSize: PropTypes.number.isRequired
+  pxSize: PropTypes.number.isRequired,
 };
 
 export default CanvasResolutionButton;

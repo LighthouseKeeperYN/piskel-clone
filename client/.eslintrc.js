@@ -12,7 +12,8 @@ module.exports = {
     'firebase': false,
     'test': false,
     'expect': false,
-    'it': false
+    'it': false,
+    '_': false
   },
   'parserOptions': {
     'ecmaVersion': 2018,
@@ -23,6 +24,7 @@ module.exports = {
     'no-param-reassign': [2, { 'props': false }],
     'react/prop-types': [2, { ignore: ['children'] }],
     'object-curly-newline': ['error', { 'ObjectPattern': { 'multiline': true } }],
-    'no-bitwise': ['error', { 'allow': ['<<'] }]
+    'no-bitwise': ['error', { 'allow': ['<<'] }],
+    'no-underscore-dangle': 0
   }
 };

@@ -6,7 +6,7 @@ import './canvas.scss';
 import {
   DEFAULT_CANVAS_SIZE,
   TRANSPARENCY_COLOR,
-  BLACK_COLOR_REPLACEMENT
+  BLACK_COLOR_REPLACEMENT,
 } from '../../shared/constants';
 
 import applyToolToCanvas from './functionality/applyToolToCanvas';
@@ -26,7 +26,7 @@ function Canvas() {
     colorPrimary,
     colorSecondary,
     setColorPrimary,
-    setColorSecondary
+    setColorSecondary,
   } = useContext(ToolPanelContext);
 
   const [prevMousePosition, setPrevMousePosition] = useState(null);
@@ -65,7 +65,7 @@ function Canvas() {
       e,
       setColorPrimary,
       setColorSecondary,
-      isDrawing
+      isDrawing,
     });
 
     updateFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
