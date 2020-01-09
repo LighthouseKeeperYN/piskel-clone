@@ -19,7 +19,7 @@ import AnimationAndSettingsPanelContext from '../../context/animationAndSettings
 function Canvas() {
   const { pixelSize } = useContext(AnimationAndSettingsPanelContext);
   const { setCanvasCtx, setDrawing, isDrawing } = useContext(CanvasContext);
-  const { updateFrame, currentFrame } = useContext(FramePanelContext);
+  const { updateFrame } = useContext(FramePanelContext);
   const {
     strokeSize,
     toolType,
@@ -38,12 +38,11 @@ function Canvas() {
     setCanvasCtx(ctx);
   };
   useEffect(initCanvas, []);
-  
+
   const clearCanvas = () => {
     const ctx = canvasRef.current.getContext('2d');
     ctx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
   };
-
   useEffect(clearCanvas, [pixelSize]);
 
   const handleDrawingOnCanvas = (e) => {
