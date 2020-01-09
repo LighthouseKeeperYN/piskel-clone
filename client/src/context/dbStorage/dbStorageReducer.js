@@ -12,7 +12,7 @@ export default (state, action) => {
     case GET_PROJECTS:
       return { ...state, projects: action.payload };
     case ADD_PROJECT:
-      return { ...state, contacts: [action.payload, ...state.contacts] };
+      return { ...state, projects: [action.payload, ...state.projects] };
     case UPDATE_PROJECT:
       return {
         ...state,
@@ -23,7 +23,7 @@ export default (state, action) => {
     case DELETE_PROJECT:
       return {
         ...state,
-        contacts: state.contacts.filter((contact) => contact._id !== action.payload)
+        projects: state.projects.filter((contact) => contact._id !== action.payload)
       };
     case SET_CURRENT:
       return { ...state, current: action.payload };

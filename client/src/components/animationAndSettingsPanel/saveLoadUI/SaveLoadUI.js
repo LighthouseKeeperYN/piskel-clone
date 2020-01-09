@@ -9,7 +9,7 @@ import SaveModal from './SaveModal/SaveModal';
 function SaveLoadUI() {
   // const { saveModalActive } = useContext(AnimationAndSettingsPanelContext);
 
-  return <div>{false && <SaveModal />}</div>;
+  return <div>{true && <SaveModal />}</div>;
 }
 
 export default SaveLoadUI;

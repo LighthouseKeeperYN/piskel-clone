@@ -2,7 +2,7 @@ import React, { useContext, useEffect, Fragment } from 'react';
 import { useBeforeunload } from 'react-beforeunload';
 
 import { LOCAL_STORAGE_KEY } from '../shared/constants';
-import { encodeFrame, decodeFrame } from '../shared/utilities';
+import { encodeFrame, decodeFramesAll } from '../shared/utilities';
 
 import FramePanelContext from '../context/framePanel/framePanelContext';
 import ToolPanelContext from '../context/toolPanel/toolPanelContext';
@@ -34,11 +34,9 @@ function LocalStorageDownloader() {
     if (userData) {
       clearFrames();
 
-      const framePromises = userData.frameCollection.map((frame) => decodeFrame(frame));
-      Promise.all(framePromises).then((res) => {
-        res.forEach((frame) => addFrame(frame));
-        changeIndex(userData.currentFrame);
-      });
+      decodeFramesAll(userData.frameCollection).then((frames) =>
+        frames.forEach((frame) => addFrame(frame))
+      );
 
       setPixelSize(userData.pixelSize);
       setFrameRate(userData.frameRate);

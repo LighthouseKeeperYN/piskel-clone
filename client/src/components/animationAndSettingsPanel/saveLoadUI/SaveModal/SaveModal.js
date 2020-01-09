@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 
 import './SaveModal.scss';
 
+import { encodeFrame } from '../../../../shared/utilities';
+
 import DbStorageContext from '../../../../context/dbStorage/dbStorageContext';
 import FramePanelContext from '../../../../context/framePanel/framePanelContext';
 import AnimationAndSettingsPanelContext from '../../../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
@@ -16,7 +18,10 @@ function SaveModal() {
 
   const execSaveProject = (e) => {
     e.preventDefault();
-    addProject({ name, project: { frameCollection, frameRate, pixelSize } });
+
+    const encodedFrames = frameCollection.map((frame) => encodeFrame(frame));
+
+    addProject({ name, projectData: { frameCollection: encodedFrames, frameRate, pixelSize } });
     toggleSaveModal();
   };
 

@@ -121,3 +121,8 @@ export const decodeFrame = (frame) => {
     };
   });
 };
+
+export const decodeFramesAll = async (frames) => {
+  const framePromises = frames.map((frame) => decodeFrame(frame));
+  return Promise.all(framePromises);
+};

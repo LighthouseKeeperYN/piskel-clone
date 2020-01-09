@@ -14,7 +14,7 @@ import {
 
 const DbStorageState = (props) => {
   const initialState = {
-    projects: null,
+    projects: [],
     current: null,
     error: null
   };
@@ -48,6 +48,7 @@ const DbStorageState = (props) => {
         payload: res.data
       });
     } catch (err) {
+      console.log(err);
       dispatch({
         type: PROJECT_ERROR,
         payload: err.response.msg

@@ -26,7 +26,10 @@ router.post(
   [
     auth,
     [
-      check('frameCollection', 'Frame collection is required')
+      check('name', 'Project name is required')
+        .not()
+        .isEmpty(),
+      check('projectData', 'Project Data is required')
         .not()
         .isEmpty()
     ]
@@ -35,9 +38,12 @@ router.post(
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
+    const { name, projectData } = req.body;
+
     try {
       const newProject = new Project({
-        projectData: req.body,
+        name,
+        projectData,
         user: req.user.id
       });
 
