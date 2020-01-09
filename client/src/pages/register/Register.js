@@ -1,13 +1,13 @@
 import React from 'react';
 
-import './Register.scss';
+import './register.scss';
 
-import SignUpForm from '../../components/auth/signUpForm/SignUpForm';
+import SignUpForm from '../../components/auth/forms/SignUpForm';
 
-function Register() {
+function Register(props) {
   return (
     <div className="register-page">
-      <SignUpForm />
+      <SignUpForm pageProps={props}/>
     </div>
   );
 }
