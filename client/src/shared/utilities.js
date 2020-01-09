@@ -2,7 +2,7 @@ import UPNG from 'upng-js';
 import GifEncoder from 'gif-encoder';
 import axios from 'axios';
 
-import { HTTP_HEADERS } from './constants';
+import { HTTP_HEADERS, DEFAULT_CANVAS_SIZE } from './constants';
 
 export function scaleDown(coordinate, ratio) {
   return Math.floor(coordinate / ratio);
@@ -93,4 +93,31 @@ export function shortcutToString(keyObj) {
 export const setAuthToken = (token) => {
   if (token) axios.defaults.headers.common[HTTP_HEADERS.xAuthToken] = token;
   else delete axios.defaults.headers.common[HTTP_HEADERS.xAuthToken];
+};
+
+export const encodeFrame = (frame) => {
+  const canvas = document.createElement('canvas');
+  canvas.width = DEFAULT_CANVAS_SIZE;
+  canvas.height = DEFAULT_CANVAS_SIZE;
+  const ctx = canvas.getContext('2d');
+
+  ctx.putImageData(frame, 0, 0);
+  return ctx.canvas.toDataURL('image/png');
+};
+
+export const decodeFrame = (frame) => {
+  const canvas = document.createElement('canvas');
+  canvas.width = DEFAULT_CANVAS_SIZE;
+  canvas.height = DEFAULT_CANVAS_SIZE;
+  const ctx = canvas.getContext('2d');
+
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.src = frame;
+    img.onload = () => {
+      ctx.drawImage(img, 0, 0);
+      const imgData = ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
+      resolve(imgData);
+    };
+  });
 };

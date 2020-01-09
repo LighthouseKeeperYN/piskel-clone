@@ -19,7 +19,7 @@ import FramePanelReducer from './framePanelReducer';
 const FramePanelState = (props) => {
   const initialState = {
     frameCollection: [new ImageData(DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE)],
-    currentFrame: -1,
+    currentFrame: 0,
     draggingFrame: null
   };
 

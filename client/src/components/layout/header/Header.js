@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 import './header.scss';
@@ -12,8 +12,10 @@ import LogInButton from '../../auth/buttons/LogInButton';
 const Header = () => {
   const { isAuthenticated, loadUser, user } = useContext(AuthContext);
 
-  // eslint-disable-next-line
-  useEffect(loadUser, []);
+  useEffect(() => {
+    loadUser();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <nav className="header">
@@ -22,9 +24,15 @@ const Header = () => {
       </h1>
 
       <div className="header__button-wrapper">
-        {isAuthenticated
-          ? [<span className="header__user-name">{user?.name}</span>, <LogOutButton />]
-          : [<LogInButton />, <SignUpButton />]}
+        {isAuthenticated ? (
+          <Fragment>
+            <span className="header__user-name">{user?.name}</span> <LogOutButton />
+          </Fragment>
+        ) : (
+          <Fragment>
+            <LogInButton /> <SignUpButton />
+          </Fragment>
+        )}
       </div>
     </nav>
   );

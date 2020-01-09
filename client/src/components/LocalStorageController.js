@@ -1,7 +1,8 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, Fragment } from 'react';
 import { useBeforeunload } from 'react-beforeunload';
 
-import { DEFAULT_CANVAS_SIZE, LOCAL_STORAGE_KEY } from '../shared/constants';
+import { LOCAL_STORAGE_KEY } from '../shared/constants';
+import { encodeFrame, decodeFrame } from '../shared/utilities';
 
 import FramePanelContext from '../context/framePanel/framePanelContext';
 import ToolPanelContext from '../context/toolPanel/toolPanelContext';
@@ -27,33 +28,16 @@ function LocalStorageDownloader() {
     setColorSecondary
   } = useContext(ToolPanelContext);
 
-  const canvasRef = useRef(null);
-
-  const encodeFrame = (ctx, frame) => {
-    ctx.putImageData(frame, 0, 0);
-    return ctx.canvas.toDataURL('image/png');
-  };
-
-  const decodeFrame = (ctx, frame, currFrame) => {
-    const img = new Image();
-    img.src = frame;
-    img.onload = () => {
-      ctx.drawImage(img, 0, 0);
-      addFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
-      ctx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
-      changeIndex(currFrame);
-    };
-  };
-
-  const downloadDataFromLocalStorage = (canvas) => {
+  const downloadDataFromLocalStorage = () => {
     const userData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 
     if (userData) {
-      const ctx = canvas.getContext('2d');
-
       clearFrames();
-      userData.frameCollection.forEach((frame) => {
-        decodeFrame(ctx, frame, userData.currentFrame);
+
+      const framePromises = userData.frameCollection.map((frame) => decodeFrame(frame));
+      Promise.all(framePromises).then((res) => {
+        res.forEach((frame) => addFrame(frame));
+        changeIndex(userData.currentFrame);
       });
 
       setPixelSize(userData.pixelSize);
@@ -67,10 +51,8 @@ function LocalStorageDownloader() {
     }
   };
 
-  const uploadDataToLocalStorage = (canvas) => {
-    const ctx = canvas.getContext('2d');
-
-    const encodedFrames = frameCollection.map((frame) => encodeFrame(ctx, frame));
+  const uploadDataToLocalStorage = () => {
+    const encodedFrames = frameCollection.map((frame) => encodeFrame(frame));
 
     const userData = {
       frameCollection: encodedFrames,
@@ -88,20 +70,13 @@ function LocalStorageDownloader() {
   };
 
   useEffect(() => {
-    window.addEventListener('load', () => downloadDataFromLocalStorage(canvasRef.current));
+    window.addEventListener('load', downloadDataFromLocalStorage);
     // eslint-disable-next-line
   }, []);
 
-  useBeforeunload(() => uploadDataToLocalStorage(canvasRef.current));
+  useBeforeunload(uploadDataToLocalStorage);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      style={{ display: 'none' }}
-      width={DEFAULT_CANVAS_SIZE}
-      height={DEFAULT_CANVAS_SIZE}
-    ></canvas>
-  );
+  return <Fragment></Fragment>;
 }
 
 export default LocalStorageDownloader;
