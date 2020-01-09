@@ -17,4 +17,11 @@
     display: flex;
     justify-content: flex-end;
   }
+
+  &__user-name {
+    display: flex;
+    align-items: center;
+
+    margin-right: 2rem;
+  }
 }

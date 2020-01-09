@@ -10,7 +10,9 @@ import AnimationAndSettingsPanelContext from '../context/animationAndSettingsPan
 
 function LocalStorageDownloader() {
   const { shortcuts, setAllShortcuts } = useContext(ShortcutsContext);
-  const { addFrame, frameCollection, changeIndex, currentFrame } = useContext(FramePanelContext);
+  const { addFrame, frameCollection, changeIndex, currentFrame, clearFrames } = useContext(
+    FramePanelContext
+  );
   const { setPixelSize, setFrameRate, pixelSize, frameRate } = useContext(
     AnimationAndSettingsPanelContext
   );
@@ -49,6 +51,7 @@ function LocalStorageDownloader() {
     if (userData) {
       const ctx = canvas.getContext('2d');
 
+      clearFrames();
       userData.frameCollection.forEach((frame) => {
         decodeFrame(ctx, frame, userData.currentFrame);
       });

@@ -21,7 +21,6 @@ const AuthState = (props) => {
   const initialState = {
     token: localStorage.getItem('token'),
     isAuthenticated: null,
-    loading: true,
     user: null,
     error: null
   };
@@ -30,7 +29,7 @@ const AuthState = (props) => {
 
   const loadUser = async () => {
     setAuthToken(localStorage.token);
-    console.log('test');
+
     try {
       const res = await axios.get('/api/auth');
 
@@ -98,7 +97,6 @@ const AuthState = (props) => {
       value={{
         token: state.token,
         isAuthenticated: state.isAuthenticated,
-        loading: state.loading,
         user: state.user,
         error: state.error,
         register,

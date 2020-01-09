@@ -6,8 +6,7 @@ import './canvas.scss';
 import {
   DEFAULT_CANVAS_SIZE,
   TRANSPARENCY_COLOR,
-  BLACK_COLOR_REPLACEMENT,
-  LOCAL_STORAGE_KEY,
+  BLACK_COLOR_REPLACEMENT
 } from '../../shared/constants';
 
 import applyToolToCanvas from './functionality/applyToolToCanvas';
@@ -20,31 +19,24 @@ import AnimationAndSettingsPanelContext from '../../context/animationAndSettings
 function Canvas() {
   const { pixelSize } = useContext(AnimationAndSettingsPanelContext);
   const { setCanvasCtx, setDrawing, isDrawing } = useContext(CanvasContext);
-  const { updateFrame, addFrame } = useContext(FramePanelContext);
+  const { updateFrame } = useContext(FramePanelContext);
   const {
     strokeSize,
     toolType,
     colorPrimary,
     colorSecondary,
     setColorPrimary,
-    setColorSecondary,
+    setColorSecondary
   } = useContext(ToolPanelContext);
 
   const [prevMousePosition, setPrevMousePosition] = useState(null);
 
   const canvasRef = useRef(null);
 
-  const addEmptyFrameIfUserDataIsAbsent = () => {
-    const userData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    if (!userData) addFrame(new ImageData(DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
-  };
-
   const initCanvas = () => {
     const ctx = canvasRef.current.getContext('2d');
     setCanvasCtx(ctx);
-    addEmptyFrameIfUserDataIsAbsent();
   };
-
   useEffect(initCanvas, []);
 
   const handleDrawingOnCanvas = (e) => {
@@ -67,7 +59,7 @@ function Canvas() {
       e,
       setColorPrimary,
       setColorSecondary,
-      isDrawing,
+      isDrawing
     });
 
     updateFrame(ctx.getImageData(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));

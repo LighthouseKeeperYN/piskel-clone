@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import './button.scss';
 
@@ -8,9 +9,11 @@ function SignUpButton() {
   const { logOut } = useContext(AuthContext);
 
   return (
-    <button className="auth-button" onClick={logOut}>
-      Log out
-    </button>
+    <Link to="/">
+      <button className="auth-button" onClick={logOut}>
+        Log out
+      </button>
+    </Link>
   );
 }
 

@@ -1,9 +1,8 @@
 import React from 'react';
 
-
 import './titleSection.scss';
 
-import CreateSpriteButton from '../../buttons/createSpriteButton/CreateSpriteButton';
+import CreateSpriteButton from './createSpriteButton/CreateSpriteButton';
 
 const appViewImg = require('./app-view.png');
 
@@ -18,8 +17,7 @@ function TitleSection() {
           voluptatem ipsa error eos magni.
         </p>
 
-          <CreateSpriteButton />
-
+        <CreateSpriteButton />
       </div>
       <img src={appViewImg} alt="app-view" />
     </section>

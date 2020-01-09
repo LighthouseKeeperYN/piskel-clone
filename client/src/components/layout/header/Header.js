@@ -10,13 +10,10 @@ import LogOutButton from '../../auth/buttons/LogOutButton';
 import LogInButton from '../../auth/buttons/LogInButton';
 
 const Header = () => {
-  // eslint-disable-next-line
-  const { isAuthenticated, logout, user, loadUser } = useContext(AuthContext);
+  const { isAuthenticated, loadUser, user } = useContext(AuthContext);
 
-  useEffect(() => {
-    loadUser();
-    // eslint-disable-next-line
-  }, []);
+  // eslint-disable-next-line
+  useEffect(loadUser, []);
 
   return (
     <nav className="header">
@@ -25,7 +22,9 @@ const Header = () => {
       </h1>
 
       <div className="header__button-wrapper">
-        {isAuthenticated ? <LogOutButton /> : [<LogInButton />, <SignUpButton />]}
+        {isAuthenticated
+          ? [<span className="header__user-name">{user?.name}</span>, <LogOutButton />]
+          : [<LogInButton />, <SignUpButton />]}
       </div>
     </nav>
   );

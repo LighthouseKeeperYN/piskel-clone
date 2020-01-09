@@ -8,7 +8,7 @@ const LogInForm = ({ pageProps }) => {
   const { logIn, error, clearErrors, isAuthenticated } = useContext(AuthContext);
 
   useEffect(() => {
-    if (isAuthenticated) pageProps.history.push('/');
+    if (isAuthenticated) pageProps.history.push('/project');
 
     if (error === 'Invalid Credentials') {
       alert(error);
@@ -17,10 +17,7 @@ const LogInForm = ({ pageProps }) => {
     // eslint-disable-next-line
   }, [error, isAuthenticated, pageProps.history]);
 
-  const [user, setUser] = useState({
-    email: null,
-    password: null
-  });
+  const [user, setUser] = useState({ email: null, password: null });
 
   const { email, password } = user;
 
