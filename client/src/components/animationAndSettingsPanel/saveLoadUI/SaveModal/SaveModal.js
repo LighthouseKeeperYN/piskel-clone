@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
+import useOnClickOutside from 'use-onclickoutside';
 
 import './SaveModal.scss';
 
@@ -25,9 +26,12 @@ function SaveModal() {
     toggleSaveModal();
   };
 
+  const modalRef = useRef(null)
+  useOnClickOutside(modalRef, toggleSaveModal);
+
   return (
     <div className="save-modal-wrapper">
-      <div className="save-modal-form-wrapper">
+      <div className="save-modal-form-wrapper" ref={modalRef}>
         <h2 className="save-modal-title">Save project</h2>
         <form className="save-modal-form" onSubmit={execSaveProject}>
           <label htmlFor="projectName">Project name</label>

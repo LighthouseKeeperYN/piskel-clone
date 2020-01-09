@@ -26,7 +26,7 @@ function CustomizeShortcutsModal() {
       {shortcutsModalVisibility && (
         <div className="customize-shortcuts-modal-wrapper">
           <div className="customize-shortcuts-modal" ref={ref}>
-            {Object.entries(shortcuts).map(([action]) => (
+            {Object.keys(shortcuts).map((action) => (
               <CustomizeShortcutsCell
                 action={action}
                 shortcut={shortcutToString(shortcuts[action])}
