@@ -5,13 +5,11 @@ import './canvasResolutionButton.scss';
 
 import { DEFAULT_CANVAS_SIZE } from '../../../shared/constants';
 
-import CanvasContext from '../../../context/canvas/canvasContext';
 import AnimationAndSettingsPanelContext from '../../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
 import FramePanelContext from '../../../context/framePanel/framePanelContext';
 
 function CanvasResolutionButton({ pxSize }) {
-  const { canvasCtx } = useContext(CanvasContext);
-  const { clearFrames, addFrame } = useContext(FramePanelContext);
+  const { resetFrames } = useContext(FramePanelContext);
   const { pixelSize, setPixelSize } = useContext(AnimationAndSettingsPanelContext);
 
   const resolution = DEFAULT_CANVAS_SIZE / pxSize;
@@ -20,9 +18,7 @@ function CanvasResolutionButton({ pxSize }) {
     if (pxSize === pixelSize) return;
 
     setPixelSize(pxSize);
-    clearFrames();
-    canvasCtx.clearRect(0, 0, DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE);
-    addFrame(new ImageData(DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
+    resetFrames();
   };
 
   return (
@@ -38,7 +34,7 @@ function CanvasResolutionButton({ pxSize }) {
 }
 
 CanvasResolutionButton.propTypes = {
-  pxSize: PropTypes.number.isRequired,
+  pxSize: PropTypes.number.isRequired
 };
 
 export default CanvasResolutionButton;

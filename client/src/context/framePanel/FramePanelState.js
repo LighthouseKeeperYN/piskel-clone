@@ -81,6 +81,11 @@ const FramePanelState = (props) => {
     });
   };
 
+  const resetFrames = () => {
+    clearFrames();
+    addFrame(new ImageData(DEFAULT_CANVAS_SIZE, DEFAULT_CANVAS_SIZE));
+  };
+
   return (
     <FramePanelContext.Provider
       value={{
@@ -94,7 +99,8 @@ const FramePanelState = (props) => {
         duplicateFrame,
         moveFrame,
         setDraggingFrame,
-        clearFrames
+        clearFrames,
+        resetFrames
       }}
     >
       {props.children}
