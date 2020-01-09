@@ -5,8 +5,12 @@ const ProjectSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users'
   },
-  projectData: {
+  name: {
     type: String,
+    required: true
+  },
+  projectData: {
+    type: Object,
     required: true
   },
   date: {

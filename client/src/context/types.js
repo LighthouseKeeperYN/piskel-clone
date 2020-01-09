@@ -12,6 +12,7 @@ export const SET_CANVAS_CTX = 'SET_CANVAS_CTX';
 
 export const SET_PIXEL_SIZE = 'SET_PIXEL_SIZE';
 export const SET_FRAME_RATE = 'SET_FRAME_RATE';
+export const TOGGLE_SAVE_MODAL = 'TOGGLE_SAVE_MODAL';
 
 export const ADD_FRAME = 'ADD_FRAME';
 export const UPDATE_FRAME = 'UPDATE_FRAME';

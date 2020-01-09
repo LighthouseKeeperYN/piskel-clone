@@ -34,25 +34,11 @@ const LogInForm = ({ pageProps }) => {
       <form onSubmit={execLogIn}>
         <div className="input-group">
           <label htmlFor="email">Email Address</label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            value={email}
-            onChange={writeValue}
-            required
-          />
+          <input id="email" type="email" name="email" onChange={writeValue} required />
         </div>
         <div className="input-group">
           <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            value={password}
-            onChange={writeValue}
-            required
-          />
+          <input id="password" type="password" name="password" onChange={writeValue} required />
         </div>
         <input type="submit" value="Login" className="form-button" />
       </form>
