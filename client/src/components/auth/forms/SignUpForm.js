@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useAlert } from 'react-alert';
 
 import './form.scss';
 
@@ -8,11 +9,13 @@ import AuthContext from '../../../context/auth/authContext';
 const SignUpForm = ({ pageProps }) => {
   const { register, error, clearErrors, isAuthenticated } = useContext(AuthContext);
 
+  const Alert = useAlert();
+
   useEffect(() => {
     if (isAuthenticated) pageProps.history.push('/project');
 
     if (error === 'User already exists') {
-      alert('User already exists');
+      Alert.show(error);
       clearErrors();
     }
     // eslint-disable-next-line
@@ -32,7 +35,7 @@ const SignUpForm = ({ pageProps }) => {
 
     const { name, email, password, password2 } = user;
 
-    if (password !== password2) alert('Passwords do not match');
+    if (password !== password2) Alert.show('Passwords do not match');
     else register({ name, email, password });
   };
 

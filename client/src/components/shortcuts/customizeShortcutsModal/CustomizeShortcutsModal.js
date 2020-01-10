@@ -16,7 +16,7 @@ function CustomizeShortcutsModal() {
 
   const closeModal = (e) => {
     if (e.target === e.currentTarget) toggleShortcutsModalVisibility();
-  }
+  };
 
   return (
     <Fragment>

@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Provider as AlertProvider } from 'react-alert';
+import AlertTemplate from 'react-alert-template-basic';
 
 import 'normalize.css';
 import './App.scss';
@@ -29,19 +31,21 @@ const App = () => (
             <AuthState>
               <DbStorageState>
                 <BrowserRouter>
-                  <LocalStorageController />
-                  <ShortcutListener />
-                  <div className="app">
-                    <Header />
-                    <main className="main">
-                      <Switch>
-                        <Route exact path="/" component={Landing} />
-                        <Route exact path="/project" component={Project} />
-                        <Route exact path="/register" component={Register} />
-                        <Route exact path="/login" component={Login} />
-                      </Switch>
-                    </main>
-                  </div>
+                  <AlertProvider template={AlertTemplate} >
+                    <LocalStorageController />
+                    <ShortcutListener />
+                    <div className="app">
+                      <Header />
+                      <main className="main">
+                        <Switch>
+                          <Route exact path="/" component={Landing} />
+                          <Route exact path="/project" component={Project} />
+                          <Route exact path="/register" component={Register} />
+                          <Route exact path="/login" component={Login} />
+                        </Switch>
+                      </main>
+                    </div>
+                  </AlertProvider>
                 </BrowserRouter>
               </DbStorageState>
             </AuthState>

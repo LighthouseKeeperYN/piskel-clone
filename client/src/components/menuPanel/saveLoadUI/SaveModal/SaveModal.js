@@ -33,7 +33,7 @@ function SaveModal() {
     updateProject({
       ...currentProject,
       name,
-      projectData: { frameCollection: encodedFrames, frameRate, pixelSize }
+      projectData: { frameCollection: encodedFrames, frameRate, pixelSize },
     });
     toggleSaveModal();
   };

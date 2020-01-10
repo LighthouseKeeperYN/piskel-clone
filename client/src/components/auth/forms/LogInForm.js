@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useAlert } from 'react-alert';
 
 import './form.scss';
 
@@ -10,13 +11,15 @@ const LogInForm = ({ pageProps }) => {
   const { logIn, error, clearErrors, isAuthenticated } = useContext(AuthContext);
   const { getProjects } = useContext(DbStorageContext);
 
+  const Alert = useAlert();
+
   useEffect(() => {
     if (isAuthenticated) {
       pageProps.history.push('/project');
     }
 
     if (error === 'Invalid Credentials') {
-      alert(error);
+      Alert.show(error);
       clearErrors();
     }
     // eslint-disable-next-line
