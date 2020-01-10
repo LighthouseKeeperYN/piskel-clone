@@ -49,13 +49,12 @@
 }
 
 .load-cell {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-between;
 
   height: 4rem;
-  padding: 1rem;
+  padding: 0 1rem;
   border: 0.2rem solid #888;
   border-radius: 0.2rem;
 
@@ -70,5 +69,39 @@
   &__shortcut {
     color: gold;
     text-transform: capitalize;
+  }
+}
+
+.load-delete-button {
+  position: relative;
+
+  width: 2rem;
+  height: 2rem;
+  opacity: 0.3;
+
+  background-color: #00000000;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    left: 45%;
+    top: 0;
+    
+    content: ' ';
+    height: 100%;
+    width: 0.2rem;
+    background-color: rgb(255, 255, 255);
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
   }
 }

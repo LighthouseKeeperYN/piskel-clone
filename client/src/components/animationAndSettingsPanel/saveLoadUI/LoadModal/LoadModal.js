@@ -14,7 +14,7 @@ function LoadModal() {
   const { toggleLoadModal, setPixelSize, setFrameRate } = useContext(
     AnimationAndSettingsPanelContext
   );
-  const { projects, getProjects } = useContext(DbStorageContext);
+  const { projects, getProjects, setCurrent, deleteProject } = useContext(DbStorageContext);
 
   useEffect(() => {
     getProjects();
@@ -31,6 +31,7 @@ function LoadModal() {
     setPixelSize(pixelSize);
     setFrameRate(frameRate);
     decodeFramesAll(frameCollection).then((frames) => frames.forEach((frame) => addFrame(frame)));
+    setCurrent(project);
     toggleLoadModal();
   };
 
@@ -40,6 +41,13 @@ function LoadModal() {
         {projects.map((project, index) => (
           <div className="load-cell" key={index} onClick={() => loadProject(project)}>
             <p>{project.name}</p>
+            <button
+              className="load-delete-button"
+              onClick={(e) => {
+                e.stopPropagation();
+                deleteProject(project._id);
+              }}
+            ></button>
           </div>
         ))}
       </div>

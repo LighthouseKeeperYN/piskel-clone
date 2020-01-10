@@ -17,7 +17,7 @@ function SaveModal() {
   const [name, setName] = useState(null);
   const writeValue = (e) => setName(e.target.value);
 
-  const execSaveProject = (e) => {
+  const saveProject = (e) => {
     e.preventDefault();
 
     const encodedFrames = frameCollection.map((frame) => encodeFrame(frame));
@@ -33,7 +33,7 @@ function SaveModal() {
     <div className="save-modal-wrapper">
       <div className="save-modal-form-wrapper" ref={modalRef}>
         <h2 className="save-modal-title">Save project</h2>
-        <form className="save-modal-form" onSubmit={execSaveProject}>
+        <form className="save-modal-form" onSubmit={saveProject}>
           <label htmlFor="projectName">Project name</label>
           <input
             className="save-modal-field"
@@ -41,6 +41,8 @@ function SaveModal() {
             type="text"
             name="name"
             required
+            minLength="1"
+            maxLength="64"
             onChange={writeValue}
           />
           <input className="save-modal-button" type="submit" value="Save" />
