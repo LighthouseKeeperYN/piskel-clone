@@ -34,11 +34,10 @@ function LocalStorageDownloader() {
     if (userData) {
       clearFrames();
 
+      setPixelSize(userData.pixelSize);
       decodeFramesAll(userData.frameCollection).then((frames) =>
         frames.forEach((frame) => addFrame(frame))
       );
-
-      setPixelSize(userData.pixelSize);
       setFrameRate(userData.frameRate);
       setStrokeSize(userData.strokeSize);
       setToolType(userData.toolType);

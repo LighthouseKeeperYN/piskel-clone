@@ -5,10 +5,12 @@ import './form.scss';
 
 import AuthContext from '../../../context/auth/authContext';
 import DbStorageContext from '../../../context/dbStorage/dbStorageContext';
+import AnimationAndSettingsPanelContext from '../../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
 
 const LogInForm = ({ pageProps }) => {
   const { logIn, error, clearErrors, isAuthenticated } = useContext(AuthContext);
   const { getProjects } = useContext(DbStorageContext);
+  const { setPixelSize, setFrameRate } = useContext(AnimationAndSettingsPanelContext);
 
   useEffect(() => {
     if (isAuthenticated) {
