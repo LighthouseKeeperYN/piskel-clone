@@ -7,9 +7,11 @@ import { encodeFrame, decodeFramesAll } from '../shared/utilities';
 import FramePanelContext from '../context/framePanel/framePanelContext';
 import ToolPanelContext from '../context/toolPanel/toolPanelContext';
 import ShortcutsContext from '../context/shortcuts/shortcutsContext';
+import DbStorageContext from '../context/dbStorage/dbStorageContext';
 import AnimationAndSettingsPanelContext from '../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
 
 function LocalStorageDownloader() {
+  const { currentProject, setCurrentProject } = useContext(DbStorageContext);
   const { shortcuts, setAllShortcuts } = useContext(ShortcutsContext);
   const { addFrame, frameCollection, changeIndex, currentFrame, clearFrames } = useContext(
     FramePanelContext
@@ -45,6 +47,7 @@ function LocalStorageDownloader() {
       setColorSecondary(userData.colorSecondary);
       changeIndex(userData.currentFrame);
       setAllShortcuts(userData.shortcuts);
+      setCurrentProject(userData.currentProject);
     }
   };
 
@@ -60,7 +63,8 @@ function LocalStorageDownloader() {
       toolType,
       colorPrimary,
       colorSecondary,
-      shortcuts
+      shortcuts,
+      currentProject
     };
 
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(userData));

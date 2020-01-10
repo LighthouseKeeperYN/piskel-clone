@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './header.scss';
 
 import AuthContext from '../../../context/auth/authContext';
+import DbStorageContext from '../../../context/dbStorage/dbStorageContext';
 
 import SignUpButton from '../../auth/buttons/SignUpButton';
 import LogOutButton from '../../auth/buttons/LogOutButton';
@@ -11,6 +12,7 @@ import LogInButton from '../../auth/buttons/LogInButton';
 
 const Header = () => {
   const { isAuthenticated, loadUser, user } = useContext(AuthContext);
+  const { currentProject } = useContext(DbStorageContext);
 
   useEffect(() => {
     loadUser();
@@ -22,6 +24,8 @@ const Header = () => {
       <h1 className="header__logo">
         <Link to="/">Piskel</Link>
       </h1>
+
+      <h2 className="header__project-name">{currentProject?.name || ''}</h2>
 
       <div className="header__button-wrapper">
         {isAuthenticated ? (

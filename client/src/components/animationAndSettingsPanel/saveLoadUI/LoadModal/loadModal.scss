@@ -75,6 +75,7 @@
 .load-delete-button {
   position: relative;
 
+  margin-left: 1rem;
   width: 2rem;
   height: 2rem;
   opacity: 0.3;
@@ -90,7 +91,7 @@
     position: absolute;
     left: 45%;
     top: 0;
-    
+
     content: ' ';
     height: 100%;
     width: 0.2rem;

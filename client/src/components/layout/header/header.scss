@@ -2,7 +2,7 @@
 
 .header {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
 
   height: 3.6rem;
@@ -11,6 +11,14 @@
 
   &__logo {
     font-family: 'Courier Prime', monospace;
+  }
+
+  &__project-name{
+    overflow: hidden;
+
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: normal;
   }
 
   &__button-wrapper {

@@ -7,7 +7,7 @@ import {
   GET_PROJECTS,
   ADD_PROJECT,
   DELETE_PROJECT,
-  SET_CURRENT,
+  SET_CURRENT_PROJECT,
   UPDATE_PROJECT,
   PROJECT_ERROR,
   CLEAR_PROJECTS
@@ -16,7 +16,7 @@ import {
 const DbStorageState = (props) => {
   const initialState = {
     projects: [],
-    current: null,
+    currentProject: null,
     error: null
   };
 
@@ -82,6 +82,7 @@ const DbStorageState = (props) => {
         type: UPDATE_PROJECT,
         payload: res.data
       });
+      console.log('success');
     } catch (err) {
       dispatch({
         type: PROJECT_ERROR,
@@ -90,8 +91,8 @@ const DbStorageState = (props) => {
     }
   };
 
-  const setCurrent = (project) => {
-    dispatch({ type: SET_CURRENT, payload: project });
+  const setCurrentProject = (project) => {
+    dispatch({ type: SET_CURRENT_PROJECT, payload: project });
   };
 
   const clearProjects = () => {
@@ -102,13 +103,13 @@ const DbStorageState = (props) => {
     <DbStorageContext.Provider
       value={{
         projects: state.projects,
-        current: state.current,
+        currentProject: state.currentProject,
         error: state.error,
         getProjects,
         addProject,
         deleteProject,
         updateProject,
-        setCurrent,
+        setCurrentProject,
         clearProjects
       }}
     >

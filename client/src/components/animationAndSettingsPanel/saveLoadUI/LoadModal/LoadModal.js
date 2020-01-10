@@ -14,7 +14,7 @@ function LoadModal() {
   const { toggleLoadModal, setPixelSize, setFrameRate } = useContext(
     AnimationAndSettingsPanelContext
   );
-  const { projects, getProjects, setCurrent, deleteProject } = useContext(DbStorageContext);
+  const { projects, getProjects, setCurrentProject, deleteProject } = useContext(DbStorageContext);
 
   useEffect(() => {
     getProjects();
@@ -31,7 +31,7 @@ function LoadModal() {
     setPixelSize(pixelSize);
     setFrameRate(frameRate);
     decodeFramesAll(frameCollection).then((frames) => frames.forEach((frame) => addFrame(frame)));
-    setCurrent(project);
+    setCurrentProject(project);
     toggleLoadModal();
   };
 
