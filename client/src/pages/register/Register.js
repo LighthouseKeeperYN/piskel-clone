@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './register.scss';
+import './Register.scss';
 
 import SignUpForm from '../../components/auth/forms/SignUpForm';
 

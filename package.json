@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "main": "server.js",
+  "engines": {
+    "node": "13.2.0"
+  },
   "scripts": {
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
