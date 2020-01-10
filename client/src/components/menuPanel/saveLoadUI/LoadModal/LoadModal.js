@@ -17,7 +17,7 @@ function LoadModal() {
   useEffect(() => {
     getProjects();
     // eslint-disable-next-line
-  }, [projects]);
+  }, []);
 
   const modalRef = useRef(null);
   useOnClickOutside(modalRef, toggleLoadModal);

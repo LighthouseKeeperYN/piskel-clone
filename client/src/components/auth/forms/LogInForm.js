@@ -5,6 +5,7 @@ import './form.scss';
 
 import AuthContext from '../../../context/auth/authContext';
 import DbStorageContext from '../../../context/dbStorage/dbStorageContext';
+
 const LogInForm = ({ pageProps }) => {
   const { logIn, error, clearErrors, isAuthenticated } = useContext(AuthContext);
   const { getProjects } = useContext(DbStorageContext);
@@ -52,7 +53,7 @@ const LogInForm = ({ pageProps }) => {
 };
 
 LogInForm.propTypes = {
-  pageProps: PropTypes.object.isRequired
+  pageProps: PropTypes.object.isRequired,
 };
 
 export default LogInForm;

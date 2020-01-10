@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import './menuPanel.scss'
+import './menuPanel.scss';
 
 import { PIXEL_SIZES } from '../../shared/constants';
 

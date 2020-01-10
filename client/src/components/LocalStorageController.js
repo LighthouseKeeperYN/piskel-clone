@@ -14,7 +14,7 @@ function LocalStorageDownloader() {
   const { currentProject, setCurrentProject } = useContext(DbStorageContext);
   const { shortcuts, setAllShortcuts } = useContext(ShortcutsContext);
   const { addFrame, frameCollection, changeIndex, currentFrame, clearFrames } = useContext(
-    FramePanelContext
+    FramePanelContext,
   );
   const { setPixelSize, setFrameRate, pixelSize, frameRate } = useContext(MenuPanelContext);
   const {
@@ -25,7 +25,7 @@ function LocalStorageDownloader() {
     setStrokeSize,
     setToolType,
     setColorPrimary,
-    setColorSecondary
+    setColorSecondary,
   } = useContext(ToolPanelContext);
 
   const downloadDataFromLocalStorage = () => {
@@ -35,9 +35,8 @@ function LocalStorageDownloader() {
       clearFrames();
 
       setPixelSize(userData.pixelSize);
-      decodeFramesAll(userData.frameCollection).then((frames) =>
-        frames.forEach((frame) => addFrame(frame))
-      );
+      decodeFramesAll(userData.frameCollection)
+        .then((frames) => frames.forEach((frame) => addFrame(frame)));
       setFrameRate(userData.frameRate);
       setStrokeSize(userData.strokeSize);
       setToolType(userData.toolType);
@@ -62,7 +61,7 @@ function LocalStorageDownloader() {
       colorPrimary,
       colorSecondary,
       shortcuts,
-      currentProject
+      currentProject,
     };
 
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(userData));

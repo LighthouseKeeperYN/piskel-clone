@@ -10,7 +10,7 @@ import SaveLoadButton from './SaveLoadButton/SaveLoadButton';
 
 function SaveLoadUI() {
   const { saveModalActive, loadModalActive, toggleSaveModal, toggleLoadModal } = useContext(
-    MenuPanelContext
+    MenuPanelContext,
   );
 
   return (

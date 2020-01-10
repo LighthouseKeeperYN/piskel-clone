@@ -11,22 +11,22 @@ const MenuState = (props) => {
     pixelSize: DEFAULT_PIXEL_SIZE,
     frameRate: DEFAULT_FRAME_RATE,
     saveModalActive: false,
-    loadModalActive: false
+    loadModalActive: false,
   };
-  
+
   const [state, dispatch] = useReducer(MenuReducer, initialState);
 
   const setPixelSize = (size) => {
     dispatch({
       type: SET_PIXEL_SIZE,
-      payload: size
+      payload: size,
     });
   };
 
   const setFrameRate = (rate) => {
     dispatch({
       type: SET_FRAME_RATE,
-      payload: rate
+      payload: rate,
     });
   };
 
@@ -48,7 +48,7 @@ const MenuState = (props) => {
         setPixelSize,
         setFrameRate,
         toggleSaveModal,
-        toggleLoadModal
+        toggleLoadModal,
       }}
     >
       {props.children}

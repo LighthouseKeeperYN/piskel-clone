@@ -9,7 +9,7 @@ import {
   DEFAULT_PIXEL_SIZE,
   DEFAULT_COLORS,
   TOOL_TYPES,
-  STROKE_SCALES
+  STROKE_SCALES,
 } from '../../../shared/constants';
 
 import FramePanelContext from '../../../context/framePanel/framePanelContext';
@@ -24,9 +24,9 @@ function SignUpButton() {
   const { logOut } = useContext(AuthContext);
   const { clearProjects } = useContext(DbStorageContext);
   const { setAllShortcuts } = useContext(ShortcutsContext);
-  const { setPixelSize, setFrameRate } = useContext(MenuPanelContext)
+  const { setPixelSize, setFrameRate } = useContext(MenuPanelContext);
   const { setStrokeSize, setColorPrimary, setColorSecondary, setToolType } = useContext(
-    ToolPanelContext
+    ToolPanelContext,
   );
 
   const execLogOut = () => {

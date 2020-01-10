@@ -25,12 +25,15 @@ const Header = () => {
         <Link to="/">Piskel</Link>
       </h1>
 
-      <h2 className="header__project-name">{currentProject?.name || ''}</h2>
+      <Link to="/project">
+        <h2 className="header__project-name">{currentProject?.name || ''}</h2>{' '}
+      </Link>
 
       <div className="header__button-wrapper">
         {isAuthenticated ? (
           <Fragment>
-            <span className="header__user-name">{user?.name}</span> <LogOutButton />
+            <span className="header__user-name">{user?.name}</span>
+            <LogOutButton />
           </Fragment>
         ) : (
           <Fragment>

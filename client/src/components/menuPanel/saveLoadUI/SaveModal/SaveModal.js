@@ -12,7 +12,7 @@ import MenuPanelContext from '../../../../context/menuPanel/menuPanelContext';
 function SaveModal() {
   const { projects, currentProject, addProject, updateProject } = useContext(DbStorageContext);
   const { frameCollection } = useContext(FramePanelContext);
-  const { frameRate, pixelSize, toggleSaveModal } = useContext(MenuPanelContext)
+  const { frameRate, pixelSize, toggleSaveModal } = useContext(MenuPanelContext);
 
   const [name, setName] = useState(currentProject?.name);
   const writeValue = (e) => setName(e.target.value);
@@ -30,13 +30,13 @@ function SaveModal() {
     updateProject({
       ...currentProject,
       name,
-      projectData: { frameCollection: encodedFrames, frameRate, pixelSize }
+      projectData: { frameCollection: encodedFrames, frameRate, pixelSize },
     });
     toggleSaveModal();
   };
 
   const isNewProject = () => {
-    if (currentProject) return false;
+    if (!currentProject) return true;
     return projects.every((project) => project._id !== currentProject._id);
   };
 
