@@ -1,5 +1,4 @@
-import React, { useContext, useRef, useEffect } from 'react';
-import useOnClickOutside from 'use-onclickoutside';
+import React, { useContext, useEffect } from 'react';
 
 import './loadModal.scss';
 
@@ -19,8 +18,9 @@ function LoadModal() {
     // eslint-disable-next-line
   }, []);
 
-  const modalRef = useRef(null);
-  useOnClickOutside(modalRef, toggleLoadModal);
+  const closeModal = (e) => {
+    if (e.target === e.currentTarget) toggleLoadModal();
+  };
 
   const loadProject = (project) => {
     const { frameCollection, pixelSize, frameRate } = project.projectData;
@@ -33,8 +33,8 @@ function LoadModal() {
   };
 
   return (
-    <div className="load-modal-wrapper">
-      <div className="load-modal" ref={modalRef}>
+    <div className="load-modal-wrapper" onClick={closeModal}>
+      <div className="load-modal" /* ref={modalRef} */>
         {projects.map((project, index) => (
           <div className="load-cell" key={index} onClick={() => loadProject(project)}>
             <p>{project.name}</p>

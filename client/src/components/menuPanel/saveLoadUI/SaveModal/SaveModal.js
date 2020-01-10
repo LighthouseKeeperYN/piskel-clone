@@ -1,5 +1,4 @@
-import React, { useContext, useState, useRef } from 'react';
-import useOnClickOutside from 'use-onclickoutside';
+import React, { useContext, useState } from 'react';
 
 import './SaveModal.scss';
 
@@ -17,6 +16,10 @@ function SaveModal() {
   const [name, setName] = useState(currentProject?.name);
   const writeValue = (e) => setName(e.target.value);
 
+  const closeModal = (e) => {
+    if (e.target === e.currentTarget) toggleSaveModal();
+  };
+
   const saveCurrentProject = (e) => {
     e.preventDefault();
     const encodedFrames = frameCollection.map((frame) => encodeFrame(frame));
@@ -30,7 +33,7 @@ function SaveModal() {
     updateProject({
       ...currentProject,
       name,
-      projectData: { frameCollection: encodedFrames, frameRate, pixelSize },
+      projectData: { frameCollection: encodedFrames, frameRate, pixelSize }
     });
     toggleSaveModal();
   };
@@ -40,12 +43,9 @@ function SaveModal() {
     return projects.every((project) => project._id !== currentProject._id);
   };
 
-  const modalRef = useRef(null);
-  useOnClickOutside(modalRef, toggleSaveModal);
-
   return (
-    <div className="save-modal-wrapper">
-      <div className="save-modal-form-wrapper" ref={modalRef}>
+    <div className="save-modal-wrapper" onClick={closeModal}>
+      <div className="save-modal-form-wrapper">
         <h2 className="save-modal-title">Save project</h2>
         <form
           className="save-modal-form"

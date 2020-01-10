@@ -1,5 +1,4 @@
-import React, { Fragment, useRef, useContext } from 'react';
-import useOnClickOutside from 'use-onclickoutside';
+import React, { Fragment, useContext } from 'react';
 
 import './customizeShortcutsModal.scss';
 
@@ -15,17 +14,15 @@ function CustomizeShortcutsModal() {
     ShortcutsContext,
   );
 
-  const ref = useRef(null);
-  const dismissModal = () => {
-    if (shortcutsModalVisibility) toggleShortcutsModalVisibility();
-  };
-  useOnClickOutside(ref, dismissModal);
+  const closeModal = (e) => {
+    if (e.target === e.currentTarget) toggleShortcutsModalVisibility();
+  }
 
   return (
     <Fragment>
       {shortcutsModalVisibility && (
-        <div className="customize-shortcuts-modal-wrapper">
-          <div className="customize-shortcuts-modal" ref={ref}>
+        <div className="customize-shortcuts-modal-wrapper" onClick={closeModal}>
+          <div className="customize-shortcuts-modal">
             {Object.keys(shortcuts).map((action) => (
               <CustomizeShortcutsCell
                 action={action}
