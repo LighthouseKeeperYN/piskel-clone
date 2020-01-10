@@ -19,7 +19,7 @@ function TitleSection() {
 
         <CreateSpriteButton />
       </div>
-      <img src={appViewImg} alt="app-view" />
+      <img className="title-block__img" src={appViewImg} alt="app-view" />
     </section>
   );
 }
