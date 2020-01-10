@@ -6,7 +6,7 @@ import './saveAsUI.scss';
 
 import FramePanelContext from '../../../context/framePanel/framePanelContext';
 import ShortcutsContext from '../../../context/shortcuts/shortcutsContext';
-import AnimationAndSettingsPanelContext from '../../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
+import MenuPanelContext from '../../../context/menuPanel/menuPanelContext';
 
 import {
   imageDataCollectionToAPNG,
@@ -17,7 +17,7 @@ import { DEFAULT_CANVAS_SIZE, TOOLTIP_PROPS, SHORTCUT_ACTIONS } from '../../../s
 
 function SaveAs() {
   const { frameCollection } = useContext(FramePanelContext);
-  const { frameRate } = useContext(AnimationAndSettingsPanelContext);
+  const { frameRate } = useContext(MenuPanelContext);
   const { shortcuts } = useContext(ShortcutsContext);
 
   const saveAsAPNG = () => {

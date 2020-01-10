@@ -4,7 +4,7 @@ import './project.scss';
 
 import Canvas from '../../components/canvas/Canvas';
 import ToolPanel from '../../components/toolPanel/ToolPanel';
-import AnimationAndSettingsPanel from '../../components/animationAndSettingsPanel/AnimationAndSettingsPanel';
+import MenuPanel from '../../components/menuPanel/MenuPanel';
 import FramePanel from '../../components/framePanel/FramePanel';
 import CustomizeShortcutsButton from '../../components/shortcuts/customizeShortcutsButton/CustomizeShortcutsButton';
 import CustomizeShortcutsModal from '../../components/shortcuts/customizeShortcutsModal/CustomizeShortcutsModal';
@@ -15,7 +15,7 @@ function Project() {
       <ToolPanel />
       <FramePanel />
       <Canvas />
-      <AnimationAndSettingsPanel />
+      <MenuPanel />
       <CustomizeShortcutsButton />
       <CustomizeShortcutsModal />
     </div>

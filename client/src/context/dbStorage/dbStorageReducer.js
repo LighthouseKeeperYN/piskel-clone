@@ -13,7 +13,11 @@ export default (state, action) => {
     case GET_PROJECTS:
       return { ...state, projects: action.payload };
     case ADD_PROJECT:
-      return { ...state, projects: [action.payload, ...state.projects] };
+      return {
+        ...state,
+        projects: [action.payload, ...state.projects],
+        currentProject: action.payload
+      };
     case UPDATE_PROJECT:
       return {
         ...state,
@@ -32,7 +36,7 @@ export default (state, action) => {
     case PROJECT_ERROR:
       return { ...state, error: action.payload };
     case CLEAR_PROJECTS:
-      return { ...state, projects: [] };
+      return { ...state, projects: [], currentProject: null };
     default:
       return state;
   }

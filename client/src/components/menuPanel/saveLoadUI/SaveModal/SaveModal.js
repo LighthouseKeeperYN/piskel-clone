@@ -7,12 +7,12 @@ import { encodeFrame } from '../../../../shared/utilities';
 
 import DbStorageContext from '../../../../context/dbStorage/dbStorageContext';
 import FramePanelContext from '../../../../context/framePanel/framePanelContext';
-import AnimationAndSettingsPanelContext from '../../../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
+import MenuPanelContext from '../../../../context/menuPanel/menuPanelContext';
 
 function SaveModal() {
   const { projects, currentProject, addProject, updateProject } = useContext(DbStorageContext);
   const { frameCollection } = useContext(FramePanelContext);
-  const { frameRate, pixelSize, toggleSaveModal } = useContext(AnimationAndSettingsPanelContext);
+  const { frameRate, pixelSize, toggleSaveModal } = useContext(MenuPanelContext)
 
   const [name, setName] = useState(currentProject?.name);
   const writeValue = (e) => setName(e.target.value);

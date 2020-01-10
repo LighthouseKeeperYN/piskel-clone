@@ -8,7 +8,7 @@ import FramePanelContext from '../context/framePanel/framePanelContext';
 import ToolPanelContext from '../context/toolPanel/toolPanelContext';
 import ShortcutsContext from '../context/shortcuts/shortcutsContext';
 import DbStorageContext from '../context/dbStorage/dbStorageContext';
-import AnimationAndSettingsPanelContext from '../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
+import MenuPanelContext from '../context/menuPanel/menuPanelContext';
 
 function LocalStorageDownloader() {
   const { currentProject, setCurrentProject } = useContext(DbStorageContext);
@@ -16,9 +16,7 @@ function LocalStorageDownloader() {
   const { addFrame, frameCollection, changeIndex, currentFrame, clearFrames } = useContext(
     FramePanelContext
   );
-  const { setPixelSize, setFrameRate, pixelSize, frameRate } = useContext(
-    AnimationAndSettingsPanelContext
-  );
+  const { setPixelSize, setFrameRate, pixelSize, frameRate } = useContext(MenuPanelContext);
   const {
     strokeSize,
     toolType,

@@ -3,30 +3,30 @@ import React, { useReducer } from 'react';
 import { DEFAULT_PIXEL_SIZE, DEFAULT_FRAME_RATE } from '../../shared/constants';
 import { SET_PIXEL_SIZE, SET_FRAME_RATE, TOGGLE_SAVE_MODAL, TOGGLE_LOAD_MODAL } from '../types';
 
-import AnimationAndSettingsPanelContext from './animationAndSettingsPanelContext';
-import AnimationAndSettingsPanelReducer from './animationAndSettingsPanelReducer';
+import MenuContext from './menuPanelContext';
+import MenuReducer from './menuPanelReducer';
 
-const AnimationAndSettingsPanelState = (props) => {
+const MenuState = (props) => {
   const initialState = {
     pixelSize: DEFAULT_PIXEL_SIZE,
     frameRate: DEFAULT_FRAME_RATE,
     saveModalActive: false,
-    loadModalActive: false,
+    loadModalActive: false
   };
-
-  const [state, dispatch] = useReducer(AnimationAndSettingsPanelReducer, initialState);
+  
+  const [state, dispatch] = useReducer(MenuReducer, initialState);
 
   const setPixelSize = (size) => {
     dispatch({
       type: SET_PIXEL_SIZE,
-      payload: size,
+      payload: size
     });
   };
 
   const setFrameRate = (rate) => {
     dispatch({
       type: SET_FRAME_RATE,
-      payload: rate,
+      payload: rate
     });
   };
 
@@ -39,7 +39,7 @@ const AnimationAndSettingsPanelState = (props) => {
   };
 
   return (
-    <AnimationAndSettingsPanelContext.Provider
+    <MenuContext.Provider
       value={{
         pixelSize: state.pixelSize,
         frameRate: state.frameRate,
@@ -48,12 +48,12 @@ const AnimationAndSettingsPanelState = (props) => {
         setPixelSize,
         setFrameRate,
         toggleSaveModal,
-        toggleLoadModal,
+        toggleLoadModal
       }}
     >
       {props.children}
-    </AnimationAndSettingsPanelContext.Provider>
+    </MenuContext.Provider>
   );
 };
 
-export default AnimationAndSettingsPanelState;
+export default MenuState;

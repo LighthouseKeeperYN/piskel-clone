@@ -6,31 +6,28 @@ import _ from 'lodash';
 import ShortcutsContext from '../../context/shortcuts/shortcutsContext';
 import ToolPanelContext from '../../context/toolPanel/toolPanelContext';
 import FramePanelContext from '../../context/framePanel/framePanelContext';
-import AnimationAndSettingsPanelContext from '../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
+import MenuPanelContext from '../../context/menuPanel/menuPanelContext';
 
 import {
   TOOL_TYPES,
   SHORTCUT_ACTIONS,
   STROKE_SCALES,
-  DEFAULT_CANVAS_SIZE,
+  DEFAULT_CANVAS_SIZE
 } from '../../shared/constants';
 
-import {
-  imageDataCollectionToAPNG,
-  imageDataCollectionToGIF,
-} from '../../shared/utilities';
+import { imageDataCollectionToAPNG, imageDataCollectionToGIF } from '../../shared/utilities';
 
 function ShortcutListener() {
   const { shortcuts } = useContext(ShortcutsContext);
   const { strokeSize, setToolType, setStrokeSize } = useContext(ToolPanelContext);
-  const { frameRate } = useContext(AnimationAndSettingsPanelContext);
+  const { frameRate } = useContext(MenuPanelContext);
   const {
     frameCollection,
     currentFrame,
     changeIndex,
     duplicateFrame,
     deleteFrame,
-    addFrame,
+    addFrame
   } = useContext(FramePanelContext);
 
   const getAction = (e) => {
@@ -38,7 +35,7 @@ function ShortcutListener() {
       code: e.code,
       ctrlKey: e.ctrlKey,
       shiftKey: e.shiftKey,
-      altKey: e.altKey,
+      altKey: e.altKey
     };
 
     let action = null;
@@ -97,7 +94,7 @@ function ShortcutListener() {
         img = imageDataCollectionToAPNG({
           frameCollection,
           size: DEFAULT_CANVAS_SIZE,
-          frameRate,
+          frameRate
         });
         saveImage(img, `${new Date().getTime()}.png`);
         break;
@@ -105,7 +102,7 @@ function ShortcutListener() {
         img = imageDataCollectionToGIF({
           frameCollection,
           size: DEFAULT_CANVAS_SIZE,
-          frameRate,
+          frameRate
         });
         saveImage(img, `${new Date().getTime()}.gif`);
         break;

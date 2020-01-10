@@ -5,13 +5,13 @@ import './animationPreview.scss';
 import { DEFAULT_CANVAS_SIZE } from '../../../shared/constants';
 
 import FramePanelContext from '../../../context/framePanel/framePanelContext';
-import AnimationAndSettingsPanelContext from '../../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
+import MenuPanelContext from '../../../context/menuPanel/menuPanelContext';
 
 let animation;
 
 function AnimationPreview() {
   const { frameCollection } = useContext(FramePanelContext);
-  const { frameRate } = useContext(AnimationAndSettingsPanelContext);
+  const { frameRate } = useContext(MenuPanelContext);
 
   const animationPreviewRef = useRef(null);
 

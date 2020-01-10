@@ -5,12 +5,12 @@ import './canvasResolutionButton.scss';
 
 import { DEFAULT_CANVAS_SIZE } from '../../../shared/constants';
 
-import AnimationAndSettingsPanelContext from '../../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
+import MenuPanelContext from '../../../context/menuPanel/menuPanelContext'
 import FramePanelContext from '../../../context/framePanel/framePanelContext';
 
 function CanvasResolutionButton({ pxSize }) {
   const { resetFrames } = useContext(FramePanelContext);
-  const { pixelSize, setPixelSize } = useContext(AnimationAndSettingsPanelContext);
+  const { pixelSize, setPixelSize } = useContext(MenuPanelContext)
 
   const resolution = DEFAULT_CANVAS_SIZE / pxSize;
 

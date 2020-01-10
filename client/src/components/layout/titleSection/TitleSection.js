@@ -2,7 +2,7 @@ import React from 'react';
 
 import './titleSection.scss';
 
-import CreateSpriteButton from './createSpriteButton/CreateSpriteButton';
+import CreateSpriteButton from '../../createSpriteButton/CreateSpriteButton';
 
 const appViewImg = require('./app-view.png');
 

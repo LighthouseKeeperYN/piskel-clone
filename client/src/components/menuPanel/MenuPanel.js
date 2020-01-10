@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import './animationAndSettingsPanel.scss';
+import './menuPanel.scss'
 
 import { PIXEL_SIZES } from '../../shared/constants';
 
@@ -12,7 +12,7 @@ import SaveLoadUI from './saveLoadUI/SaveLoadUI';
 
 import AuthContext from '../../context/auth/authContext';
 
-function AnimationAndSettingsPanel() {
+function MenuPanel() {
   const { isAuthenticated } = useContext(AuthContext);
 
   return (
@@ -29,4 +29,4 @@ function AnimationAndSettingsPanel() {
   );
 }
 
-export default AnimationAndSettingsPanel;
+export default MenuPanel;

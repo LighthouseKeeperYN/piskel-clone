@@ -13,7 +13,7 @@ import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 
 import ToolPanelState from './context/toolPanel/ToolPanelState';
-import AnimationAndSettingsPanelState from './context/animationAndSettingsPanel/AnimationAndSettingsPanelState';
+import MenuPanelState from './context/menuPanel/MenuPanelState';
 import CanvasState from './context/canvas/CanvasState';
 import FramePanelState from './context/framePanel/FramePanelState';
 import ShortcutsState from './context/shortcuts/ShortcutsState';
@@ -22,7 +22,7 @@ import DbStorageState from './context/dbStorage/DbStorageState';
 
 const App = () => (
   <ToolPanelState>
-    <AnimationAndSettingsPanelState>
+    <MenuPanelState>
       <CanvasState>
         <FramePanelState>
           <ShortcutsState>
@@ -48,7 +48,7 @@ const App = () => (
           </ShortcutsState>
         </FramePanelState>
       </CanvasState>
-    </AnimationAndSettingsPanelState>
+    </MenuPanelState>
   </ToolPanelState>
 );
 

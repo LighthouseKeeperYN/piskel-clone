@@ -14,10 +14,10 @@ import applyToolToCanvas from './functionality/applyToolToCanvas';
 import ToolPanelContext from '../../context/toolPanel/toolPanelContext';
 import CanvasContext from '../../context/canvas/canvasContext';
 import FramePanelContext from '../../context/framePanel/framePanelContext';
-import AnimationAndSettingsPanelContext from '../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
+import MenuPanelContext from '../../context/menuPanel/menuPanelContext';
 
 function Canvas() {
-  const { pixelSize } = useContext(AnimationAndSettingsPanelContext);
+  const { pixelSize } = useContext(MenuPanelContext);
   const { setCanvasCtx, setDrawing, isDrawing } = useContext(CanvasContext);
   const { updateFrame } = useContext(FramePanelContext);
   const {

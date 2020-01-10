@@ -82,7 +82,7 @@ const DbStorageState = (props) => {
         type: UPDATE_PROJECT,
         payload: res.data
       });
-      console.log('success');
+
     } catch (err) {
       dispatch({
         type: PROJECT_ERROR,

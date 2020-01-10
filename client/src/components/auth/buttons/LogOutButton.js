@@ -17,20 +17,19 @@ import AuthContext from '../../../context/auth/authContext';
 import DbStorageContext from '../../../context/dbStorage/dbStorageContext';
 import ToolPanelContext from '../../../context/toolPanel/toolPanelContext';
 import ShortcutsContext from '../../../context/shortcuts/shortcutsContext';
-import AnimationAndSettingsPanelContext from '../../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
+import MenuPanelContext from '../../../context/menuPanel/menuPanelContext';
 
 function SignUpButton() {
   const { resetFrames } = useContext(FramePanelContext);
   const { logOut } = useContext(AuthContext);
   const { clearProjects } = useContext(DbStorageContext);
   const { setAllShortcuts } = useContext(ShortcutsContext);
-  const { setPixelSize, setFrameRate } = useContext(AnimationAndSettingsPanelContext);
+  const { setPixelSize, setFrameRate } = useContext(MenuPanelContext)
   const { setStrokeSize, setColorPrimary, setColorSecondary, setToolType } = useContext(
     ToolPanelContext
   );
 
   const execLogOut = () => {
-    logOut();
     clearProjects();
     resetFrames();
     localStorage.removeItem(LOCAL_STORAGE_KEY);
@@ -41,6 +40,7 @@ function SignUpButton() {
     setColorSecondary(DEFAULT_COLORS.secondary);
     setToolType(TOOL_TYPES.pen);
     setAllShortcuts();
+    logOut();
   };
 
   return (

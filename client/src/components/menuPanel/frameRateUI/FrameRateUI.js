@@ -4,10 +4,10 @@ import './frameRateUI.scss';
 
 import { MIN_FRAME_RATE, MAX_FRAME_RATE } from '../../../shared/constants';
 
-import AnimationAndSettingsPanelContext from '../../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
+import MenuPanelContext from '../../../context/menuPanel/menuPanelContext';
 
 function FrameRateUI() {
-  const { frameRate, setFrameRate } = useContext(AnimationAndSettingsPanelContext);
+  const { frameRate, setFrameRate } = useContext(MenuPanelContext)
 
   return (
     <div className="frame-rate-ui-wrapper">

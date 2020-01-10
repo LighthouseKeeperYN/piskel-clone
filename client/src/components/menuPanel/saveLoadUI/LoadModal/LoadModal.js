@@ -7,20 +7,17 @@ import { decodeFramesAll } from '../../../../shared/utilities';
 
 import DbStorageContext from '../../../../context/dbStorage/dbStorageContext';
 import FramePanelContext from '../../../../context/framePanel/framePanelContext';
-import AnimationAndSettingsPanelContext from '../../../../context/animationAndSettingsPanel/animationAndSettingsPanelContext';
+import MenuPanelContext from '../../../../context/menuPanel/menuPanelContext';
 
 function LoadModal() {
   const { addFrame, clearFrames } = useContext(FramePanelContext);
-  const { toggleLoadModal, setPixelSize, setFrameRate } = useContext(
-    AnimationAndSettingsPanelContext
-  );
+  const { toggleLoadModal, setPixelSize, setFrameRate } = useContext(MenuPanelContext);
   const { projects, getProjects, setCurrentProject, deleteProject } = useContext(DbStorageContext);
 
   useEffect(() => {
     getProjects();
-    console.log(projects);
     // eslint-disable-next-line
-  }, []);
+  }, [projects]);
 
   const modalRef = useRef(null);
   useOnClickOutside(modalRef, toggleLoadModal);
