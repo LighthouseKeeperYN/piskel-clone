@@ -4,6 +4,8 @@ import { useAlert } from 'react-alert';
 
 import './form.scss';
 
+import { ERRORS } from '../../../shared/constants';
+
 import AuthContext from '../../../context/auth/authContext';
 
 const SignUpForm = ({ pageProps }) => {
@@ -14,7 +16,7 @@ const SignUpForm = ({ pageProps }) => {
   useEffect(() => {
     if (isAuthenticated) pageProps.history.push('/project');
 
-    if (error === 'User already exists') {
+    if (error === ERRORS.userExists) {
       Alert.show(error);
       clearErrors();
     }
@@ -25,7 +27,7 @@ const SignUpForm = ({ pageProps }) => {
     name: '',
     email: '',
     password: '',
-    password2: '',
+    password2: ''
   });
 
   const writeValue = (e) => setUser({ ...user, [e.target.name]: e.target.value });
@@ -35,7 +37,7 @@ const SignUpForm = ({ pageProps }) => {
 
     const { name, email, password, password2 } = user;
 
-    if (password !== password2) Alert.show('Passwords do not match');
+    if (password !== password2) Alert.show(ERRORS.passwordsDoNotMatch);
     else register({ name, email, password });
   };
 
@@ -80,7 +82,7 @@ const SignUpForm = ({ pageProps }) => {
 };
 
 SignUpForm.propTypes = {
-  pageProps: PropTypes.object.isRequired,
+  pageProps: PropTypes.object.isRequired
 };
 
 export default SignUpForm;

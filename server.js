@@ -4,8 +4,6 @@ const path = require('path');
 
 const app = express();
 
-const DEFAULT_PORT = require('./shared/constants').DEFAULT_PORT;
-
 connectDB();
 
 app.use(express.json({ extended: false }));
@@ -23,6 +21,6 @@ if (process.env.NODE_ENV === 'production') {
   );
 }
 
-const PORT = process.env.PORT || DEFAULT_PORT;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log('Server started on port', PORT));

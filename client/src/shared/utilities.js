@@ -2,7 +2,7 @@ import UPNG from 'upng-js';
 import GifEncoder from 'gif-encoder';
 import axios from 'axios';
 
-import { HTTP_HEADERS, DEFAULT_CANVAS_SIZE } from './constants';
+import { DEFAULT_CANVAS_SIZE } from './constants';
 
 export function scaleDown(coordinate, ratio) {
   return Math.floor(coordinate / ratio);
@@ -91,8 +91,8 @@ export function shortcutToString(keyObj) {
 }
 
 export const setAuthToken = (token) => {
-  if (token) axios.defaults.headers.common[HTTP_HEADERS.xAuthToken] = token;
-  else delete axios.defaults.headers.common[HTTP_HEADERS.xAuthToken];
+  if (token) axios.defaults.headers.common['x-auth-token'] = token;
+  else delete axios.defaults.headers.common['x-auth-token'];
 };
 
 export const encodeFrame = (frame) => {

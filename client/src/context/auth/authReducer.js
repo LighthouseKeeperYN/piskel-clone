@@ -6,8 +6,10 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  CLEAR_ERRORS,
+  CLEAR_ERRORS
 } from '../types';
+
+import { LOCAL_STORAGE_TOKEN_KEY } from '../../shared/constants';
 
 export default (state, action) => {
   switch (action.type) {
@@ -15,23 +17,23 @@ export default (state, action) => {
       return {
         ...state,
         isAuthenticated: true,
-        user: action.payload,
+        user: action.payload
       };
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
-      localStorage.setItem('token', action.payload.token);
+      localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, action.payload.token);
       return { ...state, ...action.payload, isAuthenticated: true };
     case REGISTER_FAIL:
     case AUTH_ERROR:
     case LOGIN_FAIL:
     case LOGOUT:
-      localStorage.removeItem('token');
+      localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
       return {
         ...state,
         token: null,
         isAuthenticated: false,
         user: null,
-        error: action.payload,
+        error: action.payload
       };
     case CLEAR_ERRORS:
       return { ...state, error: null };

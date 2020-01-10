@@ -4,12 +4,12 @@ import { useAlert } from 'react-alert';
 
 import './form.scss';
 
+import { ERRORS } from '../../../shared/constants';
+
 import AuthContext from '../../../context/auth/authContext';
-import DbStorageContext from '../../../context/dbStorage/dbStorageContext';
 
 const LogInForm = ({ pageProps }) => {
   const { logIn, error, clearErrors, isAuthenticated } = useContext(AuthContext);
-  const { getProjects } = useContext(DbStorageContext);
 
   const Alert = useAlert();
 
@@ -18,7 +18,7 @@ const LogInForm = ({ pageProps }) => {
       pageProps.history.push('/project');
     }
 
-    if (error === 'Invalid Credentials') {
+    if (error === ERRORS.invalidCredentials) {
       Alert.show(error);
       clearErrors();
     }
@@ -34,7 +34,6 @@ const LogInForm = ({ pageProps }) => {
   const execLogIn = (e) => {
     e.preventDefault();
     logIn({ email, password });
-    getProjects();
   };
 
   return (
@@ -56,7 +55,7 @@ const LogInForm = ({ pageProps }) => {
 };
 
 LogInForm.propTypes = {
-  pageProps: PropTypes.object.isRequired,
+  pageProps: PropTypes.object.isRequired
 };
 
 export default LogInForm;

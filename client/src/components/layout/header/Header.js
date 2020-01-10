@@ -12,12 +12,15 @@ import LogInButton from '../../auth/buttons/LogInButton';
 
 const Header = () => {
   const { isAuthenticated, loadUser, user } = useContext(AuthContext);
-  const { currentProject } = useContext(DbStorageContext);
+  const { currentProject, getProjects } = useContext(DbStorageContext);
 
   useEffect(() => {
-    loadUser();
+    if (localStorage.token) {
+      loadUser();
+      getProjects();
+    }
     // eslint-disable-next-line
-  }, []);
+  }, [localStorage.token]);
 
   return (
     <nav className="header">

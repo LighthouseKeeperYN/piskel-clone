@@ -34,7 +34,7 @@ function LoadModal() {
 
   return (
     <div className="load-modal-wrapper" onClick={closeModal}>
-      <div className="load-modal" /* ref={modalRef} */>
+      <div className="load-modal">
         {projects.map((project, index) => (
           <div className="load-cell" key={index} onClick={() => loadProject(project)}>
             <p>{project.name}</p>
