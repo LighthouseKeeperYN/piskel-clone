@@ -7,7 +7,7 @@ import SignUpForm from '../../components/auth/forms/SignUpForm';
 function Register(props) {
   return (
     <div className="register-page">
-      <SignUpForm pageProps={props}/>
+      <SignUpForm pageProps={props} />
     </div>
   );
 }
