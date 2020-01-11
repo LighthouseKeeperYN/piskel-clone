@@ -35,7 +35,7 @@ const DbStorageState = (props) => {
     } catch (err) {
       dispatch({
         type: PROJECT_ERROR,
-        payload: err.response.data.errors[0].msg,
+        payload: err.response.data.msg || err.response.data.errors[0].msg,
       });
     }
   };
@@ -53,7 +53,7 @@ const DbStorageState = (props) => {
     } catch (err) {
       dispatch({
         type: PROJECT_ERROR,
-        payload: err.response.data.errors[0].msg,
+        payload: err.response.data.msg || err.response.data.errors[0].msg,
       });
     }
   };
@@ -69,7 +69,7 @@ const DbStorageState = (props) => {
     } catch (err) {
       dispatch({
         type: PROJECT_ERROR,
-        payload: err.response.data.errors[0].msg,
+        payload: err.response.data.msg || err.response.data.errors[0].msg,
       });
     }
   };
@@ -87,7 +87,7 @@ const DbStorageState = (props) => {
     } catch (err) {
       dispatch({
         type: PROJECT_ERROR,
-        payload: err.response.data.errors[0].msg,
+        payload: err.response.data.msg || err.response.data.errors[0].msg,
       });
     }
   };
