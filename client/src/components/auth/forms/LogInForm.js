@@ -4,8 +4,6 @@ import { useAlert } from 'react-alert';
 
 import './form.scss';
 
-import { ERRORS } from '../../../shared/constants';
-
 import AuthContext from '../../../context/auth/authContext';
 
 const LogInForm = ({ pageProps }) => {
@@ -18,7 +16,7 @@ const LogInForm = ({ pageProps }) => {
       pageProps.history.push('/project');
     }
 
-    if (error === ERRORS.invalidCredentials) {
+    if (error) {
       Alert.show(error);
       clearErrors();
     }

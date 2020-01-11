@@ -16,7 +16,7 @@ const SignUpForm = ({ pageProps }) => {
   useEffect(() => {
     if (isAuthenticated) pageProps.history.push('/project');
 
-    if (error === ERRORS.userExists) {
+    if (error) {
       Alert.show(error);
       clearErrors();
     }

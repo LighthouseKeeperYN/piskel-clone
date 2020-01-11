@@ -63,7 +63,5 @@ export const ACTION_DESCRIPTIONS = {
 };
 export const HTTP_JSON_HEADER = { 'Content-Type': 'application/json' };
 export const ERRORS = {
-  invalidCredentials: 'Invalid Credentials',
-  userExists: 'User already exists',
   passwordsDoNotMatch: 'Passwords do not match',
 };
