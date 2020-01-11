@@ -55,7 +55,7 @@ const LogInForm = ({ pageProps }) => {
 };
 
 LogInForm.propTypes = {
-  pageProps: PropTypes.object.isRequired
+  pageProps: PropTypes.object.isRequired,
 };
 
 export default LogInForm;
