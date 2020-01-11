@@ -15,7 +15,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  CLEAR_ERRORS
+  CLEAR_ERRORS,
 } from '../types';
 
 const AuthState = (props) => {
@@ -23,7 +23,7 @@ const AuthState = (props) => {
     token: localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY),
     isAuthenticated: null,
     user: null,
-    error: null
+    error: null,
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
@@ -36,7 +36,7 @@ const AuthState = (props) => {
 
       dispatch({
         type: USER_LOADED,
-        payload: res.data
+        payload: res.data,
       });
     } catch (err) {
       dispatch({ type: AUTH_ERROR });
@@ -51,14 +51,14 @@ const AuthState = (props) => {
 
       dispatch({
         type: REGISTER_SUCCESS,
-        payload: res.data
+        payload: res.data,
       });
 
       loadUser();
     } catch (err) {
       dispatch({
         type: REGISTER_FAIL,
-        payload: err.response.data.msg || err.response.data.errors[0].msg
+        payload: err.response.data.msg || err.response.data.errors[0].msg,
       });
     }
   };
@@ -71,14 +71,14 @@ const AuthState = (props) => {
 
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: res.data
+        payload: res.data,
       });
 
       loadUser();
     } catch (err) {
       dispatch({
         type: LOGIN_FAIL,
-        payload: err.response.data.msg || err.response.data.errors[0].msg
+        payload: err.response.data.msg || err.response.data.errors[0].msg,
       });
     }
   };
@@ -98,7 +98,7 @@ const AuthState = (props) => {
         loadUser,
         logIn,
         logOut,
-        clearErrors
+        clearErrors,
       }}
     >
       {props.children}
