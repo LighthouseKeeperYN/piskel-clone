@@ -50,7 +50,7 @@ function Canvas() {
     const ctx = canvasRef.current.getContext('2d');
     ctx.fillStyle = colorToApply === TRANSPARENCY_COLOR ? BLACK_COLOR_REPLACEMENT : colorToApply;
 
-    const currMousePosition = { x: e.nativeEvent.layerX, y: e.nativeEvent.layerY };
+    const currMousePosition = { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY };
 
     setPrevMousePosition(currMousePosition);
 
